@@ -14,6 +14,7 @@ namespace Softwen.Products
 {
     public partial class rptdispense : MetroForm
     {
+        dispense dsp = new dispense();
         public rptdispense()
         {
             InitializeComponent();
@@ -21,8 +22,6 @@ namespace Softwen.Products
 
         private void rptmissing_Load(object sender, EventArgs e)
         {
-            dispense dsp = new dispense();
-            dsp.Load(Globals.getrptpath("\\Products\\dispense.rpt"));
             dsp.Refresh();
             dsp.SetDatabaseLogon(ConfigurationManager.AppSettings["Username"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
             dsp.SetParameterValue("storename", Properties.Settings.Default.StoreName);

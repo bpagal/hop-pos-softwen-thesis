@@ -69,7 +69,7 @@ namespace Softwen.Transaction
                         rpti.cash = "P " + string.Format("{0:F2}", Convert.ToDecimal(txtamountpaid.Text));
                         rpti.change = "P " + string.Format("{0:F2}", txtchange.Text);
                         rpti.discounttype = transaction.TransactionInstance.discountstatus;
-                        rpti.Show();
+                        rpti.ShowDialog();
                         cleartbl();
                     }
                     else

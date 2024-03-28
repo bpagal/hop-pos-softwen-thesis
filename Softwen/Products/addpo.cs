@@ -191,7 +191,7 @@ namespace Softwen.Products
         {
             txtproductname.Text = this.dgaddpo.CurrentRow.Cells[3].Value.ToString();
             txtquantity.Value = txtquantity.Maximum = Convert.ToDecimal(this.dgaddpo.CurrentRow.Cells[5].Value) - Convert.ToDecimal(this.dgaddpo.CurrentRow.Cells[4].Value);
-            bool ischecked = Convert.ToBoolean(dgaddpo.Rows[0].Cells[0].EditedFormattedValue);
+            bool ischecked = Convert.ToBoolean(dgaddpo.Rows[e.RowIndex].Cells[0].EditedFormattedValue);
             if (ischecked == true)
             {
                 txtquantity.Visible = true;

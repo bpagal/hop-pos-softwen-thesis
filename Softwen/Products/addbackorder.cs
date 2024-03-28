@@ -63,7 +63,7 @@ namespace Softwen.Products
         }
         private void inputlogic()
         {
-            labelquantity.Text = "Specify Quantity for: " + dgrestockbo.CurrentRow.Cells[0].Value.ToString();
+            labelquantity.Text = "Specify Quantity for:\r\n" + dgrestockbo.CurrentRow.Cells[0].Value.ToString();
             txtquantity.Value = txtquantity.Maximum = Convert.ToDecimal(dgrestockbo.CurrentRow.Cells[2].Value) - Convert.ToDecimal(dgrestockbo.CurrentRow.Cells[3].Value);
         }
 

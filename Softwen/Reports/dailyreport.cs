@@ -1,5 +1,6 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
+using MetroFramework;
 using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace Softwen.Reports
         public string datesold = "";
         public string cashiername = "";
         public string productname = "";
-        ReportDocument dailyrpt = new ReportDocument();
+        daily dailyrpt = new daily();
         public dailyreport()
         {
             InitializeComponent();
@@ -27,7 +28,6 @@ namespace Softwen.Reports
 
         private void dailyreport_Load(object sender, EventArgs e)
         {
-            dailyrpt.Load(Globals.getrptpath("\\Reports\\daily.rpt"));
             dailyrpt.Refresh();
             dailyrpt.SetDatabaseLogon(ConfigurationManager.AppSettings["Username"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
             dailyrpt.SetParameterValue("storename", Properties.Settings.Default.StoreName);
@@ -46,6 +46,7 @@ namespace Softwen.Reports
         {
             Globals gs = new Globals();
             gs.exportexcel(dailyrpt);
+            MetroMessageBox.Show(this, "Export Complete", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -129,7 +129,7 @@ namespace Softwen.Products
         }
         private void inputlogic()
         {
-            labelquantity.Text = "Specify Quantity for: " + dgrestock.CurrentRow.Cells[0].Value.ToString();
+            labelquantity.Text = "Specify Quantity for:\r\n" + dgrestock.CurrentRow.Cells[0].Value.ToString();
             txtquantity.Value = txtquantity.Maximum = Convert.ToDecimal(dgrestock.CurrentRow.Cells[2].Value);
         }
 

@@ -23,6 +23,7 @@ namespace Softwen.Transaction
         public string discounttype = "";
         public string cash = "";
         public string change = "";
+        invoice ivc = new invoice();
         public rptinvoice()
         {
             InitializeComponent();
@@ -30,8 +31,6 @@ namespace Softwen.Transaction
 
         private void rptinvoice_Load(object sender, EventArgs e)
         {
-            invoice ivc = new invoice();
-            ivc.Load(Globals.getrptpath("\\Transaction\\daily.rpt"));
             ivc.Refresh();
             ivc.SetDatabaseLogon(ConfigurationManager.AppSettings["Username"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
             ivc.SetParameterValue("storename", Properties.Settings.Default.StoreName);
@@ -45,8 +44,8 @@ namespace Softwen.Transaction
             ivc.SetParameterValue("grandtotal", grandtotal);
             ivc.SetParameterValue("cash", cash);
             ivc.SetParameterValue("change", change);
-            crystalReportViewer1.Refresh();
-            crystalReportViewer1.ReportSource = ivc;
+            crystalinvoice.Refresh();
+            crystalinvoice.ReportSource = ivc;
 
         }
     }

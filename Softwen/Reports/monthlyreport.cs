@@ -17,6 +17,8 @@ namespace Softwen.Reports
         public string cashiername = "";
         public string productname = "";
         public bool precise = false;
+        monthly monthlyrpt = new monthly();
+        precisemonthly precisemonthlyrpt = new precisemonthly();
         public monthlyreport()
         {
             InitializeComponent();
@@ -26,8 +28,6 @@ namespace Softwen.Reports
         {
             if (precise==false)
             {
-                monthly monthlyrpt = new monthly();
-                monthlyrpt.Load(Globals.getrptpath("\\Reports\\monthly.rpt"));
                 monthlyrpt.Refresh();
                 monthlyrpt.SetDatabaseLogon(ConfigurationManager.AppSettings["Username"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
                 monthlyrpt.SetParameterValue("storename", Properties.Settings.Default.StoreName);
@@ -41,8 +41,6 @@ namespace Softwen.Reports
             }
             else if (precise==true)
             {
-                precisemonthly precisemonthlyrpt = new precisemonthly();
-                precisemonthlyrpt.Load(@"C:\Users\Rhiennier\Downloads\Softwen\Softwen\Softwen\Softwen\Reports\precisemonthly.rpt");
                 precisemonthlyrpt.Refresh();
                 precisemonthlyrpt.SetDatabaseLogon(ConfigurationManager.AppSettings["Username"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
                 precisemonthlyrpt.SetParameterValue("storename", Properties.Settings.Default.StoreName);

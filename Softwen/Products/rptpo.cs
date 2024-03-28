@@ -1,4 +1,5 @@
 ﻿using CrystalDecisions.Shared;
+using MetroFramework;
 using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,6 @@ namespace Softwen.Products
 
         private void rptpo_Load(object sender, EventArgs e)
         {  
-            po.Load(Globals.getrptpath("\\Products\\purchaseorder.rpt")); 
             po.Refresh();
             po.SetDatabaseLogon(ConfigurationManager.AppSettings["Username"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
             po.SetParameterValue("branchname", Properties.Settings.Default.StoreName);
@@ -37,6 +37,7 @@ namespace Softwen.Products
         {
             Globals gs = new Globals();
             gs.exportexcel(po);
+            MetroMessageBox.Show(this, "Export Complete", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
