@@ -361,7 +361,7 @@
             this.txtprice.Icon = ((System.Drawing.Image)(resources.GetObject("txtprice.Icon")));
             this.txtprice.Lines = new string[0];
             this.txtprice.Location = new System.Drawing.Point(14, 241);
-            this.txtprice.MaxLength = 3;
+            this.txtprice.MaxLength = 9;
             this.txtprice.Name = "txtprice";
             this.txtprice.PasswordChar = '\0';
             this.txtprice.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -375,6 +375,7 @@
             this.txtprice.UseSelectable = true;
             this.txtprice.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtprice.WaterMarkFont = new System.Drawing.Font("Open Sans Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtprice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtprice_KeyPress);
             // 
             // label3
             // 

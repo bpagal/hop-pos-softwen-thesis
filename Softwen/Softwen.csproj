@@ -50,8 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>hoplogo_uCU_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
@@ -180,6 +179,12 @@
     <Compile Include="Products\addstocks.Designer.cs">
       <DependentUpon>addstocks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Products\backorder.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>backorder.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Products\dispense.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -209,6 +214,12 @@
     </Compile>
     <Compile Include="Products\addpo.designer.cs">
       <DependentUpon>addpo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Products\rptbo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\rptbo.Designer.cs">
+      <DependentUpon>rptbo.cs</DependentUpon>
     </Compile>
     <Compile Include="Products\rptdispense.cs">
       <SubType>Form</SubType>
@@ -364,6 +375,10 @@
     <EmbeddedResource Include="Products\addstocks.resx">
       <DependentUpon>addstocks.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Products\backorder.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>backorder.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Products\dispense.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>dispense.cs</LastGenOutput>
@@ -380,6 +395,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Products\addpo.resx">
       <DependentUpon>addpo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\rptbo.resx">
+      <DependentUpon>rptbo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Products\rptdispense.resx">
       <DependentUpon>rptdispense.cs</DependentUpon>
@@ -569,6 +587,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Active State_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="hoplogo_uCU_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

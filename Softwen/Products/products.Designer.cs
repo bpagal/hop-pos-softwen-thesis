@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(products));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -55,30 +54,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(products));
             this.productstabcontrol = new MetroFramework.Controls.MetroTabControl();
             this.productpage = new MetroFramework.Controls.MetroTabPage();
-            this.lnkdispense = new MetroFramework.Controls.MetroLink();
-            this.lnkaddstock = new MetroFramework.Controls.MetroLink();
             this.dgproducts = new MetroFramework.Controls.MetroGrid();
-            this.comboboxsp = new MetroFramework.Controls.MetroComboBox();
-            this.txtsp = new MetroFramework.Controls.MetroTextBox();
-            this.labelprice = new System.Windows.Forms.Label();
-            this.dispensepage = new MetroFramework.Controls.MetroTabPage();
-            this.lnkreportmissing = new MetroFramework.Controls.MetroLink();
-            this.dgmissingproducts = new MetroFramework.Controls.MetroGrid();
-            this.popage = new MetroFramework.Controls.MetroTabPage();
-            this.lnkaddpo = new MetroFramework.Controls.MetroLink();
-            this.dgpo = new MetroFramework.Controls.MetroGrid();
-            this.pid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deliveredpage = new MetroFramework.Controls.MetroTabPage();
-            this.dgdelivered = new MetroFramework.Controls.MetroGrid();
-            this.bopage = new MetroFramework.Controls.MetroTabPage();
-            this.dgbackorder = new MetroFramework.Controls.MetroGrid();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lnkaddbackorder = new MetroFramework.Controls.MetroLink();
-            this.productstylemanager = new MetroFramework.Components.MetroStyleManager(this.components);
             this.productidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,6 +68,28 @@
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboboxsp = new MetroFramework.Controls.MetroComboBox();
+            this.labelprice = new System.Windows.Forms.Label();
+            this.dispensepage = new MetroFramework.Controls.MetroTabPage();
+            this.dgmissingproducts = new MetroFramework.Controls.MetroGrid();
+            this.popage = new MetroFramework.Controls.MetroTabPage();
+            this.dgpo = new MetroFramework.Controls.MetroGrid();
+            this.pid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deliveredpage = new MetroFramework.Controls.MetroTabPage();
+            this.dgdelivered = new MetroFramework.Controls.MetroGrid();
+            this.bopage = new MetroFramework.Controls.MetroTabPage();
+            this.dgbackorder = new MetroFramework.Controls.MetroGrid();
+            this.productstylemanager = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lnkdispense = new MetroFramework.Controls.MetroLink();
+            this.lnkaddstock = new MetroFramework.Controls.MetroLink();
+            this.txtsp = new MetroFramework.Controls.MetroTextBox();
+            this.lnkreportmissing = new MetroFramework.Controls.MetroLink();
+            this.lnkaddpo = new MetroFramework.Controls.MetroLink();
+            this.lnkboreport = new MetroFramework.Controls.MetroLink();
+            this.lnkaddbackorder = new MetroFramework.Controls.MetroLink();
             this.productstabcontrol.SuspendLayout();
             this.productpage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgproducts)).BeginInit();
@@ -113,7 +114,7 @@
             this.productstabcontrol.Dock = System.Windows.Forms.DockStyle.Fill;
             this.productstabcontrol.Location = new System.Drawing.Point(0, 0);
             this.productstabcontrol.Name = "productstabcontrol";
-            this.productstabcontrol.SelectedIndex = 0;
+            this.productstabcontrol.SelectedIndex = 4;
             this.productstabcontrol.Size = new System.Drawing.Size(1085, 518);
             this.productstabcontrol.TabIndex = 1;
             this.productstabcontrol.UseSelectable = true;
@@ -139,40 +140,6 @@
             this.productpage.VerticalScrollbarBarColor = true;
             this.productpage.VerticalScrollbarHighlightOnWheel = false;
             this.productpage.VerticalScrollbarSize = 10;
-            // 
-            // lnkdispense
-            // 
-            this.lnkdispense.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lnkdispense.FontSize = MetroFramework.MetroLinkSize.Medium;
-            this.lnkdispense.Image = ((System.Drawing.Image)(resources.GetObject("lnkdispense.Image")));
-            this.lnkdispense.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lnkdispense.ImageSize = 50;
-            this.lnkdispense.Location = new System.Drawing.Point(3, 122);
-            this.lnkdispense.Name = "lnkdispense";
-            this.lnkdispense.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkdispense.NoFocusImage")));
-            this.lnkdispense.Size = new System.Drawing.Size(113, 66);
-            this.lnkdispense.TabIndex = 26;
-            this.lnkdispense.Text = "Dispense";
-            this.lnkdispense.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.lnkdispense.UseSelectable = true;
-            this.lnkdispense.Click += new System.EventHandler(this.lnkdispense_Click);
-            // 
-            // lnkaddstock
-            // 
-            this.lnkaddstock.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lnkaddstock.FontSize = MetroFramework.MetroLinkSize.Medium;
-            this.lnkaddstock.Image = ((System.Drawing.Image)(resources.GetObject("lnkaddstock.Image")));
-            this.lnkaddstock.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lnkaddstock.ImageSize = 50;
-            this.lnkaddstock.Location = new System.Drawing.Point(13, 50);
-            this.lnkaddstock.Name = "lnkaddstock";
-            this.lnkaddstock.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkaddstock.NoFocusImage")));
-            this.lnkaddstock.Size = new System.Drawing.Size(94, 66);
-            this.lnkaddstock.TabIndex = 26;
-            this.lnkaddstock.Text = "Add P/O";
-            this.lnkaddstock.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.lnkaddstock.UseSelectable = true;
-            this.lnkaddstock.Click += new System.EventHandler(this.lnkaddstock_Click);
             // 
             // dgproducts
             // 
@@ -239,6 +206,86 @@
             this.dgproducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgproducts_CellContentClick);
             this.dgproducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgproducts_CellContentClick);
             // 
+            // productidDataGridViewTextBoxColumn
+            // 
+            this.productidDataGridViewTextBoxColumn.DataPropertyName = "productid";
+            this.productidDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.productidDataGridViewTextBoxColumn.Name = "productidDataGridViewTextBoxColumn";
+            this.productidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productidDataGridViewTextBoxColumn.Visible = false;
+            this.productidDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // productnameDataGridViewTextBoxColumn
+            // 
+            this.productnameDataGridViewTextBoxColumn.DataPropertyName = "productname";
+            this.productnameDataGridViewTextBoxColumn.HeaderText = "Product";
+            this.productnameDataGridViewTextBoxColumn.Name = "productnameDataGridViewTextBoxColumn";
+            this.productnameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productnameDataGridViewTextBoxColumn.Width = 94;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "productcode";
+            this.Column4.HeaderText = "Product Code";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 137;
+            // 
+            // barcodeDataGridViewTextBoxColumn
+            // 
+            this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "barcode";
+            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
+            this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.barcodeDataGridViewTextBoxColumn.Width = 97;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Unit Price ₱";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.priceDataGridViewTextBoxColumn.Width = 123;
+            // 
+            // categorynameDataGridViewTextBoxColumn
+            // 
+            this.categorynameDataGridViewTextBoxColumn.DataPropertyName = "categoryname";
+            this.categorynameDataGridViewTextBoxColumn.HeaderText = "Category";
+            this.categorynameDataGridViewTextBoxColumn.Name = "categorynameDataGridViewTextBoxColumn";
+            this.categorynameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.categorynameDataGridViewTextBoxColumn.Width = 102;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descriptionDataGridViewTextBoxColumn.Width = 121;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "maxquantity";
+            this.Column3.HeaderText = "Max Qty";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 98;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "qtystatus";
+            this.Column5.HeaderText = "Status";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 81;
+            // 
             // comboboxsp
             // 
             this.comboboxsp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -259,41 +306,6 @@
             this.comboboxsp.UseSelectable = true;
             this.comboboxsp.SelectedIndexChanged += new System.EventHandler(this.comboboxsp_SelectedIndexChanged);
             // 
-            // txtsp
-            // 
-            // 
-            // 
-            // 
-            this.txtsp.CustomButton.Image = null;
-            this.txtsp.CustomButton.Location = new System.Drawing.Point(183, 1);
-            this.txtsp.CustomButton.Name = "";
-            this.txtsp.CustomButton.Size = new System.Drawing.Size(35, 35);
-            this.txtsp.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtsp.CustomButton.TabIndex = 1;
-            this.txtsp.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtsp.CustomButton.UseSelectable = true;
-            this.txtsp.CustomButton.Visible = false;
-            this.txtsp.DisplayIcon = true;
-            this.txtsp.FontSize = MetroFramework.MetroTextBoxSize.Tall;
-            this.txtsp.Icon = ((System.Drawing.Image)(resources.GetObject("txtsp.Icon")));
-            this.txtsp.Lines = new string[0];
-            this.txtsp.Location = new System.Drawing.Point(398, 8);
-            this.txtsp.MaxLength = 32767;
-            this.txtsp.Name = "txtsp";
-            this.txtsp.PasswordChar = '\0';
-            this.txtsp.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtsp.SelectedText = "";
-            this.txtsp.SelectionLength = 0;
-            this.txtsp.SelectionStart = 0;
-            this.txtsp.ShortcutsEnabled = true;
-            this.txtsp.ShowClearButton = true;
-            this.txtsp.Size = new System.Drawing.Size(219, 37);
-            this.txtsp.TabIndex = 20;
-            this.txtsp.UseSelectable = true;
-            this.txtsp.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtsp.WaterMarkFont = new System.Drawing.Font("Open Sans Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtsp.TextChanged += new System.EventHandler(this.txtsp_TextChanged);
-            // 
             // labelprice
             // 
             this.labelprice.AutoSize = true;
@@ -306,8 +318,8 @@
             // 
             // dispensepage
             // 
-            this.dispensepage.Controls.Add(this.lnkreportmissing);
             this.dispensepage.Controls.Add(this.dgmissingproducts);
+            this.dispensepage.Controls.Add(this.lnkreportmissing);
             this.dispensepage.HorizontalScrollbarBarColor = false;
             this.dispensepage.HorizontalScrollbarHighlightOnWheel = false;
             this.dispensepage.HorizontalScrollbarSize = 20;
@@ -319,23 +331,6 @@
             this.dispensepage.VerticalScrollbarBarColor = true;
             this.dispensepage.VerticalScrollbarHighlightOnWheel = false;
             this.dispensepage.VerticalScrollbarSize = 10;
-            // 
-            // lnkreportmissing
-            // 
-            this.lnkreportmissing.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lnkreportmissing.FontSize = MetroFramework.MetroLinkSize.Medium;
-            this.lnkreportmissing.Image = ((System.Drawing.Image)(resources.GetObject("lnkreportmissing.Image")));
-            this.lnkreportmissing.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lnkreportmissing.ImageSize = 50;
-            this.lnkreportmissing.Location = new System.Drawing.Point(13, 50);
-            this.lnkreportmissing.Name = "lnkreportmissing";
-            this.lnkreportmissing.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkreportmissing.NoFocusImage")));
-            this.lnkreportmissing.Size = new System.Drawing.Size(97, 66);
-            this.lnkreportmissing.TabIndex = 26;
-            this.lnkreportmissing.Text = "Load Report";
-            this.lnkreportmissing.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.lnkreportmissing.UseSelectable = true;
-            this.lnkreportmissing.Click += new System.EventHandler(this.lnkreportmissing_Click);
             // 
             // dgmissingproducts
             // 
@@ -391,8 +386,8 @@
             // 
             // popage
             // 
-            this.popage.Controls.Add(this.lnkaddpo);
             this.popage.Controls.Add(this.dgpo);
+            this.popage.Controls.Add(this.lnkaddpo);
             this.popage.HorizontalScrollbarBarColor = true;
             this.popage.HorizontalScrollbarHighlightOnWheel = false;
             this.popage.HorizontalScrollbarSize = 10;
@@ -404,23 +399,6 @@
             this.popage.VerticalScrollbarBarColor = true;
             this.popage.VerticalScrollbarHighlightOnWheel = false;
             this.popage.VerticalScrollbarSize = 10;
-            // 
-            // lnkaddpo
-            // 
-            this.lnkaddpo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lnkaddpo.FontSize = MetroFramework.MetroLinkSize.Medium;
-            this.lnkaddpo.Image = ((System.Drawing.Image)(resources.GetObject("lnkaddpo.Image")));
-            this.lnkaddpo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lnkaddpo.ImageSize = 50;
-            this.lnkaddpo.Location = new System.Drawing.Point(3, 401);
-            this.lnkaddpo.Name = "lnkaddpo";
-            this.lnkaddpo.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkaddpo.NoFocusImage")));
-            this.lnkaddpo.Size = new System.Drawing.Size(136, 66);
-            this.lnkaddpo.TabIndex = 36;
-            this.lnkaddpo.Text = "Increase Qty";
-            this.lnkaddpo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.lnkaddpo.UseSelectable = true;
-            this.lnkaddpo.Click += new System.EventHandler(this.lnkaddpo_Click);
             // 
             // dgpo
             // 
@@ -556,6 +534,7 @@
             // 
             // bopage
             // 
+            this.bopage.Controls.Add(this.lnkboreport);
             this.bopage.Controls.Add(this.dgbackorder);
             this.bopage.Controls.Add(this.lnkaddbackorder);
             this.bopage.HorizontalScrollbarBarColor = true;
@@ -628,13 +607,18 @@
             this.dgbackorder.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgbackorder_RowsAdded);
             this.dgbackorder.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgbackorder_RowsRemoved);
             // 
-            // Column7
+            // productstylemanager
             // 
-            this.Column7.DataPropertyName = "P/O #";
-            this.Column7.HeaderText = "P/O #";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 76;
+            this.productstylemanager.Owner = this;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "PID";
+            this.Column10.HeaderText = "Column10";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Visible = false;
+            this.Column10.Width = 110;
             // 
             // Column9
             // 
@@ -645,14 +629,133 @@
             this.Column9.Visible = false;
             this.Column9.Width = 101;
             // 
-            // Column10
+            // Column7
             // 
-            this.Column10.DataPropertyName = "PID";
-            this.Column10.HeaderText = "Column10";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            this.Column10.Visible = false;
-            this.Column10.Width = 110;
+            this.Column7.DataPropertyName = "P/O #";
+            this.Column7.HeaderText = "P/O #";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 76;
+            // 
+            // lnkdispense
+            // 
+            this.lnkdispense.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lnkdispense.FontSize = MetroFramework.MetroLinkSize.Medium;
+            this.lnkdispense.Image = ((System.Drawing.Image)(resources.GetObject("lnkdispense.Image")));
+            this.lnkdispense.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lnkdispense.ImageSize = 50;
+            this.lnkdispense.Location = new System.Drawing.Point(3, 122);
+            this.lnkdispense.Name = "lnkdispense";
+            this.lnkdispense.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkdispense.NoFocusImage")));
+            this.lnkdispense.Size = new System.Drawing.Size(113, 66);
+            this.lnkdispense.TabIndex = 26;
+            this.lnkdispense.Text = "Dispense";
+            this.lnkdispense.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.lnkdispense.UseSelectable = true;
+            this.lnkdispense.Click += new System.EventHandler(this.lnkdispense_Click);
+            // 
+            // lnkaddstock
+            // 
+            this.lnkaddstock.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lnkaddstock.FontSize = MetroFramework.MetroLinkSize.Medium;
+            this.lnkaddstock.Image = ((System.Drawing.Image)(resources.GetObject("lnkaddstock.Image")));
+            this.lnkaddstock.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lnkaddstock.ImageSize = 50;
+            this.lnkaddstock.Location = new System.Drawing.Point(13, 50);
+            this.lnkaddstock.Name = "lnkaddstock";
+            this.lnkaddstock.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkaddstock.NoFocusImage")));
+            this.lnkaddstock.Size = new System.Drawing.Size(94, 66);
+            this.lnkaddstock.TabIndex = 26;
+            this.lnkaddstock.Text = "Add P/O";
+            this.lnkaddstock.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.lnkaddstock.UseSelectable = true;
+            this.lnkaddstock.Click += new System.EventHandler(this.lnkaddstock_Click);
+            // 
+            // txtsp
+            // 
+            // 
+            // 
+            // 
+            this.txtsp.CustomButton.Image = null;
+            this.txtsp.CustomButton.Location = new System.Drawing.Point(183, 1);
+            this.txtsp.CustomButton.Name = "";
+            this.txtsp.CustomButton.Size = new System.Drawing.Size(35, 35);
+            this.txtsp.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtsp.CustomButton.TabIndex = 1;
+            this.txtsp.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtsp.CustomButton.UseSelectable = true;
+            this.txtsp.CustomButton.Visible = false;
+            this.txtsp.DisplayIcon = true;
+            this.txtsp.FontSize = MetroFramework.MetroTextBoxSize.Tall;
+            this.txtsp.Icon = ((System.Drawing.Image)(resources.GetObject("txtsp.Icon")));
+            this.txtsp.Lines = new string[0];
+            this.txtsp.Location = new System.Drawing.Point(398, 8);
+            this.txtsp.MaxLength = 32767;
+            this.txtsp.Name = "txtsp";
+            this.txtsp.PasswordChar = '\0';
+            this.txtsp.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtsp.SelectedText = "";
+            this.txtsp.SelectionLength = 0;
+            this.txtsp.SelectionStart = 0;
+            this.txtsp.ShortcutsEnabled = true;
+            this.txtsp.ShowClearButton = true;
+            this.txtsp.Size = new System.Drawing.Size(219, 37);
+            this.txtsp.TabIndex = 20;
+            this.txtsp.UseSelectable = true;
+            this.txtsp.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtsp.WaterMarkFont = new System.Drawing.Font("Open Sans Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtsp.TextChanged += new System.EventHandler(this.txtsp_TextChanged);
+            // 
+            // lnkreportmissing
+            // 
+            this.lnkreportmissing.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lnkreportmissing.FontSize = MetroFramework.MetroLinkSize.Medium;
+            this.lnkreportmissing.Image = ((System.Drawing.Image)(resources.GetObject("lnkreportmissing.Image")));
+            this.lnkreportmissing.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lnkreportmissing.ImageSize = 50;
+            this.lnkreportmissing.Location = new System.Drawing.Point(13, 50);
+            this.lnkreportmissing.Name = "lnkreportmissing";
+            this.lnkreportmissing.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkreportmissing.NoFocusImage")));
+            this.lnkreportmissing.Size = new System.Drawing.Size(97, 66);
+            this.lnkreportmissing.TabIndex = 26;
+            this.lnkreportmissing.Text = "Load Report";
+            this.lnkreportmissing.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.lnkreportmissing.UseSelectable = true;
+            this.lnkreportmissing.Click += new System.EventHandler(this.lnkreportmissing_Click);
+            // 
+            // lnkaddpo
+            // 
+            this.lnkaddpo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lnkaddpo.FontSize = MetroFramework.MetroLinkSize.Medium;
+            this.lnkaddpo.Image = ((System.Drawing.Image)(resources.GetObject("lnkaddpo.Image")));
+            this.lnkaddpo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lnkaddpo.ImageSize = 50;
+            this.lnkaddpo.Location = new System.Drawing.Point(3, 401);
+            this.lnkaddpo.Name = "lnkaddpo";
+            this.lnkaddpo.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkaddpo.NoFocusImage")));
+            this.lnkaddpo.Size = new System.Drawing.Size(136, 66);
+            this.lnkaddpo.TabIndex = 36;
+            this.lnkaddpo.Text = "Increase Qty";
+            this.lnkaddpo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.lnkaddpo.UseSelectable = true;
+            this.lnkaddpo.Click += new System.EventHandler(this.lnkaddpo_Click);
+            // 
+            // lnkboreport
+            // 
+            this.lnkboreport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lnkboreport.FontSize = MetroFramework.MetroLinkSize.Medium;
+            this.lnkboreport.Image = ((System.Drawing.Image)(resources.GetObject("lnkboreport.Image")));
+            this.lnkboreport.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lnkboreport.ImageSize = 50;
+            this.lnkboreport.Location = new System.Drawing.Point(148, 398);
+            this.lnkboreport.Name = "lnkboreport";
+            this.lnkboreport.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkboreport.NoFocusImage")));
+            this.lnkboreport.Size = new System.Drawing.Size(97, 66);
+            this.lnkboreport.TabIndex = 39;
+            this.lnkboreport.Text = "Load Report";
+            this.lnkboreport.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.lnkboreport.UseSelectable = true;
+            this.lnkboreport.Click += new System.EventHandler(this.lnkboreport_Click);
             // 
             // lnkaddbackorder
             // 
@@ -670,90 +773,6 @@
             this.lnkaddbackorder.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.lnkaddbackorder.UseSelectable = true;
             this.lnkaddbackorder.Click += new System.EventHandler(this.lnkaddbackorder_Click);
-            // 
-            // productstylemanager
-            // 
-            this.productstylemanager.Owner = this;
-            // 
-            // productidDataGridViewTextBoxColumn
-            // 
-            this.productidDataGridViewTextBoxColumn.DataPropertyName = "productid";
-            this.productidDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.productidDataGridViewTextBoxColumn.Name = "productidDataGridViewTextBoxColumn";
-            this.productidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productidDataGridViewTextBoxColumn.Visible = false;
-            this.productidDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // productnameDataGridViewTextBoxColumn
-            // 
-            this.productnameDataGridViewTextBoxColumn.DataPropertyName = "productname";
-            this.productnameDataGridViewTextBoxColumn.HeaderText = "Product";
-            this.productnameDataGridViewTextBoxColumn.Name = "productnameDataGridViewTextBoxColumn";
-            this.productnameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productnameDataGridViewTextBoxColumn.Width = 94;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "productcode";
-            this.Column4.HeaderText = "Product Code";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 137;
-            // 
-            // barcodeDataGridViewTextBoxColumn
-            // 
-            this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "barcode";
-            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
-            this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.barcodeDataGridViewTextBoxColumn.Width = 97;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Unit Price ₱";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            this.priceDataGridViewTextBoxColumn.Width = 123;
-            // 
-            // categorynameDataGridViewTextBoxColumn
-            // 
-            this.categorynameDataGridViewTextBoxColumn.DataPropertyName = "categoryname";
-            this.categorynameDataGridViewTextBoxColumn.HeaderText = "Category";
-            this.categorynameDataGridViewTextBoxColumn.Name = "categorynameDataGridViewTextBoxColumn";
-            this.categorynameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.categorynameDataGridViewTextBoxColumn.Width = 102;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descriptionDataGridViewTextBoxColumn.Width = 121;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "maxquantity";
-            this.Column3.HeaderText = "Max Qty";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 98;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "qtystatus";
-            this.Column5.HeaderText = "Status";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 81;
             // 
             // products
             // 
@@ -803,9 +822,6 @@
         public MetroFramework.Controls.MetroGrid dgbackorder;
         public MetroFramework.Controls.MetroLink lnkaddbackorder;
         private System.Windows.Forms.DataGridViewTextBoxColumn pid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn productidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
@@ -816,5 +832,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private MetroFramework.Controls.MetroLink lnkboreport;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
     }
 }

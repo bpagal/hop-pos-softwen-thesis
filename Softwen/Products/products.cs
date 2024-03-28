@@ -187,6 +187,15 @@ namespace Softwen.Products
             {
                 selectproducts();
             }
+            else if (productstabcontrol.SelectedTab == dispensepage)
+            {
+                if (dgmissingproducts.Rows.Count == 0)
+                {
+                    lnkreportmissing.Visible = false;
+                }
+                else
+                    lnkreportmissing.Visible = true;
+            }
             else if (productstabcontrol.SelectedTab == popage)
             {
                 pobutton();
@@ -202,9 +211,13 @@ namespace Softwen.Products
             if (dgbackorder.Rows.Count == 0)
             {
                 lnkaddbackorder.Visible = false;
+                lnkboreport.Visible = false;
             }
             else
+            {
                 lnkaddbackorder.Visible = true;
+                lnkboreport.Visible = true;
+            } 
         }
 
         private void lnkdispense_Click(object sender, EventArgs e)
@@ -261,6 +274,13 @@ namespace Softwen.Products
         private void dgproducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             dispenselogic();
+        }
+
+        private void lnkboreport_Click(object sender, EventArgs e)
+        {
+            rptbo _rptbo = new rptbo();
+            _rptbo.ponumber = Convert.ToInt32(this.dgbackorder.CurrentRow.Cells[0].Value);
+            _rptbo.ShowDialog();
         }
     }
 }

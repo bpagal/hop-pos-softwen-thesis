@@ -265,7 +265,12 @@ namespace Softwen.Transaction
                 discountamount.Text = "₱ " + string.Format("{0:F2}", _discountedamount);
                 labelvat.Text = String.Format("Vat Amount {0}%:", Properties.Settings.Default.Vat);
                 vat.Text = "₱ " + string.Format("{0:F2}", _vatamount);
-                grandtotal.Text = "₱ " + string.Format("{0:F2}", _grandtotal);
+                if (discountpercent.Text == "0%")
+                {
+                    grandtotal.Text = "₱ " + string.Format("{0:F2}", Convert.ToInt32(_grandtotal));
+                }
+                else
+                    grandtotal.Text = "₱ " + string.Format("{0:F2}", _grandtotal);
             }
 
 
@@ -274,6 +279,8 @@ namespace Softwen.Transaction
         {
             if (string.IsNullOrWhiteSpace(txtquantity.Text))
                 MetroMessageBox.Show(this, "Quantity can't be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if(combobxproduct.Items.Count==0)
+                MetroMessageBox.Show(this, "Invalid product", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
                 checkquantity();
         }//manual input order
@@ -303,7 +310,15 @@ namespace Softwen.Transaction
             {
                 transactionstylemanager.Clone(pm);
                 decimal _subtotal = Convert.ToDecimal(dgtransaction.Rows.Cast<DataGridViewRow>().Sum(t => Convert.ToDouble(t.Cells[1].Value)));
-                pm.txtgrandtotal.Text = string.Format("{0:F2}", _grandtotal);
+                //pm.txtgrandtotal.Text = String.Format("{0:N}", grandtotal.Text);
+                if (discountpercent.Text == "0%")
+                {
+                    pm.txtgrandtotal.Text = string.Format("{0:F2}", Convert.ToInt32(_grandtotal));
+                }
+                else
+                {
+                    pm.txtgrandtotal.Text = string.Format("{0:F2}", _grandtotal);
+                }
                 rptinvoice.cashiername = cashier.Text;
                 rptinvoice.vat = vat.Text;
                 rptinvoice.subtotal = subtotal.Text;
@@ -388,7 +403,7 @@ namespace Softwen.Transaction
                 Globals.ResetFields(groupBox1);
             }
         }
-      
+
         public void cleartransaction()
         {
             Globals.ResetFields(groupBox1);
@@ -414,14 +429,21 @@ namespace Softwen.Transaction
                     {
                         while (readerpID.Read())
                         {
+                            object total = 0;
                             int productID = readerpID.GetInt32(0);
                             decimal productprice = Convert.ToDecimal(dgrow.Cells[1].Value);
                             decimal _discountedamount = productprice - (productprice * (_discountvalue / 100));
-                            decimal _vatamount = _discountedamount * _vatpercent;
-                            int total = Convert.ToInt32(_discountedamount + (_discountedamount * _vatpercent));
+                            if (discountpercent.Text == "0%")
+                            {
+                                total = Convert.ToInt32(_discountedamount + (_discountedamount * _vatpercent));
+                            }
+                            else
+                            {
+                                total = (_discountedamount) + (_discountedamount * _vatpercent);
+                            }
                             string[] parameters = { "@1", "@2", "@3" };
                             string[] values = { productID.ToString(), total.ToString(), dgrow.Cells[2].Value.ToString() };
-                             gs.Insert("orderss", parameters, values);
+                            gs.Insert("orderss", parameters, values);
                         }
                     }
                 }
@@ -468,7 +490,7 @@ namespace Softwen.Transaction
         private void transaction_Load(object sender, EventArgs e)
         {
             labelvat.Text = String.Format("Vat Amount {0}%:", Properties.Settings.Default.Vat);
-           
+
             if (transactionstylemanager.Theme == MetroThemeStyle.Dark)
             {
                 Globals.ChangeForeColor(this);

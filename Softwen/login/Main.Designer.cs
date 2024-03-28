@@ -96,6 +96,7 @@
             this.Controls.Add(this.lnksettings);
             this.Controls.Add(this.lnkminimize);
             this.Controls.Add(this.lnkclose);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.Resizable = false;
             this.RightToLeftLayout = true;

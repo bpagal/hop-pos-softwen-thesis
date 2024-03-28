@@ -82,15 +82,16 @@ namespace Softwen.Products
             if (dgaddpo.Rows.Count > 0)
                 txtproductname.Text = this.dgaddpo.CurrentRow.Cells[3].Value.ToString();
         }
-
-        private void addtopo()
+     
+        private void addtopo(string randomid)
         {
-            string[] poparameters = { "@1", "@2", "@3", "@4" };
-            string[] povalues = { DateTime.Now.ToString(("MM/dd/yyyy hh:mm tt")), Globals.userid, Properties.Settings.Default.SupplierName, Properties.Settings.Default.SupplierAddress };
+  
+            string[] poparameters = { "@1", "@2", "@3", "@4", "@5" };
+            string[] povalues = { DateTime.Now.ToString(("MM/dd/yyyy hh:mm:ss.fff tt")), Globals.userid, Properties.Settings.Default.SupplierName, Properties.Settings.Default.SupplierAddress, randomid };
             gs.Insert("addtopo", poparameters, povalues);
         }
 
-        private void addtopodetails()
+        private void addtopodetails(string randomid)
         {
             foreach (DataGridViewRow dgrow in dgaddpo.Rows)
             {
@@ -98,8 +99,8 @@ namespace Softwen.Products
                 if (ischecked == true)
                 {
                     int orderedqty = Convert.ToInt32(dgrow.Cells[1].Value) - Convert.ToInt32(dgrow.Cells[4].Value);
-                    string[] poparameters = { "@1", "@2" };
-                    string[] povalues = { Convert.ToString(dgrow.Cells[2].Value), orderedqty.ToString() };
+                    string[] poparameters = { "@1", "@2", "@3" };
+                    string[] povalues = { Convert.ToString(dgrow.Cells[2].Value), orderedqty.ToString(), randomid };
                     gs.Insert("addtodetails", poparameters, povalues);
                 }
 
@@ -163,8 +164,11 @@ namespace Softwen.Products
             {
                 if (Globals.CheckFields(panelrestock, this) == false && checkqty() == false && checkallcheckbox() == false && checkpodetails() == false)
                 {
-                    addtopo();
-                    addtopodetails();
+
+                    Random rnd = new Random();
+                    int randompoid = rnd.Next(10000000, 99999999);
+                    addtopo(randompoid.ToString());
+                    addtopodetails(randompoid.ToString());
                     MetroMessageBox.Show(this, "Order successful. Proceeding to generate P/O form", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                     products.ProductsInstance.selectpurchaseorder();
@@ -188,6 +192,7 @@ namespace Softwen.Products
         }
         private void checkboxlogic(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1) return;
             txtproductname.Text = this.dgaddpo.CurrentRow.Cells[3].Value.ToString();
             txtquantity.Value = txtquantity.Maximum = Convert.ToDecimal(this.dgaddpo.CurrentRow.Cells[5].Value) - Convert.ToDecimal(this.dgaddpo.CurrentRow.Cells[4].Value);
             bool ischecked = Convert.ToBoolean(dgaddpo.Rows[e.RowIndex].Cells[0].EditedFormattedValue);

@@ -140,7 +140,6 @@ namespace Softwen.Maintenance
         {
             txtproductcode.KeyPress += Globals.NumbersOnly;
             txtbarcode.KeyPress += Globals.NumbersOnly;
-            txtprice.KeyPress += Globals.NumbersOnly;
             if (mnt.maintenancestylemanager.Theme == MetroThemeStyle.Dark)
                 Globals.ChangeForeColor(this);
             gs.populatecombobox(combobxcat, "productaddloaded", "categoryname", "categoryid");
@@ -172,7 +171,8 @@ namespace Softwen.Maintenance
 
         private void txtprice_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == '.') || e.KeyChar == '.' && txtprice.Text.Contains(".") || Regex.IsMatch(txtprice.Text, @"\.\d\d"))
+                e.Handled = true;
         }
     }
 }

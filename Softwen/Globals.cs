@@ -298,11 +298,6 @@ namespace Softwen
             rpt.Export();
             File.SetAttributes(diskFileDestinationOptions.DiskFileName, FileAttributes.ReadOnly);
         }
-        public static string getrptpath(string rptname)
-        {
-            string rptpath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory,"..\\..\\" + rptname));
-            return rptpath;
-        }
 
     }
 }

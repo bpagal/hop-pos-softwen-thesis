@@ -32,6 +32,7 @@ namespace Softwen.Reports
                 monthlyrpt.SetDatabaseLogon(ConfigurationManager.AppSettings["Username"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
                 monthlyrpt.SetParameterValue("storename", Properties.Settings.Default.StoreName);
                 monthlyrpt.SetParameterValue("storeaddress", Properties.Settings.Default.StoreAddess);
+                monthlyrpt.SetParameterValue("branchid", Properties.Settings.Default.StoreID);
                 monthlyrpt.SetParameterValue("startdate", reports.ReportsInstance.dtstart.Value);
                 monthlyrpt.SetParameterValue("enddate", reports.ReportsInstance.dtend.Value);
                 monthlyrpt.SetParameterValue("cashiername", cashiername);
@@ -45,6 +46,7 @@ namespace Softwen.Reports
                 precisemonthlyrpt.SetDatabaseLogon(ConfigurationManager.AppSettings["Username"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
                 precisemonthlyrpt.SetParameterValue("storename", Properties.Settings.Default.StoreName);
                 precisemonthlyrpt.SetParameterValue("storeaddress", Properties.Settings.Default.StoreAddess);
+                precisemonthlyrpt.SetParameterValue("branchid", Properties.Settings.Default.StoreID);
                 precisemonthlyrpt.SetParameterValue("startdate", reports.ReportsInstance.dtstart.Value);
                 precisemonthlyrpt.SetParameterValue("enddate", reports.ReportsInstance.dtend.Value);
                 crystalmonthly.Refresh();

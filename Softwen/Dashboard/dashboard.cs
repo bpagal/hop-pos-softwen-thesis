@@ -272,6 +272,7 @@ namespace Softwen.Dashboard
                 controlanimator.ShowSync(labelmodule);
                 products.ProductsInstance.comboboxsp.SelectedIndex = 0;
                 products.ProductsInstance.populatedatagrids();
+                products.ProductsInstance.productbuttons();
                 controlanimator.ShowSync(products.ProductsInstance.productstabcontrol);
                 products.ProductsInstance.dispenselogic();
                 products.ProductsInstance.displaylowqty();
