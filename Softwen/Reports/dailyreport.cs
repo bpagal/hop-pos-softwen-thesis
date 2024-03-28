@@ -45,7 +45,7 @@ namespace Softwen.Reports
         private void btnexportexcel_Click(object sender, EventArgs e)
         {
             Globals gs = new Globals();
-            gs.exportexcel(dailyrpt);
+            gs.exportexcel(dailyrpt,this);
             MetroMessageBox.Show(this, "Export Complete", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }

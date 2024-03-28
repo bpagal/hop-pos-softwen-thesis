@@ -126,7 +126,7 @@ namespace Softwen
 
             }
         }
-        
+
         public void recorduseractivity(string activity, string manipulateddata)
         {
             string[] actparameters = { "@1", "@2", "@3", "@4" };
@@ -278,12 +278,20 @@ namespace Softwen
                 return false;
         }
 
-        public void exportexcel(ReportDocument rpt)
+        public void exportexcel(ReportDocument rpt, MetroForm frm)
         {
+
             ExportOptions exportOption;
             DiskFileDestinationOptions diskFileDestinationOptions = new DiskFileDestinationOptions();
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Microsoft Excel (97-2003) Data-Only (*.xls) |*.xls";
+            if (sfd.ShowDialog() == DialogResult.Cancel)
+            {
+                if (string.IsNullOrWhiteSpace(diskFileDestinationOptions.DiskFileName))
+                    return;
+                else
+                    return;
+            }
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 diskFileDestinationOptions.DiskFileName = sfd.FileName;
@@ -297,6 +305,9 @@ namespace Softwen
             exportOption.FormatOptions = excelDataOnlyFormatOptions;
             rpt.Export();
             File.SetAttributes(diskFileDestinationOptions.DiskFileName, FileAttributes.ReadOnly);
+            MetroMessageBox.Show(frm, "Export Complete", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
         }
 
     }

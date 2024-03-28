@@ -54,8 +54,12 @@ namespace Softwen.Products
         private void btnexportexcel_Click(object sender, EventArgs e)
         {
             Globals gs = new Globals();
-            gs.exportexcel(po);
-            MetroMessageBox.Show(this, "Export Complete", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (initialreport)
+                gs.exportexcel(po,this);              
+            else if (initialreport == false)
+                gs.exportexcel(po2,this);
+            
+
         }
     }
 }
