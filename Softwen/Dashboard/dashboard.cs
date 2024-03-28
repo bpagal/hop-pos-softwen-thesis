@@ -270,7 +270,8 @@ namespace Softwen.Dashboard
                 showproducts();
                 labelmodule.Text = "Products";
                 controlanimator.ShowSync(labelmodule);
-                //products.ProductsInstance.comboboxsp.SelectedIndex = 0;
+                products.ProductsInstance.comboboxsp.SelectedIndex = 0;
+                products.ProductsInstance.populatedatagrids();
                 controlanimator.ShowSync(products.ProductsInstance.productstabcontrol);
                 //products.ProductsInstance.displaylowqty();
             }     

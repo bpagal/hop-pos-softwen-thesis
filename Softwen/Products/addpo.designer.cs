@@ -28,14 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(addpo));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dgrestock = new MetroFramework.Controls.MetroGrid();
+            this.dgaddpo = new MetroFramework.Controls.MetroGrid();
+            this.Column4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.productidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelrestock = new System.Windows.Forms.Panel();
             this.txtproductname = new MetroFramework.Controls.MetroTextBox();
             this.lnkadd = new MetroFramework.Controls.MetroLink();
@@ -43,76 +49,120 @@
             this.labelproductname = new System.Windows.Forms.Label();
             this.labelquantity = new System.Windows.Forms.Label();
             this.lnksave = new MetroFramework.Controls.MetroLink();
-            this.Column4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.productidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgrestock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgaddpo)).BeginInit();
             this.panelrestock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtquantity)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgrestock
+            // dgaddpo
             // 
-            this.dgrestock.AllowUserToAddRows = false;
-            this.dgrestock.AllowUserToDeleteRows = false;
-            this.dgrestock.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.LightGray;
-            this.dgrestock.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgrestock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgrestock.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgrestock.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgrestock.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgrestock.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgrestock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgrestock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgrestock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgaddpo.AllowUserToAddRows = false;
+            this.dgaddpo.AllowUserToDeleteRows = false;
+            this.dgaddpo.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
+            this.dgaddpo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgaddpo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgaddpo.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgaddpo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgaddpo.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgaddpo.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgaddpo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgaddpo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgaddpo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column4,
             this.productidDataGridViewTextBoxColumn,
             this.productnameDataGridViewTextBoxColumn,
             this.Column2,
             this.Column1,
             this.Column3});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgrestock.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dgrestock.EnableHeadersVisualStyles = false;
-            this.dgrestock.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dgrestock.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgrestock.Location = new System.Drawing.Point(9, 134);
-            this.dgrestock.MultiSelect = false;
-            this.dgrestock.Name = "dgrestock";
-            this.dgrestock.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.dgrestock.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            this.dgrestock.RowHeadersWidth = 45;
-            this.dgrestock.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dgrestock.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.dgrestock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgrestock.Size = new System.Drawing.Size(688, 331);
-            this.dgrestock.TabIndex = 26;
-            this.dgrestock.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgrestock_RowsAdded);
-            this.dgrestock.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgrestock_RowsRemoved);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgaddpo.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgaddpo.EnableHeadersVisualStyles = false;
+            this.dgaddpo.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgaddpo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgaddpo.Location = new System.Drawing.Point(9, 134);
+            this.dgaddpo.MultiSelect = false;
+            this.dgaddpo.Name = "dgaddpo";
+            this.dgaddpo.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.dgaddpo.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgaddpo.RowHeadersWidth = 45;
+            this.dgaddpo.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dgaddpo.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgaddpo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgaddpo.Size = new System.Drawing.Size(688, 331);
+            this.dgaddpo.TabIndex = 26;
+            this.dgaddpo.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgaddpo_RowsAdded);
+            this.dgaddpo.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgaddpo_RowsRemoved);
+            // 
+            // Column4
+            // 
+            this.Column4.FalseValue = "";
+            this.Column4.HeaderText = "Select";
+            this.Column4.Name = "Column4";
+            this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column4.Width = 78;
+            // 
+            // productidDataGridViewTextBoxColumn
+            // 
+            this.productidDataGridViewTextBoxColumn.DataPropertyName = "productid";
+            this.productidDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.productidDataGridViewTextBoxColumn.Name = "productidDataGridViewTextBoxColumn";
+            this.productidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productidDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // productnameDataGridViewTextBoxColumn
+            // 
+            this.productnameDataGridViewTextBoxColumn.DataPropertyName = "productname";
+            this.productnameDataGridViewTextBoxColumn.HeaderText = "Product";
+            this.productnameDataGridViewTextBoxColumn.Name = "productnameDataGridViewTextBoxColumn";
+            this.productnameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productnameDataGridViewTextBoxColumn.Width = 94;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "quantity";
+            this.Column2.HeaderText = "Current Qty";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 124;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "maxquantity";
+            this.Column1.HeaderText = "Max Qty";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 98;
+            // 
+            // Column3
+            // 
+            dataGridViewCellStyle3.NullValue = "Not Specified";
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column3.HeaderText = "Qty After Restock";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 168;
             // 
             // panelrestock
             // 
@@ -238,56 +288,6 @@
             this.lnksave.UseSelectable = true;
             this.lnksave.Click += new System.EventHandler(this.lnksave_Click);
             // 
-            // Column4
-            // 
-            this.Column4.FalseValue = "";
-            this.Column4.HeaderText = "Select";
-            this.Column4.Name = "Column4";
-            this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column4.Width = 78;
-            // 
-            // productidDataGridViewTextBoxColumn
-            // 
-            this.productidDataGridViewTextBoxColumn.DataPropertyName = "productid";
-            this.productidDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.productidDataGridViewTextBoxColumn.Name = "productidDataGridViewTextBoxColumn";
-            this.productidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productidDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // productnameDataGridViewTextBoxColumn
-            // 
-            this.productnameDataGridViewTextBoxColumn.DataPropertyName = "productname";
-            this.productnameDataGridViewTextBoxColumn.HeaderText = "Product";
-            this.productnameDataGridViewTextBoxColumn.Name = "productnameDataGridViewTextBoxColumn";
-            this.productnameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productnameDataGridViewTextBoxColumn.Width = 94;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "quantity";
-            this.Column2.HeaderText = "Current Qty";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 124;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "maxquantity";
-            this.Column1.HeaderText = "Max Qty";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 98;
-            // 
-            // Column3
-            // 
-            dataGridViewCellStyle9.NullValue = "Not Specified";
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle9;
-            this.Column3.HeaderText = "Qty After Restock";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 168;
-            // 
             // addpo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,14 +295,14 @@
             this.ClientSize = new System.Drawing.Size(709, 472);
             this.Controls.Add(this.panelrestock);
             this.Controls.Add(this.lnksave);
-            this.Controls.Add(this.dgrestock);
+            this.Controls.Add(this.dgaddpo);
             this.MaximizeBox = false;
             this.Name = "addpo";
             this.Resizable = false;
             this.Text = "Add Purchase Order";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
             this.Load += new System.EventHandler(this.restock_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgrestock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgaddpo)).EndInit();
             this.panelrestock.ResumeLayout(false);
             this.panelrestock.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtquantity)).EndInit();
@@ -311,7 +311,7 @@
         }
 
         #endregion
-        public MetroFramework.Controls.MetroGrid dgrestock;
+        public MetroFramework.Controls.MetroGrid dgaddpo;
         private System.Windows.Forms.Panel panelrestock;
         public MetroFramework.Controls.MetroLink lnksave;
         private MetroFramework.Controls.MetroLink lnkadd;

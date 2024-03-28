@@ -97,10 +97,14 @@
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.lnkcomplete = new MetroFramework.Controls.MetroLink();
             this.dgpo = new MetroFramework.Controls.MetroGrid();
+            this.pid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabPage5 = new MetroFramework.Controls.MetroTabPage();
             this.dgdelivered = new MetroFramework.Controls.MetroGrid();
             this.metroTabPage6 = new MetroFramework.Controls.MetroTabPage();
             this.dgbackorder = new MetroFramework.Controls.MetroGrid();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroLink3 = new MetroFramework.Controls.MetroLink();
             this.productstylemanager = new MetroFramework.Components.MetroStyleManager(this.components);
             this.productstabcontrol.SuspendLayout();
@@ -130,11 +134,12 @@
             this.productstabcontrol.Dock = System.Windows.Forms.DockStyle.Fill;
             this.productstabcontrol.Location = new System.Drawing.Point(0, 0);
             this.productstabcontrol.Name = "productstabcontrol";
-            this.productstabcontrol.SelectedIndex = 2;
+            this.productstabcontrol.SelectedIndex = 0;
             this.productstabcontrol.Size = new System.Drawing.Size(1085, 518);
             this.productstabcontrol.TabIndex = 1;
             this.productstabcontrol.UseSelectable = true;
             this.productstabcontrol.Visible = false;
+            this.productstabcontrol.SelectedIndexChanged += new System.EventHandler(this.productstabcontrol_SelectedIndexChanged);
             // 
             // metroTabPage1
             // 
@@ -685,7 +690,7 @@
             this.lnkcomplete.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkcomplete.NoFocusImage")));
             this.lnkcomplete.Size = new System.Drawing.Size(136, 66);
             this.lnkcomplete.TabIndex = 36;
-            this.lnkcomplete.Text = "Mark as Complete";
+            this.lnkcomplete.Text = "Increase Qty";
             this.lnkcomplete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.lnkcomplete.UseSelectable = true;
             this.lnkcomplete.Click += new System.EventHandler(this.lnkcomplete_Click);
@@ -711,6 +716,8 @@
             dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgpo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dgpo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgpo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.pid});
             dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle18.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold);
@@ -741,6 +748,15 @@
             this.dgpo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgpo.Size = new System.Drawing.Size(1071, 377);
             this.dgpo.TabIndex = 8;
+            // 
+            // pid
+            // 
+            this.pid.DataPropertyName = "ID";
+            this.pid.HeaderText = "Column7";
+            this.pid.Name = "pid";
+            this.pid.ReadOnly = true;
+            this.pid.Visible = false;
+            this.pid.Width = 101;
             // 
             // metroTabPage5
             // 
@@ -846,6 +862,10 @@
             dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgbackorder.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.dgbackorder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgbackorder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column7,
+            this.Column9,
+            this.Column10});
             dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle28.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold);
@@ -876,6 +896,32 @@
             this.dgbackorder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgbackorder.Size = new System.Drawing.Size(1071, 343);
             this.dgbackorder.TabIndex = 38;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "P/O #";
+            this.Column7.HeaderText = "P/O #";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 76;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "RS ID";
+            this.Column9.HeaderText = "Column9";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Visible = false;
+            this.Column9.Width = 101;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "PID";
+            this.Column10.HeaderText = "Column10";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Visible = false;
+            this.Column10.Width = 110;
             // 
             // metroLink3
             // 
@@ -970,5 +1016,9 @@
         public MetroFramework.Controls.MetroGrid dgbackorder;
         public MetroFramework.Controls.MetroLink metroLink3;
         private MetroFramework.Controls.MetroLink metroLink4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
     }
 }

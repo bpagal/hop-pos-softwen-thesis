@@ -37,8 +37,8 @@ namespace Softwen.Products
         }
         private bool checkmaxqty()
         {
-            int currentqty = Convert.ToInt32(this.dgrestock.CurrentRow.Cells[4].Value);
-            int maxqty = Convert.ToInt32(this.dgrestock.CurrentRow.Cells[5].Value);
+            int currentqty = Convert.ToInt32(this.dgaddpo.CurrentRow.Cells[4].Value);
+            int maxqty = Convert.ToInt32(this.dgaddpo.CurrentRow.Cells[5].Value);
             if (currentqty + txtquantity.Value > maxqty)
             {
                 MetroMessageBox.Show(this, "Future quantity exceeded max quantity", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -63,8 +63,8 @@ namespace Softwen.Products
         {
             if (checkifempty() == false && checkmaxqty() == false)
             {
-                int qtyafter = Convert.ToInt32(this.dgrestock.CurrentRow.Cells[4].Value) + Convert.ToInt32(txtquantity.Value);
-                this.dgrestock.CurrentRow.Cells[1].Value = qtyafter.ToString();
+                int qtyafter = Convert.ToInt32(this.dgaddpo.CurrentRow.Cells[4].Value) + Convert.ToInt32(txtquantity.Value);
+                this.dgaddpo.CurrentRow.Cells[1].Value = qtyafter.ToString();
             }
 
 
@@ -75,31 +75,31 @@ namespace Softwen.Products
         {
             if (pr.productstylemanager.Theme == MetroThemeStyle.Dark)
                 Globals.ChangeForeColor(this);
-            dgrestock.CellContentClick += checkboxlogic;
-            dgrestock.CellContentDoubleClick += checkboxlogic;
-            dgrestock.CellClick += checkboxlogic;
-            gs.Select("restockload", dgrestock);
-            if (dgrestock.Rows.Count > 0)
-                txtproductname.Text = this.dgrestock.CurrentRow.Cells[3].Value.ToString();
+            dgaddpo.CellContentClick += checkboxlogic;
+            dgaddpo.CellContentDoubleClick += checkboxlogic;
+            dgaddpo.CellClick += checkboxlogic;
+            gs.Select("restockload", dgaddpo);
+            if (dgaddpo.Rows.Count > 0)
+                txtproductname.Text = this.dgaddpo.CurrentRow.Cells[3].Value.ToString();
         }
 
         private void addtopo()
         {
-            string[] poparameters = { "@1", "@2", "@3", "@4"};
-            string[] povalues = { DateTime.Now.ToString(("MM/dd/yyyy hh:mm tt")), Globals.userid, Properties.Settings.Default.SupplierName, Properties.Settings.Default.SupplierAddress};
+            string[] poparameters = { "@1", "@2", "@3", "@4" };
+            string[] povalues = { DateTime.Now.ToString(("MM/dd/yyyy hh:mm tt")), Globals.userid, Properties.Settings.Default.SupplierName, Properties.Settings.Default.SupplierAddress };
             gs.Insert("addtopo", poparameters, povalues);
         }
 
         private void addtopodetails()
         {
-            foreach (DataGridViewRow dgrow in dgrestock.Rows)
+            foreach (DataGridViewRow dgrow in dgaddpo.Rows)
             {
                 bool ischecked = Convert.ToBoolean(dgrow.Cells[0].EditedFormattedValue);
                 if (ischecked == true)
                 {
                     int orderedqty = Convert.ToInt32(dgrow.Cells[1].Value) - Convert.ToInt32(dgrow.Cells[4].Value);
                     string[] poparameters = { "@1", "@2" };
-                    string[] povalues = { Convert.ToString(dgrow.Cells[2].Value),orderedqty.ToString()};
+                    string[] povalues = { Convert.ToString(dgrow.Cells[2].Value), orderedqty.ToString() };
                     gs.Insert("addtodetails", poparameters, povalues);
                 }
 
@@ -108,7 +108,7 @@ namespace Softwen.Products
         private bool checkallcheckbox()
         {
             var flag = 0;
-            foreach (DataGridViewRow row in dgrestock.Rows)
+            foreach (DataGridViewRow row in dgaddpo.Rows)
             {
                 bool ischecked = Convert.ToBoolean(row.Cells[0].EditedFormattedValue);
                 if (ischecked == true)
@@ -129,7 +129,7 @@ namespace Softwen.Products
         }
         private bool checkqty()
         {
-            foreach (DataGridViewRow row in dgrestock.Rows)
+            foreach (DataGridViewRow row in dgaddpo.Rows)
             {
                 bool ischecked = Convert.ToBoolean(row.Cells[0].EditedFormattedValue);
                 if (ischecked == true && row.Cells[1].Value == null)
@@ -140,12 +140,29 @@ namespace Softwen.Products
             }
             return false;
         }
+        private bool checkpodetails()
+        {
+            foreach (DataGridViewRow row in dgaddpo.Rows)
+            {
+                bool ischecked = Convert.ToBoolean(row.Cells[0].EditedFormattedValue);
+                using (SqlDataReader readerpod = Globals.ExecuteReader(@"SELECT podetails.productid, podetails.status FROM podetails
+                WHERE podetails.productid = @1 AND podetails.status != 'delivered' ", "@1", row.Cells[2].Value.ToString()))
+                {
+                    if (readerpod.Read() && ischecked==true)
+                    {
+                        MetroMessageBox.Show(this, "Existing order on " + Convert.ToString(row.Cells[3].Value), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return true;
+                    }
+                }
+            }
+            return false;
 
+        }
         private void lnksave_Click(object sender, EventArgs e)
         {
             if (MetroMessageBox.Show(this, "Are you sure you want to proceed with these orders?", "Confirm order", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
-                if (Globals.CheckFields(panelrestock, this) == false && checkqty() == false && checkallcheckbox() == false)
+                if (Globals.CheckFields(panelrestock, this) == false && checkqty() == false && checkallcheckbox() == false && checkpodetails() == false)
                 {
                     addtopo();
                     addtopodetails();
@@ -159,22 +176,22 @@ namespace Softwen.Products
 
         }
 
-        private void dgrestock_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        private void dgaddpo_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            if (dgrestock.Rows.Count > 0)
+            if (dgaddpo.Rows.Count > 0)
                 lnksave.Enabled = true;
         }
 
-        private void dgrestock_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        private void dgaddpo_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
-            if (dgrestock.Rows.Count < 1)
+            if (dgaddpo.Rows.Count < 1)
                 lnksave.Enabled = false;
         }
         private void checkboxlogic(object sender, DataGridViewCellEventArgs e)
         {
-            txtproductname.Text = this.dgrestock.CurrentRow.Cells[3].Value.ToString();
-            txtquantity.Value = txtquantity.Maximum = Convert.ToDecimal(this.dgrestock.CurrentRow.Cells[5].Value) - Convert.ToDecimal(this.dgrestock.CurrentRow.Cells[4].Value);
-            bool ischecked = Convert.ToBoolean(dgrestock.Rows[e.RowIndex].Cells[0].EditedFormattedValue);
+            txtproductname.Text = this.dgaddpo.CurrentRow.Cells[3].Value.ToString();
+            txtquantity.Value = txtquantity.Maximum = Convert.ToDecimal(this.dgaddpo.CurrentRow.Cells[5].Value) - Convert.ToDecimal(this.dgaddpo.CurrentRow.Cells[4].Value);
+            bool ischecked = Convert.ToBoolean(dgaddpo.Rows[0].Cells[0].EditedFormattedValue);
             if (ischecked == true)
             {
                 txtquantity.Visible = true;

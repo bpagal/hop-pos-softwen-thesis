@@ -16,8 +16,10 @@ namespace Softwen.Products
 {
     public partial class products : UserControl
     {
+
         Globals gs = new Globals();
         private static products _productsinstance;
+
         public static products ProductsInstance
         {
             get
@@ -30,8 +32,9 @@ namespace Softwen.Products
         public products()
         {
             InitializeComponent();
+
         }
-        private void populatedatagrids()
+        public void populatedatagrids()
         {
             selectproducts();
             selectmissingproducts();
@@ -103,18 +106,18 @@ namespace Softwen.Products
         }
         private void filterproduct()
         {
-            if (comboboxsp.SelectedIndex == 0)
-                gs.Filter(@"filterproduct1", txtsp.Text, dgproducts);
-            else if (comboboxsp.SelectedIndex == 1)
-                gs.Filter(@"combofill", txtsp.Text, dgproducts);
-            else if (comboboxsp.SelectedIndex == 2)
-                gs.Filter(@"combofill1", txtsp.Text, dgproducts);
-            else if (comboboxsp.SelectedIndex == 3)
-                gs.Filter(@"combofill2", txtsp.Text, dgproducts);
-            else if (comboboxsp.SelectedIndex == 4)
-                gs.Filter(@"combofill3", txtsp.Text, dgproducts);
-            else if (comboboxsp.SelectedIndex == 5)
-                gs.Filter(@"combofill4", txtsp.Text, dgproducts);
+            //if (comboboxsp.SelectedIndex == 0)
+            //    gs.Filter(@"filterproduct1", txtsp.Text, dgproducts);
+            //else if (comboboxsp.SelectedIndex == 1)
+            //    gs.Filter(@"combofill", txtsp.Text, dgproducts);
+            //else if (comboboxsp.SelectedIndex == 2)
+            //    gs.Filter(@"combofill1", txtsp.Text, dgproducts);
+            //else if (comboboxsp.SelectedIndex == 3)
+            //    gs.Filter(@"combofill2", txtsp.Text, dgproducts);
+            //else if (comboboxsp.SelectedIndex == 4)
+            //    gs.Filter(@"combofill3", txtsp.Text, dgproducts);
+            //else if (comboboxsp.SelectedIndex == 5)
+            //    gs.Filter(@"combofill4", txtsp.Text, dgproducts);
 
         }
         private void txtsp_TextChanged(object sender, EventArgs e)
@@ -155,7 +158,6 @@ namespace Softwen.Products
             this.dgproducts.Columns[5].DefaultCellStyle.Format = "C";
             this.dgproducts.Columns[5].DefaultCellStyle.FormatProvider = System.Globalization.CultureInfo.GetCultureInfo("en-PH");
             productstabcontrol.SelectedTab = metroTabPage1;
-            populatedatagrids();
         }
         private void openpoform()
         {
@@ -166,7 +168,7 @@ namespace Softwen.Products
                 string allporderid = row.Cells[0].Value.ToString();
                 if (selectedporderid == allporderid)
                 {
-                    string[] arrayofrows = { row.Cells[3].Value.ToString(), row.Cells[7].Value.ToString(), row.Cells[6].Value.ToString(), row.Cells[2].Value.ToString() };
+                    string[] arrayofrows = { row.Cells[3].Value.ToString(), row.Cells[6].Value.ToString(), row.Cells[5].Value.ToString(), row.Cells[2].Value.ToString() };
                     adst.dgrestock.Rows.Add(arrayofrows);
                 }
             }
@@ -181,7 +183,7 @@ namespace Softwen.Products
                 string allporderid = row.Cells[0].Value.ToString();
                 if (selectedporderid == allporderid)
                 {
-                    string[] arrayofrows = { row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(), row.Cells[5].Value.ToString(), row.Cells[6].Value.ToString(), row.Cells[9].Value.ToString() };
+                    string[] arrayofrows = { row.Cells[3].Value.ToString(), row.Cells[4].Value.ToString(), row.Cells[5].Value.ToString(), row.Cells[6].Value.ToString(), row.Cells[2].Value.ToString() };
                     addbo.dgrestockbo.Rows.Add(arrayofrows);
                 }
             }
@@ -192,10 +194,19 @@ namespace Softwen.Products
         {
             openpoform();
         }
+        
 
         private void metroLink3_Click(object sender, EventArgs e)
         {
             openpoform2();
+        }
+
+        private void productstabcontrol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (productstabcontrol.SelectedTab == metroTabPage1)
+            {
+                selectproducts();
+            }
         }
     }
 }

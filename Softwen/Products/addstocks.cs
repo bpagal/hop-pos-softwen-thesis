@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace Softwen.Products
     public partial class addstocks : MetroForm
     {
         public string ponumber = "";
+        DataGridViewRow dgrv = new DataGridViewRow();
         Globals gs = new Globals();
         public addstocks()
         {
@@ -34,52 +36,84 @@ namespace Softwen.Products
         }
         private bool checkqty()
         {
+            var flag = 0;
             foreach (DataGridViewRow row in dgrestock.Rows)
             {
-                if (row.Cells[4].Value == null)
+                if (row.Cells[4].Value != null)
                 {
-                    MetroMessageBox.Show(this, "Quantity not specified on " + Convert.ToString(row.Cells[0].Value), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return true;
+                    flag = 1;
                 }
             }
+            if (flag == 0)
+            {
+                MetroMessageBox.Show(this, "No product selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
+            }
+            else if (flag == 1)
+            {
+                return false;
+            }
             return false;
+
         }
-        private string getstatus(int deliveredqty, int orderedqty)
+        private string getrestockstatus(int deliveredqty, int orderedqty)
         {
-            string status = "";
+            string restockstatus = "";
             if (deliveredqty == orderedqty)
             {
-                status = "Complete";
+                restockstatus = "complete";
             }
             else
             {
-                status = "Incomplete";
+                restockstatus = "incomplete";
             }
-            return status;
+            return restockstatus;
+        }
+        private string getpostatus(int deliveredqty, int orderedqty, object dqty)
+        {
+            string postatus = "";
+            if (deliveredqty == orderedqty)
+            {
+                postatus = "delivered";
+            }
+            else if (deliveredqty != orderedqty)
+            {
+                postatus = "pending";
+            }
+            return postatus;
         }
         private void increaseqty()
         {
             foreach (DataGridViewRow dgrv in dgrestock.Rows)
             {
-                string productname = Convert.ToString(dgrv.Cells[0].Value);
-                int qtycurrent = Convert.ToInt32(dgrv.Cells[1].Value);
-                int qtyordered = Convert.ToInt32(dgrv.Cells[2].Value);
-                int productid = Convert.ToInt32(dgrv.Cells[3].Value);
-                int qtydelivered = Convert.ToInt32(dgrv.Cells[4].Value);
-                int qtyafter = qtycurrent + qtydelivered;
-                string status = getstatus(qtydelivered, qtyordered);
-                string[] editparameters = { "@1", "@2" };
-                string[] editvalues = { qtydelivered.ToString(), productid.ToString() };
-                gs.Insert("updatestocks", editparameters, editvalues);
-                string[] restockparameters = { "@1", "@2", "@3", "@4", "@5", "@6", "@7" };
-                string[] restockvalues = { Globals.userid, DateTime.Now.ToString(("MM/dd/yyyy hh:mm tt")), productid.ToString(), qtydelivered.ToString(), qtyafter.ToString(), ponumber, status };
-                gs.Insert("insertastocks", restockparameters, restockvalues);
-                string[] poparameters = { "@1", "@2" };
-                string[] povalues = { "processed", ponumber };
-                gs.Insert("restokss", poparameters, povalues);
-                gs.recorduseractivity("Restock", productname);
-                this.Close();
-                products.ProductsInstance.selectdelivered();
+                {
+                    if (dgrv.Cells[4].Value != null)
+                    {
+                        string productname = Convert.ToString(dgrv.Cells[0].Value);
+                        int qtycurrent = Convert.ToInt32(dgrv.Cells[1].Value);
+                        int qtyordered = Convert.ToInt32(dgrv.Cells[2].Value);
+                        int productid = Convert.ToInt32(dgrv.Cells[3].Value);
+                        int qtydelivered = Convert.ToInt32(dgrv.Cells[4].Value);
+                        int qtyafter = qtycurrent + qtydelivered;
+                        string rsstatus = getrestockstatus(qtydelivered, qtyordered);
+                        string postatus = getpostatus(qtydelivered, qtyordered, dgrv.Cells[4].Value);
+                        string[] editparameters = { "@1", "@2" };
+                        string[] editvalues = { qtydelivered.ToString(), productid.ToString() };
+                        gs.Insert("updatestocks", editparameters, editvalues);
+                        string[] restockparameters = { "@1", "@2", "@3", "@4", "@5", "@6", "@7" };
+                        string[] restockvalues = { Globals.userid, DateTime.Now.ToString(("MM/dd/yyyy hh:mm tt")), productid.ToString(), qtydelivered.ToString(), qtyafter.ToString(), ponumber, rsstatus };
+                        gs.Insert("insertstocks", restockparameters, restockvalues);
+                        string[] poparameters = { "@1", "@2", "@3" };
+                        string[] povalues = { postatus, ponumber, productid.ToString() };
+                        gs.Insert("restokss", poparameters, povalues);
+                        gs.recorduseractivity("Restock", productname);
+                        this.Close();
+                        products.ProductsInstance.selectdelivered();
+                        products.ProductsInstance.selectpurchaseorder();
+                        products.ProductsInstance.selectbackorders();
+                    }
+                  
+                }
             }
             MetroMessageBox.Show(this, "Product quantity increased", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
