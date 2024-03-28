@@ -56,15 +56,15 @@ namespace Softwen.Maintenance
         }
         private void saveproduct()
         {
-            if (Globals.CheckFields(panelproduct, this) == false && checkmaxqty() == false)
+            if (checkproductname() == false && checkproductcode() == false && checkbarcode() == false)
             {
-                string[] addparameters = { "@1", "@2", "@3", "@4", "@5", "@6", "@7" };
-                string[] addvalues = { txtproductname.Text, txtbarcode.Text, txtprice.Text, getcategoryid().ToString(), txtdesc.Text, txtmaxquantity.Value.ToString(), txtproductcode.Text };
-                if (checkproductname() == false && checkproductcode() == false && checkbarcode() == false)
+                if (Globals.CheckFields(panelproduct, this) == false && checkmaxqty() == false)
                 {
-                    gs.Insert("saveproducts", addparameters, addvalues);
-                    MetroMessageBox.Show(this, "Product successfully added", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    gs.recorduseractivity("New Product", txtproductname.Text);
+                    string[] editparameters = { "@1", "@2", "@3", "@4", "@5", "@6", "@7"};
+                    string[] editvalues = { txtproductname.Text, txtbarcode.Text, txtprice.Text, getcategoryid().ToString(), txtdesc.Text, txtmaxquantity.Value.ToString(), txtproductcode.Text, productid };
+                    gs.Insert("saveproducts", editparameters, editvalues);
+                    MetroMessageBox.Show(this, "Product successfully updated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    gs.recorduseractivity("Save Product", txtproductname.Text);
                     Globals.ResetFields(panelproduct);
                     this.Close();
                     mnt.selectproducts();
@@ -81,7 +81,7 @@ namespace Softwen.Maintenance
         }
         private bool checkproductname()
         {
-            using (SqlDataReader productreader = Globals.ExecuteReader("SELECT productname FROM products WHERE productname = @1", "@1", txtproductname.Text))
+            using (SqlDataReader productreader = Globals.ExecuteReader("checkproduct", "@1", txtproductname.Text))
             {
                 if (productreader.Read() && currentpname != txtproductname.Text)
                 {
@@ -94,7 +94,7 @@ namespace Softwen.Maintenance
         }
         private bool checkproductcode()
         {
-            using (SqlDataReader readerproductcode = Globals.ExecuteReader("SELECT productcode FROM products WHERE  productcode = @1", "@1", txtproductcode.Text))
+            using (SqlDataReader readerproductcode = Globals.ExecuteReader("checkproductcode", "@1", txtproductcode.Text))
             {
                 if (readerproductcode.Read() && currentpc != txtproductcode.Text)
                 {
@@ -107,7 +107,7 @@ namespace Softwen.Maintenance
         }
         private bool checkbarcode()
         {
-            using (SqlDataReader productreader = Globals.ExecuteReader("SELECT barcode FROM products WHERE barcode = @1", "@1", txtbarcode.Text))
+            using (SqlDataReader productreader = Globals.ExecuteReader("checkbarcode", "@1", txtbarcode.Text))
             {
                 if (productreader.Read() && currentpbc != txtbarcode.Text)
                 {
@@ -143,7 +143,7 @@ namespace Softwen.Maintenance
             txtprice.KeyPress += Globals.NumbersOnly;
             if (mnt.maintenancestylemanager.Theme == MetroThemeStyle.Dark)
                 Globals.ChangeForeColor(this);
-            gs.populatecombobox(combobxcat, "SELECT categoryname FROM category", "categoryname", "categoryid");
+            gs.populatecombobox(combobxcat, "productaddloaded", "categoryname", "categoryid");
         }
         private void editproduct()
         {

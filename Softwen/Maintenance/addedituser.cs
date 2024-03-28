@@ -25,7 +25,7 @@ namespace Softwen.Maintenance
         }
         private bool checkusername()
         {
-            using (SqlDataReader productreader = Globals.ExecuteReader("SELECT username FROM users WHERE username = @1", "@1", txtuname.Text))
+            using (SqlDataReader productreader = Globals.ExecuteReader("checkusername", "@1", txtuname.Text))
             {
                 if (productreader.Read())
                 {

@@ -34,15 +34,13 @@ namespace Softwen.UserActivity
             {
                 string[] uaparameters = { "@1" };
                 string[] uavalues = { dtuseract.Value.ToString("MM/dd/yyyy") };
-                gs.SelectWithParameters(@"SELECT CONVERT(VARCHAR(20), useractivity.timestamp, 100) as 'Date',  CONCAT(users.fname, ' ', users.lname)  AS 'User', usertype AS 'Role', action as 'Action' ,affecteddata as 'Data' FROM  users
-                        INNER JOIN useractivity ON users.userid = useractivity.userid inner join usertype_tbl on users.usertype_id = usertype_tbl.usertype_id WHERE (CAST(useractivity.timestamp AS date) = @1)", uaparameters, uavalues, dguseractivity);
+                gs.SelectWithParameters(@"useractivity1", uaparameters, uavalues, dguseractivity);
             }
             else if (rmonthly.Checked)
             {
                 string[] uaparameters = { "@1", "@2" };
                 string[] uavalues = { dtstartua.Value.ToString("MM/dd/yyyy"), dtendua.Value.ToString("MM/dd/yyyy") };
-                gs.SelectWithParameters(@"SELECT CONVERT(VARCHAR(20), useractivity.timestamp, 100) as 'Date',  CONCAT(users.fname, ' ', users.lname)  AS 'User', usertype AS 'Role', action as 'Action' ,affecteddata as 'Data' FROM  users
-                        INNER JOIN useractivity ON users.userid = useractivity.userid inner join usertype_tbl on users.usertype_id = usertype_tbl.usertype_id WHERE (CAST(useractivity.timestamp AS date) BETWEEN @1 AND @2) ", uaparameters, uavalues, dguseractivity);
+                gs.SelectWithParameters(@"useractivity2 ", uaparameters, uavalues, dguseractivity);
             }
         }
 

@@ -145,8 +145,7 @@ namespace Softwen.Products
             foreach (DataGridViewRow row in dgaddpo.Rows)
             {
                 bool ischecked = Convert.ToBoolean(row.Cells[0].EditedFormattedValue);
-                using (SqlDataReader readerpod = Globals.ExecuteReader(@"SELECT podetails.productid, podetails.status FROM podetails
-                WHERE podetails.productid = @1 AND podetails.status != 'delivered' ", "@1", row.Cells[2].Value.ToString()))
+                using (SqlDataReader readerpod = Globals.ExecuteReader(@"checkpodetails ", "@1", row.Cells[2].Value.ToString()))
                 {
                     if (readerpod.Read() && ischecked==true)
                     {

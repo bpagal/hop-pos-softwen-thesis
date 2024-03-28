@@ -31,11 +31,11 @@ namespace Softwen.Reports
         }
         public void populatecashier()
         {
-            gs.populatecombobox(combobxcashier, "SELECT CONCAT(users.fname, ' ', users.lname) as fullname from users", "fullname", "userid");
+            gs.populatecombobox(combobxcashier, "populationofcashier", "fullname", "userid");
         }
         public void populateproducts()
         {
-            gs.populatecombobox(combobxproduct, "SELECT productname from products", "productname", "productid");
+            gs.populatecombobox(combobxproduct, "populationofproducts", "productname", "productid");
         }
         public void selectsales()
         {
@@ -45,41 +45,25 @@ namespace Softwen.Reports
                 {
                     string[] parameters = { "@1" };
                     string[] values = { dtdaily.Value.ToString("MM/dd/yyyy") };
-                    gs.SelectWithParameters(@"SELECT CONVERT(VARCHAR(20), orders.datesold, 100) as 'Date', orders.discount, CONCAT(users.fname, ' ', users.lname)  AS fullname, products.productcode, products.productname, products.description, orderdetails.quantity, orderdetails.price, totalamount FROM orders 
-                        INNER JOIN orderdetails ON orders.orderid = orderdetails.orderid 
-                        INNER JOIN products ON orderdetails.productid = products.productid 
-                         
-                        INNER JOIN users ON orders.userid = users.userid WHERE (CAST(orders.datesold AS date) = @1)", parameters, values, dgsalesreport);
+                    gs.SelectWithParameters(@"salessales", parameters, values, dgsalesreport);
                 }
                 else if (!chballcashier.Checked && chballproducts.Checked)
                 {
                     string[] parameters = { "@1", "@2" };
                     string[] values = { dtdaily.Value.ToString("MM/dd/yyyy"), combobxcashier.Text };
-                    gs.SelectWithParameters(@"SELECT CONVERT(VARCHAR(20), orders.datesold, 100) as 'Date', orders.discount, CONCAT(users.fname, ' ', users.lname)  AS fullname, products.productcode, products.productname, products.description, orderdetails.quantity, orderdetails.price, totalamount FROM orders 
-                        INNER JOIN orderdetails ON orders.orderid = orderdetails.orderid 
-                        INNER JOIN products ON orderdetails.productid = products.productid 
-                         
-                        INNER JOIN users ON orders.userid = users.userid WHERE (CAST(orders.datesold AS date) = @1 AND  CONCAT(users.fname, ' ', users.lname) = @2)", parameters, values, dgsalesreport);
+                    gs.SelectWithParameters(@"salessalesales", parameters, values, dgsalesreport);
                 }
                 else if (chballcashier.Checked && !chballproducts.Checked)
                 {
                     string[] parameters = { "@1", "@2" };
                     string[] values = { dtdaily.Value.ToString("MM/dd/yyyy"), combobxproduct.Text };
-                    gs.SelectWithParameters(@"SELECT CONVERT(VARCHAR(20), orders.datesold, 100) as 'Date', orders.discount, CONCAT(users.fname, ' ', users.lname)  AS fullname, products.productcode, products.productname, products.description, orderdetails.quantity, orderdetails.price, totalamount FROM orders 
-                        INNER JOIN orderdetails ON orders.orderid = orderdetails.orderid 
-                        INNER JOIN products ON orderdetails.productid = products.productid 
-                         
-                        INNER JOIN users ON orders.userid = users.userid WHERE (CAST(orders.datesold AS date) = @1 AND CONVERT(VARCHAR, products.productname) = @2)", parameters, values, dgsalesreport);
+                    gs.SelectWithParameters(@"sales3", parameters, values, dgsalesreport);
                 }
                 else if (!chballcashier.Checked && !chballproducts.Checked)
                 {
                     string[] parameters = { "@1", "@2", "@3" };
                     string[] values = { dtdaily.Value.ToString("MM/dd/yyyy"), combobxcashier.Text, combobxproduct.Text };
-                    gs.SelectWithParameters(@"SELECT CONVERT(VARCHAR(20), orders.datesold, 100) as 'Date', orders.discount, CONCAT(users.fname, ' ', users.lname)  AS fullname, products.productcode, products.productname, products.description, orderdetails.quantity, orderdetails.price, totalamount FROM orders 
-                        INNER JOIN orderdetails ON orders.orderid = orderdetails.orderid 
-                        INNER JOIN products ON orderdetails.productid = products.productid 
-                         
-                        INNER JOIN users ON orders.userid = users.userid WHERE (CAST(orders.datesold AS date) = @1 AND  CONCAT(users.fname, ' ', users.lname) = @2 AND CONVERT(VARCHAR, products.productname) = @3)", parameters, values, dgsalesreport);
+                    gs.SelectWithParameters(@"saless55", parameters, values, dgsalesreport);
                 }
             }
             else if (rd2.Checked)
@@ -89,41 +73,25 @@ namespace Softwen.Reports
                 {
                     string[] parameters = { "@1", "@2" };
                     string[] values = { dtstart.Value.ToString("MM/dd/yyyy"), dtend.Value.ToString("MM/dd/yyyy") };
-                    gs.SelectWithParameters(@"SELECT CONVERT(VARCHAR(20), orders.datesold, 100) as 'Date', orders.discount, CONCAT(users.fname, ' ', users.lname)  AS fullname, products.productcode, products.productname, products.description, orderdetails.quantity, orderdetails.price, totalamount FROM orders 
-                        INNER JOIN orderdetails ON orders.orderid = orderdetails.orderid 
-                        INNER JOIN products ON orderdetails.productid = products.productid 
-                         
-                        INNER JOIN users ON orders.userid = users.userid WHERE (CAST(orders.datesold AS date) BETWEEN @1 AND @2)", parameters, values, dgsalesreport);
+                    gs.SelectWithParameters(@"reports100", parameters, values, dgsalesreport);
                 }
                 else if (!chballcashier.Checked && chballproducts.Checked)
                 {
                     string[] parameters = { "@1", "@2", "@3" };
                     string[] values = { dtstart.Value.ToString("MM/dd/yyyy"), dtend.Value.ToString("MM/dd/yyyy"), combobxcashier.Text };
-                    gs.SelectWithParameters(@"SELECT CONVERT(VARCHAR(20), orders.datesold, 100) as 'Date', orders.discount, CONCAT(users.fname, ' ', users.lname)  AS fullname, products.productcode, products.productname, products.description, orderdetails.quantity, orderdetails.price, totalamount FROM orders 
-                        INNER JOIN orderdetails ON orders.orderid = orderdetails.orderid 
-                        INNER JOIN products ON orderdetails.productid = products.productid 
-                         
-                        INNER JOIN users ON orders.userid = users.userid WHERE CONCAT(users.fname, ' ', users.lname) =@3 AND (CAST(orders.datesold AS date) BETWEEN @1 AND @2)", parameters, values, dgsalesreport);
+                    gs.SelectWithParameters(@"reports200", parameters, values, dgsalesreport);
                 }
                 else if (chballcashier.Checked && !chballproducts.Checked)
                 {
                     string[] parameters = { "@1", "@2", "@3" };
                     string[] values = { dtstart.Value.ToString("MM/dd/yyyy"), dtend.Value.ToString("MM/dd/yyyy"), combobxproduct.Text };
-                    gs.SelectWithParameters(@"SELECT CONVERT(VARCHAR(20), orders.datesold, 100) as 'Date', orders.discount, CONCAT(users.fname, ' ', users.lname)  AS fullname, products.productcode, products.productname, products.description, orderdetails.quantity, orderdetails.price, totalamount FROM orders 
-                        INNER JOIN orderdetails ON orders.orderid = orderdetails.orderid 
-                        INNER JOIN products ON orderdetails.productid = products.productid 
-                         
-                        INNER JOIN users ON orders.userid = users.userid WHERE products.productname = @3  AND (CAST(orders.datesold AS date) BETWEEN @1 AND @2)", parameters, values, dgsalesreport);
+                    gs.SelectWithParameters(@"reports300", parameters, values, dgsalesreport);
                 }
                 else if (!chballcashier.Checked && !chballproducts.Checked)
                 {
                     string[] parameters = { "@1", "@2", "@3", "@4" };
                     string[] values = { dtstart.Value.ToString("MM/dd/yyyy"), dtend.Value.ToString("MM/dd/yyyy"), combobxcashier.Text, combobxproduct.Text };
-                    gs.SelectWithParameters(@"SELECT CONVERT(VARCHAR(20), orders.datesold, 100) as 'Date', orders.discount, CONCAT(users.fname, ' ', users.lname)  AS fullname, products.productcode, products.productname, products.description, orderdetails.quantity, orderdetails.price, totalamount FROM orders 
-                        INNER JOIN orderdetails ON orders.orderid = orderdetails.orderid 
-                        INNER JOIN products ON orderdetails.productid = products.productid 
-                         
-                        INNER JOIN users ON orders.userid = users.userid WHERE CONCAT(users.fname, ' ', users.lname) = @3 AND products.productname = @4 AND (CAST(orders.datesold AS date) BETWEEN @1 AND @2)", parameters, values, dgsalesreport);
+                    gs.SelectWithParameters(@"reports400", parameters, values, dgsalesreport);
                 }
             }
         }
@@ -133,17 +101,13 @@ namespace Softwen.Reports
             {
                 string[] stockparameters = { "@1" };
                 string[] stockvalues = { dtstocks.Value.ToString("MM/dd/yyyy") };
-                gs.SelectWithParameters(@"SELECT CONVERT(VARCHAR(20), restocks.restockdate, 100) as 'Date', products.productcode as 'Product Code', products.productname as 'Product', products.description as 'Description', restocks.restockquantity as 'Restock Qty', restocks.quantityafter as 'Qty After Restock' FROM restocks
-                                      INNER JOIN products ON restocks.productid = products.productid 
-                                      INNER JOIN users ON restocks.userid = users.userid WHERE (CAST(restocks.restockdate AS date) = @1)", stockparameters, stockvalues, dgstockreport);
+                gs.SelectWithParameters(@"reports500", stockparameters, stockvalues, dgstockreport);
             }
             else if (rd12.Checked)
             {
                 string[] stockparameters = { "@1", "@2" };
                 string[] stockvalues = { dtstartstocks.Value.ToString("MM/dd/yyyy"), dtendstocks.Value.ToString("MM/dd/yyyy") };
-                gs.SelectWithParameters(@"SELECT CONVERT(VARCHAR(20), restocks.restockdate, 100) as 'Date', products.productcode as 'Product Code', products.productname as 'Product', products.description as 'Description', restocks.restockquantity as 'Restock Qty', restocks.quantityafter as 'Qty After Restock' FROM restocks
-                                      INNER JOIN products ON restocks.productid = products.productid 
-                                      INNER JOIN users ON restocks.userid = users.userid WHERE (CAST(restocks.restockdate AS date) BETWEEN @1 AND @2) ", stockparameters, stockvalues, dgstockreport);
+                gs.SelectWithParameters(@"reports600", stockparameters, stockvalues, dgstockreport);
             }
 
         }

@@ -20,7 +20,7 @@ namespace Softwen.login
         MSSQL mssql = new MSSQL();
         private bool source_result;
         string constring = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-        string testconstring;
+      
         public login(Form owner) : base(owner)
         {
             InitializeComponent();
@@ -230,11 +230,11 @@ namespace Softwen.login
 
         private void btntest_Click(object sender, EventArgs e)
         {
-            testconstring = string.Format(@"Data Source={0};Initial Catalog=HOP;Persist Security Info=True;User ID={1};Password={2};", cbserver.Text, txtserverusername.Text, txtserverpassword.Text);
+            string teststring = @"Data Source=ANTHONY-PC\HAMSTER;Initial Catalog=HOP;Persist Security Info=True;User ID=hamster;Password=hamster";
             try
             {
-                source_result = mssql.check_connection(testconstring);
-                if (source_result)
+                SqlHelper helper = new SqlHelper(teststring);
+                if (helper.Isconnected)
                 {
                     MetroMessageBox.Show(this, "Connected Successfully! Please click the Save button", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnsaveconnection.Enabled = true;
@@ -264,16 +264,17 @@ namespace Softwen.login
 
         private void btnsaveconnection_Click(object sender, EventArgs e)
         {
+            string teststring = @"Data Source=ANTHONY-PC\HAMSTER;Initial Catalog=HOP;Persist Security Info=True;User ID=hamster;Password=hamster";
             try
             {
-                source_result = mssql.check_connection(testconstring);
-                if (source_result)
+                SqlHelper helper = new SqlHelper(teststring);
+                if (helper.Isconnected)
                 {
                     Properties.Settings.Default.Username = txtserverusername.Text;
                     Properties.Settings.Default.Password = txtserverpassword.Text;
                     Properties.Settings.Default.Save();
                     AppSetting setting = new AppSetting();
-                    setting.SaveConnectionString("ConnectionString", testconstring);
+                    setting.SaveConnectionString("ConnectionString", teststring);
                     MetroMessageBox.Show(this, "Your connection string has been sucessfully saved.", "Connection string saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Application.Restart();
                 }

@@ -166,7 +166,7 @@ namespace Softwen.Transaction
         }//gets the barcode of a specific product
         private void checkbarcode()
         {
-            using (SqlDataReader readercheckbarcode = Globals.ExecuteReader("SELECT barcode FROM products WHERE barcode = @1", "@1", tempbarcode))
+            using (SqlDataReader readercheckbarcode = Globals.ExecuteReader("barcodecheck", "@1", tempbarcode))
             {
                 if (readercheckbarcode.Read())//means barcode exists in the database
                 {
@@ -182,7 +182,7 @@ namespace Softwen.Transaction
         }//checks if the barcode exists or not
         private void checkquantity() //checks the quantity in txtquantity.Value if valid
         {
-            using (SqlDataReader readerquantity = Globals.ExecuteReader("SELECT products.quantity, products.price, category.categoryname, products.description FROM products INNER JOIN category ON category.categoryid = products.categoryid  WHERE productname = @1", "@1", combobxproduct.Text))
+            using (SqlDataReader readerquantity = Globals.ExecuteReader("[checkquantitys]", "@1", combobxproduct.Text))
             {
                 if (readerquantity.HasRows)
                 {
@@ -314,7 +314,7 @@ namespace Softwen.Transaction
         }
         private bool checkqty(decimal quantity, int dgquantity, string dgproductname)
         {
-            using (SqlDataReader readercheckqty = Globals.ExecuteReader("SELECT quantity FROM products WHERE productname = @1", "@1", dgproductname))
+            using (SqlDataReader readercheckqty = Globals.ExecuteReader("quantitycheck", "@1", dgproductname))
             {
                 if (readercheckqty.HasRows)
                 {
@@ -360,7 +360,7 @@ namespace Softwen.Transaction
             {
                 if (checkqty(numericvalue, Convert.ToInt32(this.dgtransaction.CurrentRow.Cells[2].Value), this.dgtransaction.CurrentRow.Cells[0].Value.ToString()) == false)
                 {
-                    using (SqlDataReader readercheckqty = Globals.ExecuteReader("SELECT price FROM products WHERE productname = @1", "@1", this.dgtransaction.CurrentRow.Cells[0].Value.ToString()))
+                    using (SqlDataReader readercheckqty = Globals.ExecuteReader("editsqty", "@1", this.dgtransaction.CurrentRow.Cells[0].Value.ToString()))
                     {
                         if (readercheckqty.HasRows)
                         {
@@ -407,7 +407,7 @@ namespace Softwen.Transaction
         {
             foreach (DataGridViewRow dgrow in dgtransaction.Rows)
             {
-                using (SqlDataReader readerpID = Globals.ExecuteReader("SELECT productid FROM products WHERE productname = @1", "@1", dgrow.Cells[0].Value.ToString()))
+                using (SqlDataReader readerpID = Globals.ExecuteReader("detailsoforder", "@1", dgrow.Cells[0].Value.ToString()))
                 {
                     if (readerpID.HasRows)
                     {

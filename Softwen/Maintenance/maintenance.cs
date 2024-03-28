@@ -33,16 +33,15 @@ namespace Softwen.Maintenance
         }
         public void selectproducts()
         {
-            gs.Select(@"SELECT products.productid, products.productname, products.productcode, products.barcode, products.quantity, products.price, category.categoryname, products.description, products.maxquantity, products.status FROM products INNER JOIN category ON category.categoryid = products.categoryid WHERE status = 'active'", dgproducts);
+            gs.Select(@"selectproducteds", dgproducts);
         }
         public void selectarchivedproducts()
         {
-            gs.Select(@"SELECT products.productid, products.productname, products.productcode, products.barcode, products.quantity, products.price, category.categoryname, products.description, products.maxquantity, products.status FROM products INNER JOIN category ON category.categoryid = products.categoryid WHERE status = 'inactive'", dgarchivedproducts);
+            gs.Select(@"archieveproductselect", dgarchivedproducts);
         }
         public void selectusers()
         {
-            gs.Select(@"select userid,fname,lname,usertype,username,password from users     
-            inner join usertype_tbl on users.usertype_id = usertype_tbl.usertype_id where not users.userid = 9", dgusers);
+            gs.Select(@"selectuserss", dgusers);
         }
 
         //public void loadusers()
@@ -79,7 +78,7 @@ namespace Softwen.Maintenance
 
         public void selectcategory()
         {
-            gs.Select("SELECT * FROM category", dgcategories);
+            gs.Select("selectcated", dgcategories);
         }
         private void loadsettings()
         {
@@ -135,7 +134,7 @@ namespace Softwen.Maintenance
                 MetroMessageBox.Show(this, "Unable to delete current user", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                gs.Delete("DELETE FROM users WHERE userid = @1", dgusers, this);
+                gs.Delete("removeusered", dgusers, this);
                 gs.recorduseractivity("Delete User", this.dgusers.CurrentRow.Cells[4].Value.ToString());
                 selectusers();
             }
@@ -143,26 +142,26 @@ namespace Softwen.Maintenance
         private void filterproduct()
         {
             if (comboboxsp.SelectedIndex == 0)
-                gs.Filter(@"SELECT products.productid, products.productcode, products.barcode, products.productname, products.quantity, products.price, category.categoryname, products.description,  products.maxquantity, products.status FROM products  INNER JOIN category ON category.categoryid = products.categoryid WHERE productname LIKE @1 AND status = 'active'", txtsp.Text, dgproducts);
+                gs.Filter(@"comboxfilterproducted", txtsp.Text, dgproducts);
             else if (comboboxsp.SelectedIndex == 1)
-                gs.Filter(@"SELECT products.productid, products.productcode, products.barcode, products.productname, products.quantity, products.price, category.categoryname, products.description,  products.maxquantity, products.status FROM products  INNER JOIN category ON category.categoryid = products.categoryid WHERE productcode LIKE @1 AND status = 'active'", txtsp.Text, dgproducts);
+                gs.Filter(@"comboxfilterproduct2", txtsp.Text, dgproducts);
             else if (comboboxsp.SelectedIndex == 2)
-                gs.Filter(@"SELECT products.productid, products.productcode, products.barcode, products.productname, products.quantity, products.price, category.categoryname, products.description,  products.maxquantity, products.status FROM products  INNER JOIN category ON category.categoryid = products.categoryid WHERE category.categoryname LIKE @1 AND status = 'active'", txtsp.Text, dgproducts);
+                gs.Filter(@"filterproduct3", txtsp.Text, dgproducts);
             else if (comboboxsp.SelectedIndex == 3)
-                gs.Filter(@"SELECT products.productid, products.productcode, products.barcode, products.productname, products.quantity, products.price, category.categoryname, products.description,  products.maxquantity, products.status FROM products  INNER JOIN category ON category.categoryid = products.categoryid WHERE price LIKE @1 AND status = 'active'", txtsp.Text, dgproducts);
+                gs.Filter(@"filterproduct4", txtsp.Text, dgproducts);
             else if (comboboxsp.SelectedIndex == 4)
-                gs.Filter(@"SELECT products.productid, products.productcode, products.barcode, products.productname, products.quantity, products.price, category.categoryname, products.description,  products.maxquantity, products.status FROM products  INNER JOIN category ON category.categoryid = products.categoryid WHERE description LIKE @1 AND status = 'active'", txtsp.Text, dgproducts);
+                gs.Filter(@"filterproduct5", txtsp.Text, dgproducts);
             else if (comboboxsp.SelectedIndex == 5)
-                gs.Filter(@"SELECT products.productid, products.productcode, products.barcode, products.productname, products.quantity, products.price, category.categoryname, products.description,  products.maxquantity, products.status FROM products  INNER JOIN category ON category.categoryid = products.categoryid WHERE barcode LIKE @1 AND status = 'active'", txtsp.Text, dgproducts);
+                gs.Filter(@"filterproducted6", txtsp.Text, dgproducts);
         }
         private void filteruser()
         {
             if (combobxsu.SelectedIndex == 0)
-                gs.Filter(@"SELECT * FROM users WHERE CONCAT(users.fname, ' ', users.lname) LIKE @1", txtsu.Text, dgusers);
+                gs.Filter(@"filteruser1", txtsu.Text, dgusers);
             else if (combobxsu.SelectedIndex == 2)
-                gs.Filter(@"SELECT * FROM users WHERE usertype LIKE @1", txtsu.Text, dgusers);
+                gs.Filter(@"filteruser22", txtsu.Text, dgusers);
             else if (combobxsu.SelectedIndex == 3)
-                gs.Filter(@"SELECT * FROM users WHERE username LIKE @1", txtsu.Text, dgusers);
+                gs.Filter(@"filteruser3", txtsu.Text, dgusers);
         }
 
         private void txtsu_TextChanged(object sender, EventArgs e)
@@ -198,7 +197,7 @@ namespace Softwen.Maintenance
         }
         private bool checkcategory()
         {
-            using (SqlDataReader productreader = Globals.ExecuteReader("SELECT categoryname FROM category WHERE categoryname = @1", "@1", txtcat.Text))
+            using (SqlDataReader productreader = Globals.ExecuteReader("cheackcatg", "@1", txtcat.Text))
             {
                 if (productreader.Read())
                 {
@@ -262,7 +261,7 @@ namespace Softwen.Maintenance
 
         private void lnkdeletecat_Click(object sender, EventArgs e)
         {
-            gs.Delete("DELETE FROM category WHERE categoryid = @1", dgcategories, this);
+            gs.Delete("delcat", dgcategories, this);
             gs.recorduseractivity("Delete Category", this.dgcategories.CurrentRow.Cells[1].Value.ToString());
             selectcategory();
         }

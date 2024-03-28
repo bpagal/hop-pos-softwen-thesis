@@ -42,11 +42,7 @@ namespace Softwen.Home
         }
         public void loadchart()
         {
-            using (SqlDataReader readerbarcode = Globals.ExecuteReader(@"select DISTINCT top 5 products.productname,sum(orderdetails.quantity) from products
-                                                                         INNER JOIN orderdetails ON products.productid = orderdetails.productid 
-                                                                         INNER JOIN orders ON orderdetails.orderid = orders.orderid
-                                                                         group by products.productname
-                                                                         Order by sum(orderdetails.quantity) desc", "@1", ""))
+            using (SqlDataReader readerbarcode = Globals.ExecuteReader(@"loadcharts", "@1", ""))
             {
                 if (readerbarcode.HasRows)
                 {
