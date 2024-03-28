@@ -174,6 +174,9 @@ namespace Softwen.login
                                     ds.btnreports.Enabled = false;
                                     ds.btnreports.UseTileImage = false;
                                     ds.btnreports.Text = string.Empty;
+                                    ds.btnuseract.Enabled = false;
+                                    ds.btnuseract.UseTileImage = false;
+                                    ds.btnuseract.Text = string.Empty;
                                 }
                                 this.Parent.Hide();
                                 ds.Show();

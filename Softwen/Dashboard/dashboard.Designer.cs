@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation7 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dashboard));
-            BunifuAnimatorNS.Animation animation8 = new BunifuAnimatorNS.Animation();
-            BunifuAnimatorNS.Animation animation9 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation3 = new BunifuAnimatorNS.Animation();
             this.panelmenu = new MetroFramework.Controls.MetroPanel();
             this.btnmaintenance = new MetroFramework.Controls.MetroTile();
             this.btnhome = new MetroFramework.Controls.MetroTile();
@@ -260,22 +260,22 @@
             // 
             this.logoanimator.AnimationType = BunifuAnimatorNS.AnimationType.ScaleAndRotate;
             this.logoanimator.Cursor = null;
-            animation7.AnimateOnlyDifferences = true;
-            animation7.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation7.BlindCoeff")));
-            animation7.LeafCoeff = 0F;
-            animation7.MaxTime = 1F;
-            animation7.MinTime = 0F;
-            animation7.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation7.MosaicCoeff")));
-            animation7.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation7.MosaicShift")));
-            animation7.MosaicSize = 0;
-            animation7.Padding = new System.Windows.Forms.Padding(30);
-            animation7.RotateCoeff = 0.5F;
-            animation7.RotateLimit = 0.2F;
-            animation7.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation7.ScaleCoeff")));
-            animation7.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation7.SlideCoeff")));
-            animation7.TimeCoeff = 0F;
-            animation7.TransparencyCoeff = 0F;
-            this.logoanimator.DefaultAnimation = animation7;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(30);
+            animation1.RotateCoeff = 0.5F;
+            animation1.RotateLimit = 0.2F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.logoanimator.DefaultAnimation = animation1;
             // 
             // lnklogout
             // 
@@ -343,10 +343,10 @@
             this.controlanimator.SetDecoration(this.labelname, BunifuAnimatorNS.DecorationType.None);
             this.sidemenuanimator.SetDecoration(this.labelname, BunifuAnimatorNS.DecorationType.None);
             this.logoanimator.SetDecoration(this.labelname, BunifuAnimatorNS.DecorationType.None);
-            this.labelname.Font = new System.Drawing.Font("Open Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelname.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelname.Location = new System.Drawing.Point(966, 9);
             this.labelname.Name = "labelname";
-            this.labelname.Size = new System.Drawing.Size(175, 28);
+            this.labelname.Size = new System.Drawing.Size(170, 25);
             this.labelname.TabIndex = 6;
             this.labelname.Text = "Name goes here";
             // 
@@ -356,10 +356,10 @@
             this.controlanimator.SetDecoration(this.labelstorename, BunifuAnimatorNS.DecorationType.None);
             this.sidemenuanimator.SetDecoration(this.labelstorename, BunifuAnimatorNS.DecorationType.None);
             this.logoanimator.SetDecoration(this.labelstorename, BunifuAnimatorNS.DecorationType.None);
-            this.labelstorename.Font = new System.Drawing.Font("Open Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelstorename.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelstorename.Location = new System.Drawing.Point(171, 9);
             this.labelstorename.Name = "labelstorename";
-            this.labelstorename.Size = new System.Drawing.Size(230, 28);
+            this.labelstorename.Size = new System.Drawing.Size(224, 25);
             this.labelstorename.TabIndex = 6;
             this.labelstorename.Text = "Store name goes here";
             // 
@@ -369,10 +369,10 @@
             this.controlanimator.SetDecoration(this.labelmodule, BunifuAnimatorNS.DecorationType.None);
             this.sidemenuanimator.SetDecoration(this.labelmodule, BunifuAnimatorNS.DecorationType.None);
             this.logoanimator.SetDecoration(this.labelmodule, BunifuAnimatorNS.DecorationType.None);
-            this.labelmodule.Font = new System.Drawing.Font("Open Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelmodule.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelmodule.Location = new System.Drawing.Point(407, 9);
             this.labelmodule.Name = "labelmodule";
-            this.labelmodule.Size = new System.Drawing.Size(122, 28);
+            this.labelmodule.Size = new System.Drawing.Size(117, 25);
             this.labelmodule.TabIndex = 6;
             this.labelmodule.Text = "Dashboard";
             this.labelmodule.Visible = false;
@@ -381,43 +381,43 @@
             // 
             this.sidemenuanimator.AnimationType = BunifuAnimatorNS.AnimationType.Particles;
             this.sidemenuanimator.Cursor = null;
-            animation8.AnimateOnlyDifferences = true;
-            animation8.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation8.BlindCoeff")));
-            animation8.LeafCoeff = 0F;
-            animation8.MaxTime = 1F;
-            animation8.MinTime = 0F;
-            animation8.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation8.MosaicCoeff")));
-            animation8.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation8.MosaicShift")));
-            animation8.MosaicSize = 1;
-            animation8.Padding = new System.Windows.Forms.Padding(100, 50, 100, 150);
-            animation8.RotateCoeff = 0F;
-            animation8.RotateLimit = 0F;
-            animation8.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation8.ScaleCoeff")));
-            animation8.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation8.SlideCoeff")));
-            animation8.TimeCoeff = 2F;
-            animation8.TransparencyCoeff = 0F;
-            this.sidemenuanimator.DefaultAnimation = animation8;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 1;
+            animation2.Padding = new System.Windows.Forms.Padding(100, 50, 100, 150);
+            animation2.RotateCoeff = 0F;
+            animation2.RotateLimit = 0F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 2F;
+            animation2.TransparencyCoeff = 0F;
+            this.sidemenuanimator.DefaultAnimation = animation2;
             // 
             // controlanimator
             // 
             this.controlanimator.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
             this.controlanimator.Cursor = null;
-            animation9.AnimateOnlyDifferences = true;
-            animation9.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation9.BlindCoeff")));
-            animation9.LeafCoeff = 0F;
-            animation9.MaxTime = 1F;
-            animation9.MinTime = 0F;
-            animation9.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation9.MosaicCoeff")));
-            animation9.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation9.MosaicShift")));
-            animation9.MosaicSize = 0;
-            animation9.Padding = new System.Windows.Forms.Padding(0);
-            animation9.RotateCoeff = 0F;
-            animation9.RotateLimit = 0F;
-            animation9.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation9.ScaleCoeff")));
-            animation9.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation9.SlideCoeff")));
-            animation9.TimeCoeff = 0F;
-            animation9.TransparencyCoeff = 1F;
-            this.controlanimator.DefaultAnimation = animation9;
+            animation3.AnimateOnlyDifferences = true;
+            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
+            animation3.LeafCoeff = 0F;
+            animation3.MaxTime = 1F;
+            animation3.MinTime = 0F;
+            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
+            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
+            animation3.MosaicSize = 0;
+            animation3.Padding = new System.Windows.Forms.Padding(0);
+            animation3.RotateCoeff = 0F;
+            animation3.RotateLimit = 0F;
+            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
+            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
+            animation3.TimeCoeff = 0F;
+            animation3.TransparencyCoeff = 1F;
+            this.controlanimator.DefaultAnimation = animation3;
             this.controlanimator.TimeStep = 0.06F;
             // 
             // dashboard
@@ -468,12 +468,12 @@
         private MetroFramework.Controls.MetroLink lnklogout;
         private MetroFramework.Controls.MetroLink lnkminimize;
         private MetroFramework.Controls.MetroLink lnkclose;
-        private MetroFramework.Controls.MetroTile btnuseract;
         public MetroFramework.Controls.MetroTile btnmaintenance;
         private MetroFramework.Controls.MetroTile btnproducts;
         public System.Windows.Forms.Label labelname;
         public System.Windows.Forms.Label labelstorename;
         public System.Windows.Forms.Label labelmodule;
         public MetroFramework.Controls.MetroTile btnreports;
+        public MetroFramework.Controls.MetroTile btnuseract;
     }
 }

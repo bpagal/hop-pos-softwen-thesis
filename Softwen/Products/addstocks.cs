@@ -97,9 +97,9 @@ namespace Softwen.Products
                         int qtyafter = qtycurrent + qtydelivered;
                         string rsstatus = getrestockstatus(qtydelivered, qtyordered);
                         string postatus = getpostatus(qtydelivered, qtyordered, dgrv.Cells[4].Value);
-                        string[] editparameters = { "@1", "@2" };
-                        string[] editvalues = { qtydelivered.ToString(), productid.ToString() };
-                        gs.Insert("updatestocks", editparameters, editvalues);
+                        string[] editparameters = { "@1", "@2", "@ismissing" };
+                        string[] editvalues = { qtydelivered.ToString(), productid.ToString(), "no" };
+                        gs.Insert("updateproduct", editparameters, editvalues);
                         string[] restockparameters = { "@1", "@2", "@3", "@4", "@5", "@6", "@7" };
                         string[] restockvalues = { Globals.userid, DateTime.Now.ToString(("MM/dd/yyyy hh:mm tt")), productid.ToString(), qtydelivered.ToString(), qtyafter.ToString(), ponumber, rsstatus };
                         gs.Insert("insertstocks", restockparameters, restockvalues);

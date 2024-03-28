@@ -121,9 +121,9 @@ namespace Softwen.Products
                     int qtyafter = qtycurrent + qtydelivered;
                     string rsstatus = getstatus(qtydelivered, qtyordered, lastdeliveredqty);
                     string postatus = getpostatus(qtydelivered, qtyordered,lastdeliveredqty);
-                    string[] editparameters = { "@1", "@2" };
-                    string[] editvalues = { qtydelivered.ToString(), productid.ToString() };
-                    gs.Insert("updatestocks", editparameters, editvalues);
+                    string[] editparameters = { "@1", "@2","@ismissing" };
+                    string[] editvalues = { qtydelivered.ToString(), productid.ToString(),"no" };
+                    gs.Insert("updateproduct", editparameters, editvalues);
                     string[] restockparameters = { "@1", "@2", "@3", "@4", "@5" };
                     string[] restockvalues = { qtydelivered.ToString(), qtyafter.ToString(), rsstatus, DateTime.Now.ToString(("MM/dd/yyyy hh:mm tt")), rsid };
                     gs.Insert("updaterestocks", restockparameters, restockvalues);

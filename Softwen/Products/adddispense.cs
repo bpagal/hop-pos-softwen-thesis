@@ -44,12 +44,12 @@ namespace Softwen.Products
         }
         private void addtodispense()
         {
-            int reducedqty = Convert.ToInt32(txtquantity.Value) - systemqty;
-            string[] editparameters = { "@1", "@2" };
-            string[] editvalues = { reducedqty.ToString(), productid.ToString() };
-            gs.Insert("updatestocks", editparameters, editvalues);
+            int reducedqty = systemqty- Convert.ToInt32(txtquantity.Value);
+            string[] editparameters = { "@1", "@2", "@ismissing" };
+            string[] editvalues = { reducedqty.ToString(), productid.ToString(), "yes"};
+            gs.Insert("updateproduct", editparameters, editvalues);
             string[] addparameters = { "@1", "@2", "@3", "@4", "@5" };
-            string[] addvalues = { productid, txtquantity.Value.ToString(), txtcomment.Text, txtreason.Text, Globals.userid };
+            string[] addvalues = { productid, reducedqty.ToString(), txtcomment.Text, txtreason.Text, Globals.userid };
             gs.Insert("addtodispense", addparameters, addvalues);
             MetroMessageBox.Show(this, "Lost quantity successfully processed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
