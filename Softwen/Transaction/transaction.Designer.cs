@@ -33,10 +33,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(transaction));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(transaction));
             this.transactionstylemanager = new MetroFramework.Components.MetroStyleManager(this.components);
             this.dgtransaction = new MetroFramework.Controls.MetroGrid();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.transactionpanel = new System.Windows.Forms.Panel();
             this.lnkfocusbc = new MetroFramework.Controls.MetroLink();
             this.lnkvoid = new MetroFramework.Controls.MetroLink();
@@ -69,11 +74,6 @@
             this.labelquantity = new System.Windows.Forms.Label();
             this.bctoggle = new MetroFramework.Controls.MetroToggle();
             this.txtautobc = new System.Windows.Forms.TextBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.transactionstylemanager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgtransaction)).BeginInit();
             this.transactionpanel.SuspendLayout();
@@ -148,6 +148,42 @@
             this.dgtransaction.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgtransaction_CellValueChanged);
             this.dgtransaction.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgtransaction_RowsAdded);
             this.dgtransaction.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgtransaction_RowsRemoved);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Product Name";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 144;
+            // 
+            // Column2
+            // 
+            dataGridViewCellStyle3.NullValue = null;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column2.HeaderText = "Unit Price ₱";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 123;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Quantity";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Category";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 102;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Description";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 121;
             // 
             // transactionpanel
             // 
@@ -347,7 +383,7 @@
             this.grandtotal.CustomButton.Visible = false;
             this.grandtotal.DisplayIcon = true;
             this.grandtotal.FontSize = MetroFramework.MetroTextBoxSize.Tall;
-            this.grandtotal.Icon = global::Softwen.Resource.US_Dollar_48px;
+            this.grandtotal.Icon = ((System.Drawing.Image)(resources.GetObject("grandtotal.Icon")));
             this.grandtotal.Lines = new string[0];
             this.grandtotal.Location = new System.Drawing.Point(167, 210);
             this.grandtotal.MaxLength = 32767;
@@ -488,7 +524,7 @@
             this.subtotal.CustomButton.Visible = false;
             this.subtotal.DisplayIcon = true;
             this.subtotal.FontSize = MetroFramework.MetroTextBoxSize.Tall;
-            this.subtotal.Icon = global::Softwen.Resource.US_Dollar_48px;
+            this.subtotal.Icon = ((System.Drawing.Image)(resources.GetObject("subtotal.Icon")));
             this.subtotal.Lines = new string[0];
             this.subtotal.Location = new System.Drawing.Point(167, 66);
             this.subtotal.MaxLength = 32767;
@@ -723,42 +759,6 @@
             this.txtautobc.Size = new System.Drawing.Size(100, 20);
             this.txtautobc.TabIndex = 5;
             this.txtautobc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown_1);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Product Name";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 144;
-            // 
-            // Column2
-            // 
-            dataGridViewCellStyle3.NullValue = null;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column2.HeaderText = "Unit Price";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 107;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Quantity";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Category";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 102;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Description";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 121;
             // 
             // transaction
             // 

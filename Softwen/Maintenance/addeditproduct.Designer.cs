@@ -358,7 +358,7 @@
             this.txtprice.CustomButton.Visible = false;
             this.txtprice.DisplayIcon = true;
             this.txtprice.FontSize = MetroFramework.MetroTextBoxSize.Tall;
-            this.txtprice.Icon = global::Softwen.Resource.US_Dollar_48px;
+            this.txtprice.Icon = ((System.Drawing.Image)(resources.GetObject("txtprice.Icon")));
             this.txtprice.Lines = new string[0];
             this.txtprice.Location = new System.Drawing.Point(14, 241);
             this.txtprice.MaxLength = 3;

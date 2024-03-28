@@ -40,6 +40,7 @@
             // msmmain
             // 
             this.msmmain.Owner = this;
+            this.msmmain.Style = MetroFramework.MetroColorStyle.Red;
             // 
             // lnksettings
             // 

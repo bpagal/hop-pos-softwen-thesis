@@ -71,7 +71,7 @@
             this.txtchange.CustomButton.Visible = false;
             this.txtchange.DisplayIcon = true;
             this.txtchange.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtchange.Icon = global::Softwen.Resource.US_Dollar_48px;
+            this.txtchange.Icon = ((System.Drawing.Image)(resources.GetObject("txtchange.Icon")));
             this.txtchange.Lines = new string[0];
             this.txtchange.Location = new System.Drawing.Point(9, 196);
             this.txtchange.MaxLength = 32767;
@@ -116,7 +116,7 @@
             this.txtamountpaid.CustomButton.Visible = false;
             this.txtamountpaid.DisplayIcon = true;
             this.txtamountpaid.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtamountpaid.Icon = global::Softwen.Resource.US_Dollar_48px;
+            this.txtamountpaid.Icon = ((System.Drawing.Image)(resources.GetObject("txtamountpaid.Icon")));
             this.txtamountpaid.Lines = new string[0];
             this.txtamountpaid.Location = new System.Drawing.Point(9, 117);
             this.txtamountpaid.MaxLength = 6;
@@ -162,7 +162,7 @@
             this.txtgrandtotal.CustomButton.Visible = false;
             this.txtgrandtotal.DisplayIcon = true;
             this.txtgrandtotal.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtgrandtotal.Icon = global::Softwen.Resource.US_Dollar_48px;
+            this.txtgrandtotal.Icon = ((System.Drawing.Image)(resources.GetObject("txtgrandtotal.Icon")));
             this.txtgrandtotal.Lines = new string[0];
             this.txtgrandtotal.Location = new System.Drawing.Point(9, 41);
             this.txtgrandtotal.MaxLength = 32767;

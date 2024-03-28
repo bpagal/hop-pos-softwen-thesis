@@ -418,7 +418,7 @@ namespace Softwen.Transaction
                             decimal productprice = Convert.ToDecimal(dgrow.Cells[1].Value);
                             decimal _discountedamount = productprice - (productprice * (_discountvalue / 100));
                             decimal _vatamount = _discountedamount * _vatpercent;
-                            decimal total = _discountedamount + (_discountedamount * _vatpercent);
+                            int total = Convert.ToInt32(_discountedamount + (_discountedamount * _vatpercent));
                             string[] parameters = { "@1", "@2", "@3" };
                             string[] values = { productID.ToString(), total.ToString(), dgrow.Cells[2].Value.ToString() };
                              gs.Insert("orderss", parameters, values);
