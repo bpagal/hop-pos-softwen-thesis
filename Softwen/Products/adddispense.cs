@@ -37,9 +37,11 @@ namespace Softwen.Products
 
         private void lnksave_Click(object sender, EventArgs e)
         {
-
-            if (gs.validateemptyqty(txtquantity, this) == false && Globals.CheckFields(paneldispense,this)==false)
-                addtodispense();
+            if (MetroMessageBox.Show(this, "Are you sure you want to proceed with these quantities?", "Confirm dispense", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+                if (gs.validateemptyqty(txtquantity, this) == false && Globals.CheckFields(paneldispense, this) == false)
+                    addtodispense();
+            }
         }
 
         private void addtodispense()

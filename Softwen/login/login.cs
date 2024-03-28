@@ -259,7 +259,7 @@ namespace Softwen.login
                 }
                 else
                 {
-                    MetroMessageBox.Show(this, "Connection Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MetroMessageBox.Show(this, "Connection Failed!", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     btnsaveconnection.Enabled = false;
                 }
             }

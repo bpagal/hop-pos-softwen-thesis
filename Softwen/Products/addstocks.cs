@@ -119,11 +119,13 @@ namespace Softwen.Products
         }
         private void lnkcomplete_Click(object sender, EventArgs e)
         {
-            if (checkqty() == false)
+            if (MetroMessageBox.Show(this, "Are you sure you want to proceed with these stocks?", "Confirm stocks", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
-                increaseqty();
+                if (checkqty() == false)
+                {
+                    increaseqty();
+                }
             }
-
 
         }
         private void inputlogic()
