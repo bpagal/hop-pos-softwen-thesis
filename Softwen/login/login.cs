@@ -20,6 +20,7 @@ namespace Softwen.login
         MSSQL mssql = new MSSQL();
         private bool source_result;
         string constring = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+        string testconstring;
         public login(Form owner) : base(owner)
         {
             InitializeComponent();
@@ -88,6 +89,7 @@ namespace Softwen.login
             {
                 using (SqlCommand cmd = new SqlCommand("getfnamed", con))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@1", txtusername.Text);
                     con.Open();
                     string fname = (string)cmd.ExecuteScalar() + " ";
@@ -101,6 +103,7 @@ namespace Softwen.login
             {
                 using (SqlCommand cmd = new SqlCommand("getlname", con))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@1", txtusername.Text);
                     con.Open();
                     string lname = (string)cmd.ExecuteScalar();
@@ -112,8 +115,9 @@ namespace Softwen.login
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT userid FROM users WHERE username = @1", con))
+                using (SqlCommand cmd = new SqlCommand("spselectid", con))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@1", txtusername.Text);
                     con.Open();
                     int userid = (int)cmd.ExecuteScalar();
@@ -141,15 +145,11 @@ namespace Softwen.login
                     using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
                     {
                         con.Open();
-
-                      
                         using (SqlCommand cmd = new SqlCommand("trylogins", con))
-                       // using (SqlCommand cmd1 = new SqlCommand("SELECT username,usertype, password From users inner join usertype_tbl on users.usertype_id = users.usertype_id ", con))
                         {
+                            cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.AddWithValue("@1", txtusername.Text);
                             cmd.Parameters.AddWithValue("@2", txtpassword.Text);
-                           // cmd1.Parameters.AddWithValue("@1", txtusername.Text);
-                           // cmd1.Parameters.AddWithValue("@2", txtpassword.Text);
                             int result = (int)cmd.ExecuteScalar();
                          
                             if (result > 0)
@@ -196,7 +196,6 @@ namespace Softwen.login
             }
             catch (Exception ex)
             {
-                //MetroMessageBox.Show(this, "There is no valid Connection! Please configure it in the Settings", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 MetroMessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 source_result = mssql.check_connection(constring);
                 if (source_result == false)
@@ -209,10 +208,9 @@ namespace Softwen.login
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
-               // using (SqlCommand cmd = new SqlCommand("SELECT usertype FROM users WHERE username = @1", con))
                 using(SqlCommand cmd1 = new SqlCommand("getusertype", con))
                 {
-                 //   cmd.Parameters.AddWithValue("@1", txtusername.Text);
+                    cmd1.CommandType = CommandType.StoredProcedure;
                     cmd1.Parameters.AddWithValue("@2", txtusername.Text);
                     con.Open();
                     string value = (string)cmd1.ExecuteScalar();
@@ -225,51 +223,17 @@ namespace Softwen.login
             cbserver.Items.Add(@"localhost\SQLEXPRESS");
             cbserver.Items.Add(@".\SQLEXPRESS");
             cbserver.Items.Add(string.Format(@"{0}\SQLEXPRESS", Environment.MachineName));
-            cbserver.SelectedIndex = 2;
-            /*txtserverusername.Text = ConfigurationManager.AppSettings["Username"].ToString();
-            txtserverpassword.Text = ConfigurationManager.AppSettings["Password"].ToString();*/                                                             
+            cbserver.SelectedIndex = 2;                                                            
             txtserverusername.Text = Properties.Settings.Default.Username;
             txtserverpassword.Text = Properties.Settings.Default.Password;
         }
 
         private void btntest_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    StringBuilder a = new StringBuilder("Data Source=");
-            //    a.Append(cbserver.Text);
-            //    a.Append(";Initial Catalog=");
-            //    a.Append("HOP;Persist Security Info=True;");
-            //    a.Append("User ID=");
-            //    a.Append(txtserverusername.Text);
-            //    a.Append(";Password=");
-            //    a.Append(txtserverpassword.Text);
-            //    //a.Append(";");
-            //    string strCon = a.ToString();
-            //    source_result = mssql.check_connection(strCon);
-            //    if (source_result == false)
-            //    {
-            //        MetroMessageBox.Show(this, "Connection failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        metroButton1.Enabled = false;
-            //    }
-            //    else
-            //    {
-            //        updateConfigFile(strCon);
-            //        ConfigurationManager.RefreshSection("connectionStrings");
-            //        SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
-            //        MetroMessageBox.Show(this, "Connected Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        metroButton1.Enabled = true;
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-            string teststring = @"Data Source=ANTHONY-PC\HAMSTER;Initial Catalog=HOP;Persist Security Info=True;User ID=hamster;Password=hamster";
-            //string connectionString = string.Format(@"Data Source={0};Initial Catalog=HOP;Persist Security Info=True;User ID={1};Password={2};", cbserver.Text,txtserverusername.Text,txtserverpassword.Text);
+            testconstring = string.Format(@"Data Source={0};Initial Catalog=HOP;Persist Security Info=True;User ID={1};Password={2};", cbserver.Text, txtserverusername.Text, txtserverpassword.Text);
             try
             {
-                source_result = mssql.check_connection(teststring);
+                source_result = mssql.check_connection(testconstring);
                 if (source_result)
                 {
                     MetroMessageBox.Show(this, "Connected Successfully! Please click the Save button", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -278,6 +242,7 @@ namespace Softwen.login
                 else
                 {
                     MetroMessageBox.Show(this, "Connection Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnsaveconnection.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -285,8 +250,6 @@ namespace Softwen.login
                 MetroMessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-      
 
         private void txtpassword_KeyDown(object sender, KeyEventArgs e)
         {
@@ -301,18 +264,16 @@ namespace Softwen.login
 
         private void btnsaveconnection_Click(object sender, EventArgs e)
         {
-            string teststring = @"Data Source=ANTHONY-PC\HAMSTER;Initial Catalog=HOP;Persist Security Info=True;User ID=hamster;Password=hamster";
-            //string connectionString = string.Format("Data Source={0};Initial Catalog=HOP;Persist Security Info=True;User ID={1};Password={2};", cbserver.Text, txtserverusername.Text, txtserverpassword.Text);
             try
             {
-                source_result = mssql.check_connection(teststring);
+                source_result = mssql.check_connection(testconstring);
                 if (source_result)
                 {
                     Properties.Settings.Default.Username = txtserverusername.Text;
                     Properties.Settings.Default.Password = txtserverpassword.Text;
                     Properties.Settings.Default.Save();
                     AppSetting setting = new AppSetting();
-                    setting.SaveConnectionString("ConnectionString", teststring);
+                    setting.SaveConnectionString("ConnectionString", testconstring);
                     MetroMessageBox.Show(this, "Your connection string has been sucessfully saved.", "Connection string saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Application.Restart();
                 }

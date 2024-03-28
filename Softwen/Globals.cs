@@ -21,6 +21,8 @@ namespace Softwen
         public string connstring = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString(); //connection string
         private int i = 0;
         public static string userid = "1";
+
+        //select method from database
         public void Select(string selectquery, MetroGrid dg)
         {
             using (SqlConnection con = new SqlConnection(connstring))
@@ -29,6 +31,7 @@ namespace Softwen
                 using (SqlCommand command = new SqlCommand(selectquery, con))
                 {
                     con.Open();
+                    command.CommandType = CommandType.StoredProcedure;
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
@@ -36,13 +39,16 @@ namespace Softwen
                 }
 
             }
-        }//select method from database
+        }
+
+        //select method with parameters
         public void SelectWithParameters(string selectquery, string[] parameter, string[] value, MetroGrid dg)
         {
             using (SqlConnection con = new SqlConnection(connstring))
             {
                 using (SqlCommand cmd = new SqlCommand(selectquery, con))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     foreach (var str in parameter)
                     {
                         cmd.Parameters.AddWithValue(str, value[i]);
@@ -56,7 +62,9 @@ namespace Softwen
                     i = 0;
                 }
             }
-        }//select method with parameters
+        }
+
+        //insert method into tables from database
         public void Insert(string insertquery, string[] parameter, string[] value)
         {
             using (SqlConnection con = new SqlConnection(connstring))
@@ -76,7 +84,9 @@ namespace Softwen
             }
 
 
-        }//insert/update method into tables from database
+        }
+
+        //update method into tables from database
         public void Delete(string deletequery, MetroGrid dg, Control form)
         {
             if (MetroMessageBox.Show(form, "Are you sure you want to delete this data?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
@@ -85,6 +95,7 @@ namespace Softwen
                 {
                     using (SqlCommand command = new SqlCommand(deletequery, con))
                     {
+                        command.CommandType = CommandType.StoredProcedure;
                         string userid = dg.CurrentRow.Cells[0].Value.ToString();
                         command.Parameters.AddWithValue("@1", userid);
                         con.Open();
@@ -94,6 +105,8 @@ namespace Softwen
                 }
             }
         }
+
+        //select method from database
         public void Filter(string selectquery, string value, DataGridView dg)
         {
             using (SqlConnection con = new SqlConnection(connstring))
@@ -101,6 +114,7 @@ namespace Softwen
 
                 using (SqlCommand command = new SqlCommand(selectquery, con))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@1", value + "%");
                     con.Open();
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -111,18 +125,16 @@ namespace Softwen
                 }
 
             }
-        }//select method from database
+        }
+        
         public void recorduseractivity(string activity, string manipulateddata)
         {
             string[] actparameters = { "@1", "@2", "@3", "@4" };
             string[] actvalues = { DateTime.Now.ToString(("MM/dd/yyyy hh:mm tt")), userid, activity, manipulateddata };
-            //   Insert("INSERT INTO useractivity(timestamp,userid,action,affecteddata) values (@1, @2,@3,@4)", actparameters, actvalues);
-
             Insert("useractivitys", actparameters, actvalues);
-
-            // Globals.ResetFields(paneluser);
-
         }
+
+        //checks if all textboxes in a panel are empty
         public static bool CheckFields(Control panel, Control form)
         {
 
@@ -137,7 +149,9 @@ namespace Softwen
                 return false;
             }
 
-        }//checks if all textboxes in a panel are empty
+        }
+
+        //clears all textbox texts in a control
         public static void ResetFields(Control control)
         {
             MetroTextBox tb = control as MetroTextBox;
@@ -155,7 +169,7 @@ namespace Softwen
             {
                 nud.Value = 1;
             }
-            // repeat for combobox, listbox, checkbox and any other controls you want to clear
+            //repeat for combobox, listbox, checkbox and any other controls you want to clear
             if (control.HasChildren)
             {
                 foreach (Control child in control.Controls)
@@ -163,7 +177,9 @@ namespace Softwen
                     ResetFields(child);
                 }
             }
-        }//clears all textbox texts in a control
+        }
+
+        //changes all labels' forecolor to white
         public static void ChangeForeColor(Control control)
         {
             Label lb = control as Label;
@@ -182,7 +198,7 @@ namespace Softwen
             {
                 ml.BackColor = System.Drawing.Color.White;
             }
-            // repeat for combobox, listbox, checkbox and any other controls you want to clear
+            //repeat for combobox, listbox, checkbox and any other controls you want to clear
             if (control.HasChildren)
             {
                 foreach (Control child in control.Controls)
@@ -190,21 +206,24 @@ namespace Softwen
                     ChangeForeColor(child);
                 }
             }
-        }//changes all labels' forecolor to white
+        }
+
         public static SqlDataReader ExecuteReader(String query, string parameter, string value)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue(parameter, value);
                 conn.Open();
-                // When using CommandBehavior.CloseConnection, the connection will be closed when the 
-                // IDataReader is closed.
+                /*When using CommandBehavior.CloseConnection, the connection will be closed when the 
+                IDataReader is closed.*/
                 SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 return reader;
             }
         }
+
         public static void NumbersOnly(Object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
@@ -212,6 +231,7 @@ namespace Softwen
                 e.Handled = true;
             }
         }
+
         public static void LettersOnly(Object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
@@ -219,6 +239,8 @@ namespace Softwen
                 e.Handled = true;
             }
         }
+
+        //populates the combobox with desired data
         public void populatecombobox(MetroComboBox combobx, string query, string displaymember, string valuemember)
         {
             using (SqlConnection con = new SqlConnection(connstring))
@@ -226,6 +248,7 @@ namespace Softwen
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         DataTable td = new DataTable();
@@ -241,7 +264,8 @@ namespace Softwen
 
                 }
             }
-        }//populates the combobox with desired data
+        }
+
         public bool validateemptyqty(NumericUpDown nud, MetroForm frm)
         {
             if (string.IsNullOrWhiteSpace(nud.Text))
@@ -253,6 +277,7 @@ namespace Softwen
             else
                 return false;
         }
+
         public void exportexcel(ReportDocument rpt)
         {
             ExportOptions exportOption;

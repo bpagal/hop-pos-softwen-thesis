@@ -96,6 +96,7 @@ namespace Softwen.Maintenance
             txtvat.KeyPress += Globals.NumbersOnly;
             txtkey.KeyPress += Globals.NumbersOnly;
             txtnewkey.KeyPress += Globals.NumbersOnly;
+            txtbranchid.KeyPress += Globals.NumbersOnly;
         }
         private void maintenance_Load(object sender, EventArgs e)
         {
