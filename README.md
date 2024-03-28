@@ -1,1 +1,1 @@
-# HOP POS v7.5 (Hermes Update)
+# HOP Point of Sales system
