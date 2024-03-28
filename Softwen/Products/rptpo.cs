@@ -23,7 +23,7 @@ namespace Softwen.Products
 
         private void rptpo_Load(object sender, EventArgs e)
         {  
-            po.Load(@"C:\Users\Brian\documents\visual studio 2015\Projects\Softwen\Softwen\Products\purchaseorder.rpt");
+            po.Load(Globals.getrptpath("\\Products\\purchaseorder.rpt")); 
             po.Refresh();
             po.SetDatabaseLogon(ConfigurationManager.AppSettings["Username"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
             po.SetParameterValue("branchname", Properties.Settings.Default.StoreName);

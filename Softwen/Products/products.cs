@@ -37,8 +37,7 @@ namespace Softwen.Products
         public void populatedatagrids()
         {
             selectproducts();
-            selectmissingproducts();
-            selectcategory();
+            selectdispense();
             selectpurchaseorder();
             selectdelivered();
             selectbackorders();
@@ -65,18 +64,13 @@ namespace Softwen.Products
                 }
             }
         }
-
-        public void selectcategory()
-        {
-            gs.Select("selectcat", dgcategories);
-        }
         public void selectproducts()
         {
             gs.Select(@"selectproducts", dgproducts);
         }
-        public void selectmissingproducts()
+        public void selectdispense()
         {
-            gs.Select(@"missingproducted", dgmissingproducts);
+            gs.Select(@"selectdispense", dgmissingproducts);
         }
         public void selectpurchaseorder()
         {
@@ -95,12 +89,12 @@ namespace Softwen.Products
             if (dgproducts.Rows.Count == 0)
             {
                 lnkaddstock.Visible = false;
-                lnkmissing.Visible = false;
+                lnkdispense.Visible = false;
             }
             else
             {
                 lnkaddstock.Visible = true;
-                lnkmissing.Visible = true;
+                lnkdispense.Visible = true;
             }
 
         }
@@ -133,17 +127,9 @@ namespace Softwen.Products
                 rst.ShowDialog(this);
             }
         }
-
-        private void lnkmissing_Click(object sender, EventArgs e)
-        {
-            missingproducts ms = new missingproducts();
-            productstylemanager.Clone(ms);
-            ms.ShowDialog(this);
-        }
-
         private void lnkreportmissing_Click(object sender, EventArgs e)
         {
-            rptmissing rptms = new rptmissing();
+            rptdispense rptms = new rptdispense();
             productstylemanager.Clone(rptms);
             rptms.ShowDialog();
         }
@@ -157,7 +143,7 @@ namespace Softwen.Products
         {
             this.dgproducts.Columns[5].DefaultCellStyle.Format = "C";
             this.dgproducts.Columns[5].DefaultCellStyle.FormatProvider = System.Globalization.CultureInfo.GetCultureInfo("en-PH");
-            productstabcontrol.SelectedTab = metroTabPage1;
+            productstabcontrol.SelectedTab = productpage;
         }
         private void openpoform()
         {
@@ -174,7 +160,7 @@ namespace Softwen.Products
             }
             adst.ShowDialog(this);
         }
-        public void openpoform2()
+        public void openboform()
         {
             addbackorder addbo = new addbackorder();
             foreach (DataGridViewRow row in dgbackorder.Rows)
@@ -190,23 +176,76 @@ namespace Softwen.Products
             addbo.rsid = dgbackorder.CurrentRow.Cells[1].Value.ToString();
             addbo.ShowDialog(this);
         }
-        private void lnkcomplete_Click(object sender, EventArgs e)
+        private void lnkaddpo_Click(object sender, EventArgs e)
         {
             openpoform();
-        }
-        
-
-        private void metroLink3_Click(object sender, EventArgs e)
-        {
-            openpoform2();
         }
 
         private void productstabcontrol_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (productstabcontrol.SelectedTab == metroTabPage1)
+            if (productstabcontrol.SelectedTab == productpage)
             {
                 selectproducts();
             }
+            else if (productstabcontrol.SelectedTab == popage)
+            {
+                pobutton();
+            }
+            else if (productstabcontrol.SelectedTab == bopage)
+            {
+                bobutton();
+            }
+        }
+
+        private void bobutton()
+        {
+            if (dgbackorder.Rows.Count == 0)
+            {
+                lnkaddbackorder.Visible = false;
+            }
+            else
+                lnkaddbackorder.Visible = true;
+        }
+
+        private void lnkdispense_Click(object sender, EventArgs e)
+        {
+            adddispense adddps = new adddispense { productid = dgproducts.CurrentRow.Cells[0].Value.ToString() };
+            adddps.txtproductname.Text = dgproducts.CurrentRow.Cells[1].Value.ToString();
+            adddps.ShowDialog();
+
+        }
+        private void pobutton()
+        {
+            if (dgpo.Rows.Count == 0)
+            {
+                lnkaddpo.Visible = false;
+            }
+            else
+                lnkaddpo.Visible = true;
+        }
+        private void dgpo_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            pobutton();
+        }
+
+        private void dgpo_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            pobutton();
+        }
+
+        private void lnkaddbackorder_Click(object sender, EventArgs e)
+        {
+            openboform();
+        }
+
+        private void dgbackorder_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            bobutton();
+        }
+
+        private void dgbackorder_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            bobutton();
         }
     }
 }

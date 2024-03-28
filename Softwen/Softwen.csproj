@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Softwen</RootNamespace>
     <AssemblyName>Softwen</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -27,7 +27,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -181,17 +180,17 @@
     <Compile Include="Products\addstocks.Designer.cs">
       <DependentUpon>addstocks.cs</DependentUpon>
     </Compile>
-    <Compile Include="Products\missing.cs">
+    <Compile Include="Products\dispense.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>missing.rpt</DependentUpon>
+      <DependentUpon>dispense.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Products\missingproducts.cs">
+    <Compile Include="Products\adddispense.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Products\missingproducts.Designer.cs">
-      <DependentUpon>missingproducts.cs</DependentUpon>
+    <Compile Include="Products\adddispense.Designer.cs">
+      <DependentUpon>adddispense.cs</DependentUpon>
     </Compile>
     <Compile Include="Products\products.cs">
       <SubType>UserControl</SubType>
@@ -211,11 +210,11 @@
     <Compile Include="Products\addpo.designer.cs">
       <DependentUpon>addpo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Products\rptmissing.cs">
+    <Compile Include="Products\rptdispense.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Products\rptmissing.Designer.cs">
-      <DependentUpon>rptmissing.cs</DependentUpon>
+    <Compile Include="Products\rptdispense.Designer.cs">
+      <DependentUpon>rptdispense.cs</DependentUpon>
     </Compile>
     <Compile Include="Products\rptpo.cs">
       <SubType>Form</SubType>
@@ -272,16 +271,16 @@
     <Compile Include="Reports\reports.Designer.cs">
       <DependentUpon>reports.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\stockreport.cs">
+    <Compile Include="Products\deliveryreport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\stockreport.Designer.cs">
-      <DependentUpon>stockreport.cs</DependentUpon>
+    <Compile Include="Products\deliveryreport.Designer.cs">
+      <DependentUpon>deliveryreport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\stocks.cs">
+    <Compile Include="Products\delivery.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>stocks.rpt</DependentUpon>
+      <DependentUpon>delivery.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Resource.Designer.cs">
@@ -365,12 +364,12 @@
     <EmbeddedResource Include="Products\addstocks.resx">
       <DependentUpon>addstocks.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Products\missing.rpt">
+    <EmbeddedResource Include="Products\dispense.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>missing.cs</LastGenOutput>
+      <LastGenOutput>dispense.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Products\missingproducts.resx">
-      <DependentUpon>missingproducts.cs</DependentUpon>
+    <EmbeddedResource Include="Products\adddispense.resx">
+      <DependentUpon>adddispense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Products\products.resx">
       <DependentUpon>products.cs</DependentUpon>
@@ -382,8 +381,8 @@
     <EmbeddedResource Include="Products\addpo.resx">
       <DependentUpon>addpo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Products\rptmissing.resx">
-      <DependentUpon>rptmissing.cs</DependentUpon>
+    <EmbeddedResource Include="Products\rptdispense.resx">
+      <DependentUpon>rptdispense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Products\rptpo.resx">
       <DependentUpon>rptpo.cs</DependentUpon>
@@ -418,12 +417,12 @@
     <EmbeddedResource Include="Reports\reports.resx">
       <DependentUpon>reports.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\stockreport.resx">
-      <DependentUpon>stockreport.cs</DependentUpon>
+    <EmbeddedResource Include="Products\deliveryreport.resx">
+      <DependentUpon>deliveryreport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\stocks.rpt">
+    <EmbeddedResource Include="Products\delivery.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>stocks.cs</LastGenOutput>
+      <LastGenOutput>delivery.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>

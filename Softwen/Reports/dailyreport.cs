@@ -27,7 +27,7 @@ namespace Softwen.Reports
 
         private void dailyreport_Load(object sender, EventArgs e)
         {
-            dailyrpt.Load(@"C:\Users\Brian\Documents\Visual Studio 2015\Projects\HOP POS v7.9.2(Hermes Update)\HOP POS v7.9.2(Hermes Update)\Softwen\Reports\daily.rpt");
+            dailyrpt.Load(Globals.getrptpath("\\Reports\\daily.rpt"));
             dailyrpt.Refresh();
             dailyrpt.SetDatabaseLogon(ConfigurationManager.AppSettings["Username"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
             dailyrpt.SetParameterValue("storename", Properties.Settings.Default.StoreName);

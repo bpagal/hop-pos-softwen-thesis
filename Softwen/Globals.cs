@@ -10,6 +10,7 @@ using MetroFramework.Forms;
 using System.Data;
 using CrystalDecisions.Shared;
 using CrystalDecisions.CrystalReports.Engine;
+using System.IO;
 
 namespace Softwen
 {
@@ -74,8 +75,8 @@ namespace Softwen
                 }
             }
 
-        
-    }//insert/update method into tables from database
+
+        }//insert/update method into tables from database
         public void Delete(string deletequery, MetroGrid dg, Control form)
         {
             if (MetroMessageBox.Show(form, "Are you sure you want to delete this data?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
@@ -118,9 +119,9 @@ namespace Softwen
             //   Insert("INSERT INTO useractivity(timestamp,userid,action,affecteddata) values (@1, @2,@3,@4)", actparameters, actvalues);
 
             Insert("useractivitys", actparameters, actvalues);
-           
-           // Globals.ResetFields(paneluser);
-           
+
+            // Globals.ResetFields(paneluser);
+
         }
         public static bool CheckFields(Control panel, Control form)
         {
@@ -241,7 +242,7 @@ namespace Softwen
                 }
             }
         }//populates the combobox with desired data
-        public bool validatequantity(NumericUpDown nud, MetroForm frm)
+        public bool validateemptyqty(NumericUpDown nud, MetroForm frm)
         {
             if (string.IsNullOrWhiteSpace(nud.Text))
             {
@@ -270,6 +271,11 @@ namespace Softwen
             exportOption.ExportDestinationOptions = diskFileDestinationOptions;
             exportOption.FormatOptions = excelDataOnlyFormatOptions;
             rpt.Export();
+        }
+        public static string getrptpath(string rptname)
+        {
+            string rptpath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory,"..\\..\\" + rptname));
+            return rptpath;
         }
 
     }

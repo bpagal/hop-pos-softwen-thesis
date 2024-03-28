@@ -27,7 +27,7 @@ namespace Softwen.Reports
             if (precise==false)
             {
                 monthly monthlyrpt = new monthly();
-                monthlyrpt.Load(@"C:\Users\Rhiennier\Downloads\Softwen\Softwen\Softwen\Softwen\Reports\monthly.rpt");
+                monthlyrpt.Load(Globals.getrptpath("\\Reports\\monthly.rpt"));
                 monthlyrpt.Refresh();
                 monthlyrpt.SetDatabaseLogon(ConfigurationManager.AppSettings["Username"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
                 monthlyrpt.SetParameterValue("storename", Properties.Settings.Default.StoreName);

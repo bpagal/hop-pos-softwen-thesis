@@ -35,7 +35,7 @@ namespace Softwen.Products
         private void lnkadd_Click(object sender, EventArgs e)
         {
             Globals gs = new Globals();
-            if (gs.validatequantity(txtquantity, this) == false)
+            if (gs.validateemptyqty(txtquantity, this) == false)
             {
                 this.dgrestockbo.CurrentRow.Cells[5].Value = txtquantity.Value;
             }

@@ -303,8 +303,8 @@ namespace Softwen.Dashboard
                 showuseractivity();
                 labelmodule.Text = "User Activity";
                 controlanimator.ShowSync(labelmodule);
-                useract.UseractivityInstance.loadtable();
                 controlanimator.ShowSync(useract.UseractivityInstance.paneluseract);
+                useract.UseractivityInstance.selectuseract();
             }     
         }
 

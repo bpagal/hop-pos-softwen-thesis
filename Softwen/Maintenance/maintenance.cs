@@ -81,7 +81,7 @@ namespace Softwen.Maintenance
         {
             gs.Select("SELECT * FROM category", dgcategories);
         }
-        private void maintenance_Load(object sender, EventArgs e)
+        private void loadsettings()
         {
             this.dgproducts.Columns[5].DefaultCellStyle.FormatProvider = System.Globalization.CultureInfo.GetCultureInfo("en-PH");
             this.dgarchivedproducts.Columns[5].DefaultCellStyle.Format = "C";
@@ -93,9 +93,13 @@ namespace Softwen.Maintenance
             txtbranchid.Text = Properties.Settings.Default.StoreID;
             txtvname.Text = Properties.Settings.Default.SupplierName;
             txtvaddress.Text = Properties.Settings.Default.SupplierAddress;
-            txtkey.Text = Properties.Settings.Default.VoidKey;
             txtvat.KeyPress += Globals.NumbersOnly;
             txtkey.KeyPress += Globals.NumbersOnly;
+            txtnewkey.KeyPress += Globals.NumbersOnly;
+        }
+        private void maintenance_Load(object sender, EventArgs e)
+        {
+            loadsettings();
         }
 
         private void lnkadduser_Click(object sender, EventArgs e)
@@ -273,21 +277,24 @@ namespace Softwen.Maintenance
             else
                 return false;
         }
+        private void savesettings()
+        {
+            Properties.Settings.Default.Vat = Convert.ToDecimal(txtvat.Text);
+            Properties.Settings.Default.StoreName = txtname.Text;
+            Properties.Settings.Default.StoreAddess = txtaddress.Text;
+            Properties.Settings.Default.StoreWebsite = txtwebsite.Text;
+            Properties.Settings.Default.StoreID = txtbranchid.Text;
+            Properties.Settings.Default.VoidKey = txtkey.Text;
+            Properties.Settings.Default.Save();
+            Transaction.transaction.TransactionInstance._vatpercent = Properties.Settings.Default.Vat / 100;
+            Transaction.transaction.TransactionInstance.labelvat.Text = String.Format("Vat Amount {0}%:", Properties.Settings.Default.Vat);
+            MetroMessageBox.Show(this, "Settings successfully saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void lnkvat_Click(object sender, EventArgs e)
         {
             if (Globals.CheckFields(metroTabPage3, this) == false && checkvat() == false)
             {
-                Properties.Settings.Default.Vat = Convert.ToDecimal(txtvat.Text);
-                Properties.Settings.Default.StoreName = txtname.Text;
-                Properties.Settings.Default.StoreAddess = txtaddress.Text;
-                Properties.Settings.Default.StoreWebsite = txtwebsite.Text;
-                Properties.Settings.Default.StoreID = txtbranchid.Text;
-                Properties.Settings.Default.VoidKey = txtkey.Text;
-                Properties.Settings.Default.Save();
-                Transaction.transaction.TransactionInstance._vatpercent = Properties.Settings.Default.Vat / 100;
-                Transaction.transaction.TransactionInstance.labelvat.Text = String.Format("Vat Amount {0}%:", Properties.Settings.Default.Vat);
-                Dashboard.dashboard ds = new Dashboard.dashboard();
-                MetroMessageBox.Show(this, "Settings successfully saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                savesettings();
             }
         }
 
@@ -440,6 +447,44 @@ namespace Softwen.Maintenance
         private void dgarchivedproducts_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             marchivedbuttons();
+        }
+        private void keylogic()
+        {
+            if (txtnewkey.Visible == false && labelnewkey.Visible == false && lnksavekey.Visible == false)
+            {
+                txtnewkey.Visible = true;
+                labelnewkey.Visible = true;
+                lnksavekey.Visible = true;
+            }
+            else
+            {
+                txtnewkey.Visible = false;
+                labelnewkey.Visible = false;
+                lnksavekey.Visible = false;
+            }
+         
+        }
+
+        private void bctoggle_CheckedChanged(object sender, EventArgs e)
+        {
+            keylogic();
+        }
+        private void savekeysettings()
+        {
+            if (txtkey.Text != Properties.Settings.Default.VoidKey)
+            {
+                MetroMessageBox.Show(this, "Incorrect void key", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                txtnewkey.Text = Properties.Settings.Default.VoidKey;
+                Properties.Settings.Default.Save();
+                MetroMessageBox.Show(this, "Void key saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void lnksavekey_Click(object sender, EventArgs e)
+        {
+            savekeysettings();
         }
     }
 }

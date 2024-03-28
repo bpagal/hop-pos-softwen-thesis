@@ -37,9 +37,9 @@
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.crystalReportViewer1.Location = new System.Drawing.Point(20, 60);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(284, 261);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(244, 181);
             this.crystalReportViewer1.TabIndex = 0;
             // 
             // rptinvoice
@@ -49,7 +49,8 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "rptinvoice";
-            this.Text = "rptinvoice";
+            this.Text = "Invoice";
+            this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.rptinvoice_Load);
             this.ResumeLayout(false);

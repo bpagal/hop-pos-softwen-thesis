@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,13 +28,21 @@ namespace Softwen.Maintenance
             metroProgressBar1.Value = 0;
             try
             {
-                Server dbserver = new Server(new ServerConnection(txtserver.Text,txtusername.Text,txtpassword.Text));
-                Backup dbbackup = new Backup() { Action = BackupActionType.Database, Database = txtdatabase.Text };
-                dbbackup.Devices.AddDevice(string.Format(@"D:\b\HOP.bak", txtdatabase.Text), DeviceType.File);
-                dbbackup.Initialize = true;
-                dbbackup.PercentComplete += Dbbackup_PercentComplete;
-                dbbackup.Complete += Dbbackup_Complete;
-                dbbackup.SqlBackupAsync(dbserver);
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "SQL Server database backup files|*.bak";
+                sfd.Title = "Database Backup";
+                sfd.FileName = "HOP.bak";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    FileStream fs = (FileStream)sfd.OpenFile();
+                    Server dbserver = new Server(new ServerConnection(txtserver.Text, txtusername.Text, txtpassword.Text));
+                    Backup dbbackup = new Backup() { Action = BackupActionType.Database, Database = txtdatabase.Text };
+                    dbbackup.Devices.AddDevice(string.Format(fs.ToString(), txtdatabase.Text), DeviceType.File);
+                    dbbackup.Initialize = true;
+                    dbbackup.PercentComplete += Dbbackup_PercentComplete;
+                    dbbackup.Complete += Dbbackup_Complete;
+                    dbbackup.SqlBackupAsync(dbserver);
+                }
             }
             catch (Exception ex)
             {

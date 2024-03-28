@@ -81,7 +81,7 @@ namespace Softwen.Maintenance
         }
         private bool checkproductname()
         {
-            using (SqlDataReader productreader = Globals.ExecuteReader("SELECT productname FROM products WHERE  productname = @1", "@1", txtproductname.Text))
+            using (SqlDataReader productreader = Globals.ExecuteReader("SELECT productname FROM products WHERE productname = @1", "@1", txtproductname.Text))
             {
                 if (productreader.Read() && currentpname != txtproductname.Text)
                 {
@@ -130,8 +130,8 @@ namespace Softwen.Maintenance
                 {
                     cmd.Parameters.AddWithValue("@1", combobxcat.Text);
                     con.Open();
-                    int userid = (int)cmd.ExecuteScalar();
-                    return userid;
+                    int categoryid = (int)cmd.ExecuteScalar();
+                    return categoryid;
                 }
 
             }

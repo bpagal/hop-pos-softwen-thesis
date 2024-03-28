@@ -31,7 +31,7 @@ namespace Softwen.Transaction
         private void rptinvoice_Load(object sender, EventArgs e)
         {
             invoice ivc = new invoice();
-            ivc.Load(@"C:\Users\Brian\Documents\Visual Studio 2015\Projects\Softwen\Softwen\Transaction\CrystalReport1.rpt");
+            ivc.Load(Globals.getrptpath("\\Transaction\\daily.rpt"));
             ivc.Refresh();
             ivc.SetDatabaseLogon(ConfigurationManager.AppSettings["Username"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
             ivc.SetParameterValue("storename", Properties.Settings.Default.StoreName);
