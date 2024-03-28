@@ -2,13 +2,13 @@
 using MetroFramework.Controls;
 using MetroFramework.Forms;
 using System;
-using System.Text;
-using System.Xml;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
+using Microsoft.Win32;
+
 
 namespace Softwen.login
 {
@@ -20,7 +20,8 @@ namespace Softwen.login
         MSSQL mssql = new MSSQL();
         private bool source_result;
         string constring = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-      
+        string testconstring;
+
         public login(Form owner) : base(owner)
         {
             InitializeComponent();
@@ -220,21 +221,38 @@ namespace Softwen.login
         }
         private void login_Load(object sender, EventArgs e)
         {
-            cbserver.Items.Add(@"localhost\SQLEXPRESS");
-            cbserver.Items.Add(@".\SQLEXPRESS");
-            cbserver.Items.Add(string.Format(@"{0}\SQLEXPRESS", Environment.MachineName));
-            cbserver.SelectedIndex = 2;                                                            
+            //cbserver.Items.Add(@"localhost\SQLEXPRESS");
+            //cbserver.Items.Add(@".\SQLEXPRESS");
+            //cbserver.Items.Add(string.Format(@"{0}\SQLEXPRESS", Environment.MachineName));
+            //cbserver.SelectedIndex = 2;                                                            
+            initServerInstances();
             txtserverusername.Text = Properties.Settings.Default.Username;
             txtserverpassword.Text = Properties.Settings.Default.Password;
         }
-
+        private void initServerInstances()
+        {
+            RegistryView rv = Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32;
+            using (RegistryKey rk = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, rv))
+            {
+                RegistryKey ik = rk.OpenSubKey(@"SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL", false);
+                if (ik != null)
+                {
+                    foreach (var inm in ik.GetValueNames())
+                    {
+                        cbserver.Items.Add(Environment.MachineName + @"\" + inm);
+                    }
+                    cbserver.SelectionStart = 0;
+                    cbserver.SelectedIndex = 0;
+                }
+            }
+        }
         private void btntest_Click(object sender, EventArgs e)
         {
-            string teststring = @"Data Source=ANTHONY-PC\HAMSTER;Initial Catalog=HOP;Persist Security Info=True;User ID=hamster;Password=hamster";
+            testconstring = string.Format(@"Data Source={0};Initial Catalog=HOP;Persist Security Info=True;User ID={1};Password={2};", cbserver.Text, txtserverusername.Text, txtserverpassword.Text);
             try
             {
-                SqlHelper helper = new SqlHelper(teststring);
-                if (helper.Isconnected)
+                source_result = mssql.check_connection(testconstring);
+                if (source_result)
                 {
                     MetroMessageBox.Show(this, "Connected Successfully! Please click the Save button", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnsaveconnection.Enabled = true;
@@ -264,17 +282,16 @@ namespace Softwen.login
 
         private void btnsaveconnection_Click(object sender, EventArgs e)
         {
-            string teststring = @"Data Source=ANTHONY-PC\HAMSTER;Initial Catalog=HOP;Persist Security Info=True;User ID=hamster;Password=hamster";
             try
             {
-                SqlHelper helper = new SqlHelper(teststring);
-                if (helper.Isconnected)
+                source_result = mssql.check_connection(testconstring);
+                if (source_result)
                 {
                     Properties.Settings.Default.Username = txtserverusername.Text;
                     Properties.Settings.Default.Password = txtserverpassword.Text;
                     Properties.Settings.Default.Save();
                     AppSetting setting = new AppSetting();
-                    setting.SaveConnectionString("ConnectionString", teststring);
+                    setting.SaveConnectionString("ConnectionString", testconstring);
                     MetroMessageBox.Show(this, "Your connection string has been sucessfully saved.", "Connection string saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Application.Restart();
                 }
