@@ -296,6 +296,7 @@ namespace Softwen
             exportOption.ExportDestinationOptions = diskFileDestinationOptions;
             exportOption.FormatOptions = excelDataOnlyFormatOptions;
             rpt.Export();
+            File.SetAttributes(diskFileDestinationOptions.DiskFileName, FileAttributes.ReadOnly);
         }
         public static string getrptpath(string rptname)
         {

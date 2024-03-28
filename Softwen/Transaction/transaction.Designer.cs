@@ -31,20 +31,16 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(transaction));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.transactionstylemanager = new MetroFramework.Components.MetroStyleManager(this.components);
             this.dgtransaction = new MetroFramework.Controls.MetroGrid();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.transactionpanel = new System.Windows.Forms.Panel();
+            this.lnkfocusbc = new MetroFramework.Controls.MetroLink();
             this.lnkvoid = new MetroFramework.Controls.MetroLink();
             this.autopanel = new System.Windows.Forms.Panel();
-            this.lnkfocusbc = new MetroFramework.Controls.MetroLink();
             this.txtmodifyquantity = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.lnkeditqty1 = new MetroFramework.Controls.MetroLink();
@@ -73,6 +69,11 @@
             this.labelquantity = new System.Windows.Forms.Label();
             this.bctoggle = new MetroFramework.Controls.MetroToggle();
             this.txtautobc = new System.Windows.Forms.TextBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.transactionstylemanager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgtransaction)).BeginInit();
             this.transactionpanel.SuspendLayout();
@@ -116,14 +117,14 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgtransaction.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgtransaction.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgtransaction.EnableHeadersVisualStyles = false;
             this.dgtransaction.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgtransaction.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -131,14 +132,14 @@
             this.dgtransaction.Name = "dgtransaction";
             this.dgtransaction.ReadOnly = true;
             this.dgtransaction.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgtransaction.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgtransaction.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgtransaction.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgtransaction.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgtransaction.Size = new System.Drawing.Size(648, 494);
@@ -147,40 +148,6 @@
             this.dgtransaction.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgtransaction_CellValueChanged);
             this.dgtransaction.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgtransaction_RowsAdded);
             this.dgtransaction.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgtransaction_RowsRemoved);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Product Name";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 144;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Unit Price";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 107;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Quantity";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Category";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 102;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Description";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 121;
             // 
             // transactionpanel
             // 
@@ -201,6 +168,23 @@
             this.transactionpanel.Size = new System.Drawing.Size(1085, 518);
             this.transactionpanel.TabIndex = 0;
             this.transactionpanel.Visible = false;
+            // 
+            // lnkfocusbc
+            // 
+            this.lnkfocusbc.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lnkfocusbc.FontSize = MetroFramework.MetroLinkSize.Medium;
+            this.lnkfocusbc.Image = ((System.Drawing.Image)(resources.GetObject("lnkfocusbc.Image")));
+            this.lnkfocusbc.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lnkfocusbc.ImageSize = 50;
+            this.lnkfocusbc.Location = new System.Drawing.Point(972, 32);
+            this.lnkfocusbc.Name = "lnkfocusbc";
+            this.lnkfocusbc.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkfocusbc.NoFocusImage")));
+            this.lnkfocusbc.Size = new System.Drawing.Size(107, 66);
+            this.lnkfocusbc.TabIndex = 16;
+            this.lnkfocusbc.Text = "Focus Barcode";
+            this.lnkfocusbc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.lnkfocusbc.UseSelectable = true;
+            this.lnkfocusbc.Click += new System.EventHandler(this.lnkfocusbc_Click);
             // 
             // lnkvoid
             // 
@@ -230,23 +214,6 @@
             this.autopanel.Name = "autopanel";
             this.autopanel.Size = new System.Drawing.Size(213, 83);
             this.autopanel.TabIndex = 17;
-            // 
-            // lnkfocusbc
-            // 
-            this.lnkfocusbc.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lnkfocusbc.FontSize = MetroFramework.MetroLinkSize.Medium;
-            this.lnkfocusbc.Image = ((System.Drawing.Image)(resources.GetObject("lnkfocusbc.Image")));
-            this.lnkfocusbc.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lnkfocusbc.ImageSize = 50;
-            this.lnkfocusbc.Location = new System.Drawing.Point(972, 32);
-            this.lnkfocusbc.Name = "lnkfocusbc";
-            this.lnkfocusbc.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkfocusbc.NoFocusImage")));
-            this.lnkfocusbc.Size = new System.Drawing.Size(107, 66);
-            this.lnkfocusbc.TabIndex = 16;
-            this.lnkfocusbc.Text = "Focus Barcode";
-            this.lnkfocusbc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.lnkfocusbc.UseSelectable = true;
-            this.lnkfocusbc.Click += new System.EventHandler(this.lnkfocusbc_Click);
             // 
             // txtmodifyquantity
             // 
@@ -757,6 +724,42 @@
             this.txtautobc.TabIndex = 5;
             this.txtautobc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown_1);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Product Name";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 144;
+            // 
+            // Column2
+            // 
+            dataGridViewCellStyle3.NullValue = null;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column2.HeaderText = "Unit Price";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 107;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Quantity";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Category";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 102;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Description";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 121;
+            // 
             // transaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -802,11 +805,6 @@
         private System.Windows.Forms.Label labelproductname;
         private MetroFramework.Controls.MetroLink lnkaddorder;
         private System.Windows.Forms.Label labelquantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private MetroFramework.Controls.MetroLink lnkdiscount;
         private System.Windows.Forms.Label labeldiscount;
         public MetroFramework.Controls.MetroTextBox grandtotal;
@@ -821,5 +819,10 @@
         public System.Windows.Forms.TextBox txtautobc;
         private System.Windows.Forms.Label label1;
         public MetroFramework.Controls.MetroLink lnkfocusbc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

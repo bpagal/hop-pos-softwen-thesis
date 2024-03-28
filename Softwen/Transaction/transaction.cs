@@ -112,6 +112,7 @@ namespace Softwen.Transaction
             {
                 foreach (DataGridViewRow dgrow in dgtransaction.Rows)
                 {
+
                     if (Convert.ToString(dgrow.Cells[0].Value) == name)
                     {
                         dgrow.Cells[2].Value = Convert.ToString(inputquantity + Convert.ToInt32(dgrow.Cells[2].Value));
@@ -259,12 +260,12 @@ namespace Softwen.Transaction
                 decimal _vatamount = _discountedamount * _vatpercent;
                 _grandtotal = _discountedamount + (_discountedamount * _vatpercent);
                 cashier.Text = fullname;
-                subtotal.Text = "P " + string.Format("{0:F2}", _subtotal);
+                subtotal.Text = "₱ " + string.Format("{0:F2}", _subtotal);
                 discountpercent.Text = _discountvalue + "%";
-                discountamount.Text = "P " + string.Format("{0:F2}", _discountedamount);
+                discountamount.Text = "₱ " + string.Format("{0:F2}", _discountedamount);
                 labelvat.Text = String.Format("Vat Amount {0}%:", Properties.Settings.Default.Vat);
-                vat.Text = "P " + string.Format("{0:F2}", _vatamount);
-                grandtotal.Text = "P " + string.Format("{0:F2}", _grandtotal);
+                vat.Text = "₱ " + string.Format("{0:F2}", _vatamount);
+                grandtotal.Text = "₱ " + string.Format("{0:F2}", _grandtotal);
             }
 
 
@@ -467,6 +468,7 @@ namespace Softwen.Transaction
         private void transaction_Load(object sender, EventArgs e)
         {
             labelvat.Text = String.Format("Vat Amount {0}%:", Properties.Settings.Default.Vat);
+           
             if (transactionstylemanager.Theme == MetroThemeStyle.Dark)
             {
                 Globals.ChangeForeColor(this);
