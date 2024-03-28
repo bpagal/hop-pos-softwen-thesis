@@ -86,7 +86,7 @@ namespace Softwen.login
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT fname FROM users WHERE username = @1", con))
+                using (SqlCommand cmd = new SqlCommand("getfnamed", con))
                 {
                     cmd.Parameters.AddWithValue("@1", txtusername.Text);
                     con.Open();
@@ -99,7 +99,7 @@ namespace Softwen.login
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT lname FROM users WHERE username = @1", con))
+                using (SqlCommand cmd = new SqlCommand("getlname", con))
                 {
                     cmd.Parameters.AddWithValue("@1", txtusername.Text);
                     con.Open();
@@ -141,7 +141,9 @@ namespace Softwen.login
                     using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
                     {
                         con.Open();
-                        using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM users inner join usertype_tbl on users.usertype_id = users.usertype_id WHERE  username = @1 AND password = @2 COLLATE SQL_Latin1_General_CP1_CS_AS", con))
+
+                      
+                        using (SqlCommand cmd = new SqlCommand("trylogins", con))
                        // using (SqlCommand cmd1 = new SqlCommand("SELECT username,usertype, password From users inner join usertype_tbl on users.usertype_id = users.usertype_id ", con))
                         {
                             cmd.Parameters.AddWithValue("@1", txtusername.Text);
@@ -208,7 +210,7 @@ namespace Softwen.login
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                // using (SqlCommand cmd = new SqlCommand("SELECT usertype FROM users WHERE username = @1", con))
-                using(SqlCommand cmd1 = new SqlCommand("Select usertype FROM users inner join usertype_tbl on users.usertype_id = usertype_tbl.usertype_id WHERE username = @2", con))
+                using(SqlCommand cmd1 = new SqlCommand("getusertype", con))
                 {
                  //   cmd.Parameters.AddWithValue("@1", txtusername.Text);
                     cmd1.Parameters.AddWithValue("@2", txtusername.Text);

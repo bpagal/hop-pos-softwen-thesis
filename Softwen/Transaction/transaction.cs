@@ -73,7 +73,7 @@ namespace Softwen.Transaction
         }//sring tempbarcode = barcode scanned
         public void populatecombobox()
         {
-            gs.populatecombobox(combobxproduct, "select productname from products where NOT products.quantity = 0 AND products.status = 'active'", "productname", "productid");
+            gs.populatecombobox(combobxproduct, "combotransaction", "productname", "productid");
         }//populates the combobox with product names
         private void bcdatagridlogic(string price, string name, int quantity, string[] arrayofrows)
         {
@@ -137,7 +137,7 @@ namespace Softwen.Transaction
         }//auto updates the quantity if product already exists in the datagridview
         private void getbarcode()
         {
-            using (SqlDataReader readerbarcode = Globals.ExecuteReader(@"getbarcodess", "@1", txtautobc.Text))
+            using (SqlDataReader readerbarcode = Globals.ExecuteReader(@"SPbarcodeSelect", "@1", txtautobc.Text))
             {
                 if (readerbarcode.HasRows)
                 {
@@ -166,7 +166,7 @@ namespace Softwen.Transaction
         }//gets the barcode of a specific product
         private void checkbarcode()
         {
-            using (SqlDataReader readercheckbarcode = Globals.ExecuteReader("selectbars", "@1", tempbarcode))
+            using (SqlDataReader readercheckbarcode = Globals.ExecuteReader("SELECT barcode FROM products WHERE barcode = @1", "@1", tempbarcode))
             {
                 if (readercheckbarcode.Read())//means barcode exists in the database
                 {
