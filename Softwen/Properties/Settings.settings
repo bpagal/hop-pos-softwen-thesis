@@ -1,0 +1,43 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Softwen.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=Brian\SQLEXPRESS;Initial Catalog=brian;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=Brian\SQLEXPRESS;Initial Catalog=brian;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="HOPConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=Brian\SQLEXPRESS;Initial Catalog=HOP;Persist Security Info=True;User ID=brian;Password=brian&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=Brian\SQLEXPRESS;Initial Catalog=HOP;Persist Security Info=True;User ID=brian;Password=brian</Value>
+    </Setting>
+    <Setting Name="Vat" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">12</Value>
+    </Setting>
+    <Setting Name="StoreName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">House of Polvoron</Value>
+    </Setting>
+    <Setting Name="StoreAddess" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Lot 12 Blk 5 Jasmin St. Don Juan Bayview Subdivision Sucat Muntinlupa City</Value>
+    </Setting>
+    <Setting Name="StoreWebsite" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://www.houseofpolvoron.com/</Value>
+    </Setting>
+    <Setting Name="VoidKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">678910</Value>
+    </Setting>
+    <Setting Name="SupplierName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Motz Food Products Corp.</Value>
+    </Setting>
+    <Setting Name="SupplierAddress" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Las Piñas</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
