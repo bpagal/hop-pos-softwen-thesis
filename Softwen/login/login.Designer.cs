@@ -33,16 +33,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.mtcsettings = new MetroFramework.Controls.MetroTabControl();
             this.mtpconnection = new MetroFramework.Controls.MetroTabPage();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.btntest = new MetroFramework.Controls.MetroButton();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.cbserver = new MetroFramework.Controls.MetroComboBox();
             this.txtserverpassword = new MetroFramework.Controls.MetroTextBox();
             this.txtserverusername = new MetroFramework.Controls.MetroTextBox();
-            this.txtdatabase = new MetroFramework.Controls.MetroTextBox();
             this.mtpctheme = new MetroFramework.Controls.MetroTabPage();
             this.flpcolors = new System.Windows.Forms.FlowLayoutPanel();
             this.mrblight = new MetroFramework.Controls.MetroRadioButton();
@@ -56,7 +54,6 @@
             this.pnlcenter = new MetroFramework.Controls.MetroPanel();
             this.lnklogin = new MetroFramework.Controls.MetroLink();
             this.hoplogo = new System.Windows.Forms.PictureBox();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.pnlsettings.SuspendLayout();
             this.mtcsettings.SuspendLayout();
             this.mtpconnection.SuspendLayout();
@@ -112,16 +109,13 @@
             // mtpconnection
             // 
             this.mtpconnection.Controls.Add(this.metroButton1);
-            this.mtpconnection.Controls.Add(this.metroLabel7);
             this.mtpconnection.Controls.Add(this.btntest);
             this.mtpconnection.Controls.Add(this.metroLabel6);
             this.mtpconnection.Controls.Add(this.metroLabel5);
-            this.mtpconnection.Controls.Add(this.metroLabel4);
             this.mtpconnection.Controls.Add(this.metroLabel3);
             this.mtpconnection.Controls.Add(this.cbserver);
             this.mtpconnection.Controls.Add(this.txtserverpassword);
             this.mtpconnection.Controls.Add(this.txtserverusername);
-            this.mtpconnection.Controls.Add(this.txtdatabase);
             this.mtpconnection.HorizontalScrollbarBarColor = true;
             this.mtpconnection.HorizontalScrollbarHighlightOnWheel = false;
             this.mtpconnection.HorizontalScrollbarSize = 12;
@@ -135,20 +129,21 @@
             this.mtpconnection.VerticalScrollbarHighlightOnWheel = false;
             this.mtpconnection.VerticalScrollbarSize = 13;
             // 
-            // metroLabel7
+            // metroButton1
             // 
-            this.metroLabel7.AutoSize = true;
-            this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel7.Location = new System.Drawing.Point(8, 363);
-            this.metroLabel7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(130, 20);
-            this.metroLabel7.TabIndex = 5;
-            this.metroLabel7.Text = "Connection String:";
+            this.metroButton1.Enabled = false;
+            this.metroButton1.Location = new System.Drawing.Point(152, 240);
+            this.metroButton1.Margin = new System.Windows.Forms.Padding(4);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(137, 31);
+            this.metroButton1.TabIndex = 6;
+            this.metroButton1.Text = "Save";
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // btntest
             // 
-            this.btntest.Location = new System.Drawing.Point(8, 308);
+            this.btntest.Location = new System.Drawing.Point(8, 240);
             this.btntest.Margin = new System.Windows.Forms.Padding(4);
             this.btntest.Name = "btntest";
             this.btntest.Size = new System.Drawing.Size(137, 31);
@@ -161,7 +156,7 @@
             // 
             this.metroLabel6.AutoSize = true;
             this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel6.Location = new System.Drawing.Point(8, 249);
+            this.metroLabel6.Location = new System.Drawing.Point(8, 180);
             this.metroLabel6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(73, 20);
@@ -172,23 +167,12 @@
             // 
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel5.Location = new System.Drawing.Point(8, 191);
+            this.metroLabel5.Location = new System.Drawing.Point(8, 115);
             this.metroLabel5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(78, 20);
             this.metroLabel5.TabIndex = 4;
             this.metroLabel5.Text = "Username:";
-            // 
-            // metroLabel4
-            // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel4.Location = new System.Drawing.Point(8, 122);
-            this.metroLabel4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(75, 20);
-            this.metroLabel4.TabIndex = 4;
-            this.metroLabel4.Text = "Database:";
             // 
             // metroLabel3
             // 
@@ -229,7 +213,7 @@
             this.txtserverpassword.CustomButton.Visible = false;
             this.txtserverpassword.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtserverpassword.Lines = new string[0];
-            this.txtserverpassword.Location = new System.Drawing.Point(108, 249);
+            this.txtserverpassword.Location = new System.Drawing.Point(108, 180);
             this.txtserverpassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtserverpassword.MaxLength = 32767;
             this.txtserverpassword.Name = "txtserverpassword";
@@ -262,7 +246,7 @@
             this.txtserverusername.CustomButton.Visible = false;
             this.txtserverusername.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtserverusername.Lines = new string[0];
-            this.txtserverusername.Location = new System.Drawing.Point(108, 183);
+            this.txtserverusername.Location = new System.Drawing.Point(108, 115);
             this.txtserverusername.Margin = new System.Windows.Forms.Padding(4);
             this.txtserverusername.MaxLength = 32767;
             this.txtserverusername.Name = "txtserverusername";
@@ -277,39 +261,6 @@
             this.txtserverusername.UseSelectable = true;
             this.txtserverusername.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtserverusername.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // txtdatabase
-            // 
-            // 
-            // 
-            // 
-            this.txtdatabase.CustomButton.Image = null;
-            this.txtdatabase.CustomButton.Location = new System.Drawing.Point(153, 1);
-            this.txtdatabase.CustomButton.Margin = new System.Windows.Forms.Padding(5);
-            this.txtdatabase.CustomButton.Name = "";
-            this.txtdatabase.CustomButton.Size = new System.Drawing.Size(29, 29);
-            this.txtdatabase.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtdatabase.CustomButton.TabIndex = 1;
-            this.txtdatabase.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtdatabase.CustomButton.UseSelectable = true;
-            this.txtdatabase.CustomButton.Visible = false;
-            this.txtdatabase.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtdatabase.Lines = new string[0];
-            this.txtdatabase.Location = new System.Drawing.Point(108, 122);
-            this.txtdatabase.Margin = new System.Windows.Forms.Padding(4);
-            this.txtdatabase.MaxLength = 32767;
-            this.txtdatabase.Name = "txtdatabase";
-            this.txtdatabase.PasswordChar = '\0';
-            this.txtdatabase.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtdatabase.SelectedText = "";
-            this.txtdatabase.SelectionLength = 0;
-            this.txtdatabase.SelectionStart = 0;
-            this.txtdatabase.ShortcutsEnabled = true;
-            this.txtdatabase.Size = new System.Drawing.Size(183, 31);
-            this.txtdatabase.TabIndex = 1;
-            this.txtdatabase.UseSelectable = true;
-            this.txtdatabase.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtdatabase.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // mtpctheme
             // 
@@ -553,18 +504,6 @@
             this.hoplogo.TabIndex = 5;
             this.hoplogo.TabStop = false;
             // 
-            // metroButton1
-            // 
-            this.metroButton1.Enabled = false;
-            this.metroButton1.Location = new System.Drawing.Point(154, 308);
-            this.metroButton1.Margin = new System.Windows.Forms.Padding(4);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(137, 31);
-            this.metroButton1.TabIndex = 6;
-            this.metroButton1.Text = "Save";
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
-            // 
             // login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -601,10 +540,8 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroTextBox txtserverpassword;
         private MetroFramework.Controls.MetroTextBox txtserverusername;
-        private MetroFramework.Controls.MetroTextBox txtdatabase;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel5;
-        private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroComboBox cbserver;
         private MetroFramework.Controls.MetroButton btntest;
@@ -614,7 +551,6 @@
         private MetroFramework.Controls.MetroPanel pnlcenter;
         public MetroFramework.Controls.MetroLink lnklogin;
         private System.Windows.Forms.PictureBox hoplogo;
-        private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroButton metroButton1;
     }
 }

@@ -124,46 +124,58 @@ namespace Softwen.login
         }
         private void trytologin()
         {
-            if (string.IsNullOrWhiteSpace(txtusername.Text) || string.IsNullOrWhiteSpace(txtpassword.Text))
+            try
             {
-                MetroMessageBox.Show(this, "One or more fields are empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtusername.Focus();
-            }
-            else
-            {
-                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+                if (string.IsNullOrWhiteSpace(txtusername.Text) || string.IsNullOrWhiteSpace(txtpassword.Text))
                 {
-                    con.Open();
-                    using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM users WHERE  username = @1 AND password = @2 COLLATE SQL_Latin1_General_CP1_CS_AS", con))
+                    MetroMessageBox.Show(this, "One or more fields are empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtusername.Focus();
+                }
+                else
+                {
+                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
                     {
-                        cmd.Parameters.AddWithValue("@1", txtusername.Text);
-                        cmd.Parameters.AddWithValue("@2", txtpassword.Text);
-                        int result = (int)cmd.ExecuteScalar();
-                        if (result > 0)
+                        con.Open();
+                        using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM users WHERE  username = @1 AND password = @2 COLLATE SQL_Latin1_General_CP1_CS_AS", con))
                         {
-                            Dashboard.dashboard ds = new Dashboard.dashboard();
-                            ((MetroForm)this.Parent).StyleManager.Clone(ds);
-                            ds.labelname.Text = getfname() + getlname();
-                            Globals.userid = getuserid().ToString();
-                            gs.recorduseractivity("Login", "None");
-                             if (getusertype()=="Manager")
+                            cmd.Parameters.AddWithValue("@1", txtusername.Text);
+                            cmd.Parameters.AddWithValue("@2", txtpassword.Text);
+                            int result = (int)cmd.ExecuteScalar();
+                            if (result > 0)
                             {
-                                ds.btnmaintenance.Enabled = false;
+                                Dashboard.dashboard ds = new Dashboard.dashboard();
+                                ((MetroForm)this.Parent).StyleManager.Clone(ds);
+                                ds.labelname.Text = getfname() + getlname();
+                                Globals.userid = getuserid().ToString();
+                                gs.recorduseractivity("Login", "None");
+                                if (getusertype() == "Manager")
+                                {
+                                    ds.btnmaintenance.Enabled = false;
+                                }
+                                else if (getusertype() == "Cashier" || getusertype() == "Supervisor")
+                                {
+                                    ds.btnmaintenance.Enabled = false;
+                                    ds.btnreports.Enabled = false;
+                                }
+                                this.Parent.Hide();
+                                ds.Show();
                             }
-                            else if (getusertype() == "Cashier" || getusertype() == "Supervisor")
+                            else
                             {
-                                ds.btnmaintenance.Enabled = false;
-                                ds.btnreports.Enabled = false;    
+                                MetroMessageBox.Show(this, "Incorrect username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                txtusername.Focus();
                             }
-                            this.Parent.Hide();
-                            ds.Show();
                         }
-                        else
-                        {
-                            MetroMessageBox.Show(this, "Incorrect username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            txtusername.Focus();
-                        }                            
                     }
+                }
+            }
+            catch (Exception)
+            {
+                MetroMessageBox.Show(this, "There is no valid Connection! Please configure it in the Settings", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                source_result = mssql.check_connection(constring);
+                if (source_result == false)
+                {
+                    showsettings();
                 }
             }
         }
@@ -186,12 +198,8 @@ namespace Softwen.login
             cbserver.Items.Add(@".\SQLEXPRESS");
             cbserver.Items.Add(string.Format(@"{0}\SQLEXPRESS", Environment.MachineName));
             cbserver.SelectedIndex = 2;
-            getconstring();
-        }
-
-        private void getconstring()
-        {
-            metroLabel7.Text = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            txtserverusername.Text = ConfigurationManager.AppSettings["Username"].ToString();
+            txtserverpassword.Text = ConfigurationManager.AppSettings["Password"].ToString();
         }
 
         private void btntest_Click(object sender, EventArgs e)
@@ -201,7 +209,7 @@ namespace Softwen.login
                 StringBuilder a = new StringBuilder("Server =");
                 a.Append(cbserver.Text);
                 a.Append("; Database =");
-                a.Append(txtdatabase.Text);
+                a.Append("HOP");
                 a.Append("; Uid =");
                 a.Append(txtserverusername.Text);
                 a.Append("; Password =");
@@ -220,7 +228,6 @@ namespace Softwen.login
                     ConfigurationManager.RefreshSection("connectionStrings");
                     SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
                     MetroMessageBox.Show(this, "Connected Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    getconstring();
                     metroButton1.Enabled = true;
                 }
             }
