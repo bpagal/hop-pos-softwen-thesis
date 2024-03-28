@@ -267,7 +267,7 @@ namespace Softwen.login
             //string connectionString = string.Format(@"Data Source={0};Initial Catalog=HOP;Persist Security Info=True;User ID={1};Password={2};", cbserver.Text,txtserverusername.Text,txtserverpassword.Text);
             try
             {
-                source_result = mssql.check_connection(constring);
+                source_result = mssql.check_connection(teststring);
                 if (source_result)
                 {
                     MetroMessageBox.Show(this, "Connected Successfully! Please click the Save button", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -303,7 +303,7 @@ namespace Softwen.login
             //string connectionString = string.Format("Data Source={0};Initial Catalog=HOP;Persist Security Info=True;User ID={1};Password={2};", cbserver.Text, txtserverusername.Text, txtserverpassword.Text);
             try
             {
-                source_result = mssql.check_connection(constring);
+                source_result = mssql.check_connection(teststring);
                 if (source_result)
                 {
                     Properties.Settings.Default.Username = txtserverusername.Text;

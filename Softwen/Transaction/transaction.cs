@@ -73,7 +73,7 @@ namespace Softwen.Transaction
         }//sring tempbarcode = barcode scanned
         public void populatecombobox()
         {
-            gs.populatecombobox(combobxproduct, "SELECT productname FROM products", "productname", "productid");
+            gs.populatecombobox(combobxproduct, "select productname from products where NOT products.quantity = 0 AND products.status = 'active'", "productname", "productid");
         }//populates the combobox with product names
         private void bcdatagridlogic(string price, string name, int quantity, string[] arrayofrows)
         {
