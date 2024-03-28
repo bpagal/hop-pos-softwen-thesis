@@ -285,27 +285,22 @@ namespace Softwen
             DiskFileDestinationOptions diskFileDestinationOptions = new DiskFileDestinationOptions();
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Microsoft Excel (97-2003) Data-Only (*.xls) |*.xls";
-            if (sfd.ShowDialog() == DialogResult.Cancel)
-            {
-                if (string.IsNullOrWhiteSpace(diskFileDestinationOptions.DiskFileName))
-                    return;
-                else
-                    return;
-            }
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 diskFileDestinationOptions.DiskFileName = sfd.FileName;
+                ExcelDataOnlyFormatOptions excelDataOnlyFormatOptions = new ExcelDataOnlyFormatOptions();
+                excelDataOnlyFormatOptions.MaintainRelativeObjectPosition = true;
+                exportOption = rpt.ExportOptions;
+                exportOption.ExportDestinationType = ExportDestinationType.DiskFile;
+                exportOption.ExportFormatType = ExportFormatType.ExcelRecord;
+                exportOption.ExportDestinationOptions = diskFileDestinationOptions;
+                exportOption.FormatOptions = excelDataOnlyFormatOptions;
+                rpt.Export();
+                File.SetAttributes(diskFileDestinationOptions.DiskFileName, FileAttributes.ReadOnly);
+                MetroMessageBox.Show(frm, "Export Complete", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
-            ExcelDataOnlyFormatOptions excelDataOnlyFormatOptions = new ExcelDataOnlyFormatOptions();
-            excelDataOnlyFormatOptions.MaintainRelativeObjectPosition = true;
-            exportOption = rpt.ExportOptions;
-            exportOption.ExportDestinationType = ExportDestinationType.DiskFile;
-            exportOption.ExportFormatType = ExportFormatType.ExcelRecord;
-            exportOption.ExportDestinationOptions = diskFileDestinationOptions;
-            exportOption.FormatOptions = excelDataOnlyFormatOptions;
-            rpt.Export();
-            File.SetAttributes(diskFileDestinationOptions.DiskFileName, FileAttributes.ReadOnly);
-            MetroMessageBox.Show(frm, "Export Complete", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
 
         }
