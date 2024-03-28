@@ -215,6 +215,12 @@
     <Compile Include="Products\addpo.designer.cs">
       <DependentUpon>addpo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Products\reloadpo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>reloadpo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Products\rptbo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,13 +288,13 @@
     <Compile Include="Reports\reports.Designer.cs">
       <DependentUpon>reports.cs</DependentUpon>
     </Compile>
-    <Compile Include="Products\deliveryreport.cs">
+    <Compile Include="Reports\deliveryreport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Products\deliveryreport.Designer.cs">
+    <Compile Include="Reports\deliveryreport.Designer.cs">
       <DependentUpon>deliveryreport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Products\delivery.cs">
+    <Compile Include="Reports\delivery.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>delivery.rpt</DependentUpon>
@@ -396,6 +402,10 @@
     <EmbeddedResource Include="Products\addpo.resx">
       <DependentUpon>addpo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Products\reloadpo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>reloadpo.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Products\rptbo.resx">
       <DependentUpon>rptbo.cs</DependentUpon>
     </EmbeddedResource>
@@ -435,10 +445,10 @@
     <EmbeddedResource Include="Reports\reports.resx">
       <DependentUpon>reports.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Products\deliveryreport.resx">
+    <EmbeddedResource Include="Reports\deliveryreport.resx">
       <DependentUpon>deliveryreport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Products\delivery.rpt">
+    <EmbeddedResource Include="Reports\delivery.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>delivery.cs</LastGenOutput>
     </EmbeddedResource>

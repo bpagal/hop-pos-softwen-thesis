@@ -108,7 +108,6 @@ namespace Softwen.Products
                         gs.Insert("restokss", poparameters, povalues);
                         gs.recorduseractivity("Restock", productname);
                         this.Close();
-                        products.ProductsInstance.selectdelivered();
                         products.ProductsInstance.selectpurchaseorder();
                         products.ProductsInstance.selectbackorders();
                     }

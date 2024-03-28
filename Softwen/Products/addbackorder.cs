@@ -133,7 +133,6 @@ namespace Softwen.Products
                     gs.recorduseractivity("Update Restock", productname);
                     this.Close();
                     products.ProductsInstance.selectbackorders();
-                    products.ProductsInstance.selectdelivered();
                 } 
             }
             MetroMessageBox.Show(this, "Product quantity increased", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

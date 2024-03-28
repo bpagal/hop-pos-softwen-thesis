@@ -101,13 +101,13 @@ namespace Softwen.Reports
             {
                 string[] stockparameters = { "@1" };
                 string[] stockvalues = { dtstocks.Value.ToString("MM/dd/yyyy") };
-                gs.SelectWithParameters(@"reports500", stockparameters, stockvalues, dgstockreport);
+                gs.SelectWithParameters(@"delivereddaily", stockparameters, stockvalues, dgstockreport);
             }
             else if (rd12.Checked)
             {
                 string[] stockparameters = { "@1", "@2" };
                 string[] stockvalues = { dtstartstocks.Value.ToString("MM/dd/yyyy"), dtendstocks.Value.ToString("MM/dd/yyyy") };
-                gs.SelectWithParameters(@"reports600", stockparameters, stockvalues, dgstockreport);
+                gs.SelectWithParameters(@"deliveredmonthly", stockparameters, stockvalues, dgstockreport);
             }
 
         }

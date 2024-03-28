@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(products));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -49,14 +50,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(products));
             this.productstabcontrol = new MetroFramework.Controls.MetroTabControl();
             this.productpage = new MetroFramework.Controls.MetroTabPage();
+            this.lnkdispense = new MetroFramework.Controls.MetroLink();
+            this.lnkaddstock = new MetroFramework.Controls.MetroLink();
             this.dgproducts = new MetroFramework.Controls.MetroGrid();
             this.productidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,27 +66,24 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboboxsp = new MetroFramework.Controls.MetroComboBox();
+            this.txtsp = new MetroFramework.Controls.MetroTextBox();
             this.labelprice = new System.Windows.Forms.Label();
             this.dispensepage = new MetroFramework.Controls.MetroTabPage();
             this.dgmissingproducts = new MetroFramework.Controls.MetroGrid();
-            this.popage = new MetroFramework.Controls.MetroTabPage();
-            this.dgpo = new MetroFramework.Controls.MetroGrid();
-            this.pid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deliveredpage = new MetroFramework.Controls.MetroTabPage();
-            this.dgdelivered = new MetroFramework.Controls.MetroGrid();
-            this.bopage = new MetroFramework.Controls.MetroTabPage();
-            this.dgbackorder = new MetroFramework.Controls.MetroGrid();
-            this.productstylemanager = new MetroFramework.Components.MetroStyleManager(this.components);
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lnkdispense = new MetroFramework.Controls.MetroLink();
-            this.lnkaddstock = new MetroFramework.Controls.MetroLink();
-            this.txtsp = new MetroFramework.Controls.MetroTextBox();
             this.lnkreportmissing = new MetroFramework.Controls.MetroLink();
+            this.popage = new MetroFramework.Controls.MetroTabPage();
+            this.lnkreloadpo = new MetroFramework.Controls.MetroLink();
+            this.dgpo = new MetroFramework.Controls.MetroGrid();
             this.lnkaddpo = new MetroFramework.Controls.MetroLink();
+            this.bopage = new MetroFramework.Controls.MetroTabPage();
             this.lnkboreport = new MetroFramework.Controls.MetroLink();
+            this.dgbackorder = new MetroFramework.Controls.MetroGrid();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lnkaddbackorder = new MetroFramework.Controls.MetroLink();
+            this.productstylemanager = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.pid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productstabcontrol.SuspendLayout();
             this.productpage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgproducts)).BeginInit();
@@ -97,8 +91,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgmissingproducts)).BeginInit();
             this.popage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgpo)).BeginInit();
-            this.deliveredpage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgdelivered)).BeginInit();
             this.bopage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgbackorder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productstylemanager)).BeginInit();
@@ -109,12 +101,11 @@
             this.productstabcontrol.Controls.Add(this.productpage);
             this.productstabcontrol.Controls.Add(this.dispensepage);
             this.productstabcontrol.Controls.Add(this.popage);
-            this.productstabcontrol.Controls.Add(this.deliveredpage);
             this.productstabcontrol.Controls.Add(this.bopage);
             this.productstabcontrol.Dock = System.Windows.Forms.DockStyle.Fill;
             this.productstabcontrol.Location = new System.Drawing.Point(0, 0);
             this.productstabcontrol.Name = "productstabcontrol";
-            this.productstabcontrol.SelectedIndex = 4;
+            this.productstabcontrol.SelectedIndex = 3;
             this.productstabcontrol.Size = new System.Drawing.Size(1085, 518);
             this.productstabcontrol.TabIndex = 1;
             this.productstabcontrol.UseSelectable = true;
@@ -140,6 +131,40 @@
             this.productpage.VerticalScrollbarBarColor = true;
             this.productpage.VerticalScrollbarHighlightOnWheel = false;
             this.productpage.VerticalScrollbarSize = 10;
+            // 
+            // lnkdispense
+            // 
+            this.lnkdispense.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lnkdispense.FontSize = MetroFramework.MetroLinkSize.Medium;
+            this.lnkdispense.Image = ((System.Drawing.Image)(resources.GetObject("lnkdispense.Image")));
+            this.lnkdispense.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lnkdispense.ImageSize = 50;
+            this.lnkdispense.Location = new System.Drawing.Point(3, 122);
+            this.lnkdispense.Name = "lnkdispense";
+            this.lnkdispense.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkdispense.NoFocusImage")));
+            this.lnkdispense.Size = new System.Drawing.Size(113, 66);
+            this.lnkdispense.TabIndex = 26;
+            this.lnkdispense.Text = "Dispense";
+            this.lnkdispense.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.lnkdispense.UseSelectable = true;
+            this.lnkdispense.Click += new System.EventHandler(this.lnkdispense_Click);
+            // 
+            // lnkaddstock
+            // 
+            this.lnkaddstock.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lnkaddstock.FontSize = MetroFramework.MetroLinkSize.Medium;
+            this.lnkaddstock.Image = ((System.Drawing.Image)(resources.GetObject("lnkaddstock.Image")));
+            this.lnkaddstock.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lnkaddstock.ImageSize = 50;
+            this.lnkaddstock.Location = new System.Drawing.Point(13, 50);
+            this.lnkaddstock.Name = "lnkaddstock";
+            this.lnkaddstock.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkaddstock.NoFocusImage")));
+            this.lnkaddstock.Size = new System.Drawing.Size(94, 66);
+            this.lnkaddstock.TabIndex = 26;
+            this.lnkaddstock.Text = "Add P/O";
+            this.lnkaddstock.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.lnkaddstock.UseSelectable = true;
+            this.lnkaddstock.Click += new System.EventHandler(this.lnkaddstock_Click);
             // 
             // dgproducts
             // 
@@ -306,6 +331,41 @@
             this.comboboxsp.UseSelectable = true;
             this.comboboxsp.SelectedIndexChanged += new System.EventHandler(this.comboboxsp_SelectedIndexChanged);
             // 
+            // txtsp
+            // 
+            // 
+            // 
+            // 
+            this.txtsp.CustomButton.Image = null;
+            this.txtsp.CustomButton.Location = new System.Drawing.Point(183, 1);
+            this.txtsp.CustomButton.Name = "";
+            this.txtsp.CustomButton.Size = new System.Drawing.Size(35, 35);
+            this.txtsp.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtsp.CustomButton.TabIndex = 1;
+            this.txtsp.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtsp.CustomButton.UseSelectable = true;
+            this.txtsp.CustomButton.Visible = false;
+            this.txtsp.DisplayIcon = true;
+            this.txtsp.FontSize = MetroFramework.MetroTextBoxSize.Tall;
+            this.txtsp.Icon = ((System.Drawing.Image)(resources.GetObject("txtsp.Icon")));
+            this.txtsp.Lines = new string[0];
+            this.txtsp.Location = new System.Drawing.Point(398, 8);
+            this.txtsp.MaxLength = 32767;
+            this.txtsp.Name = "txtsp";
+            this.txtsp.PasswordChar = '\0';
+            this.txtsp.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtsp.SelectedText = "";
+            this.txtsp.SelectionLength = 0;
+            this.txtsp.SelectionStart = 0;
+            this.txtsp.ShortcutsEnabled = true;
+            this.txtsp.ShowClearButton = true;
+            this.txtsp.Size = new System.Drawing.Size(219, 37);
+            this.txtsp.TabIndex = 20;
+            this.txtsp.UseSelectable = true;
+            this.txtsp.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtsp.WaterMarkFont = new System.Drawing.Font("Open Sans Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtsp.TextChanged += new System.EventHandler(this.txtsp_TextChanged);
+            // 
             // labelprice
             // 
             this.labelprice.AutoSize = true;
@@ -384,8 +444,26 @@
             this.dgmissingproducts.Size = new System.Drawing.Size(853, 423);
             this.dgmissingproducts.TabIndex = 25;
             // 
+            // lnkreportmissing
+            // 
+            this.lnkreportmissing.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lnkreportmissing.FontSize = MetroFramework.MetroLinkSize.Medium;
+            this.lnkreportmissing.Image = ((System.Drawing.Image)(resources.GetObject("lnkreportmissing.Image")));
+            this.lnkreportmissing.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lnkreportmissing.ImageSize = 50;
+            this.lnkreportmissing.Location = new System.Drawing.Point(13, 50);
+            this.lnkreportmissing.Name = "lnkreportmissing";
+            this.lnkreportmissing.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkreportmissing.NoFocusImage")));
+            this.lnkreportmissing.Size = new System.Drawing.Size(97, 66);
+            this.lnkreportmissing.TabIndex = 26;
+            this.lnkreportmissing.Text = "Load Report";
+            this.lnkreportmissing.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.lnkreportmissing.UseSelectable = true;
+            this.lnkreportmissing.Click += new System.EventHandler(this.lnkreportmissing_Click);
+            // 
             // popage
             // 
+            this.popage.Controls.Add(this.lnkreloadpo);
             this.popage.Controls.Add(this.dgpo);
             this.popage.Controls.Add(this.lnkaddpo);
             this.popage.HorizontalScrollbarBarColor = true;
@@ -399,6 +477,23 @@
             this.popage.VerticalScrollbarBarColor = true;
             this.popage.VerticalScrollbarHighlightOnWheel = false;
             this.popage.VerticalScrollbarSize = 10;
+            // 
+            // lnkreloadpo
+            // 
+            this.lnkreloadpo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lnkreloadpo.FontSize = MetroFramework.MetroLinkSize.Medium;
+            this.lnkreloadpo.Image = ((System.Drawing.Image)(resources.GetObject("lnkreloadpo.Image")));
+            this.lnkreloadpo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lnkreloadpo.ImageSize = 50;
+            this.lnkreloadpo.Location = new System.Drawing.Point(126, 401);
+            this.lnkreloadpo.Name = "lnkreloadpo";
+            this.lnkreloadpo.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkreloadpo.NoFocusImage")));
+            this.lnkreloadpo.Size = new System.Drawing.Size(97, 66);
+            this.lnkreloadpo.TabIndex = 37;
+            this.lnkreloadpo.Text = "Load Report";
+            this.lnkreloadpo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.lnkreloadpo.UseSelectable = true;
+            this.lnkreloadpo.Click += new System.EventHandler(this.lnkreloadpo_Click);
             // 
             // dgpo
             // 
@@ -434,7 +529,7 @@
             this.dgpo.EnableHeadersVisualStyles = false;
             this.dgpo.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgpo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgpo.Location = new System.Drawing.Point(3, 18);
+            this.dgpo.Location = new System.Drawing.Point(122, 50);
             this.dgpo.MultiSelect = false;
             this.dgpo.Name = "dgpo";
             this.dgpo.ReadOnly = true;
@@ -451,277 +546,10 @@
             dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.dgpo.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.dgpo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgpo.Size = new System.Drawing.Size(1071, 377);
+            this.dgpo.Size = new System.Drawing.Size(907, 377);
             this.dgpo.TabIndex = 8;
             this.dgpo.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgpo_RowsAdded);
             this.dgpo.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgpo_RowsRemoved);
-            // 
-            // pid
-            // 
-            this.pid.DataPropertyName = "ID";
-            this.pid.HeaderText = "Column7";
-            this.pid.Name = "pid";
-            this.pid.ReadOnly = true;
-            this.pid.Visible = false;
-            this.pid.Width = 101;
-            // 
-            // deliveredpage
-            // 
-            this.deliveredpage.Controls.Add(this.dgdelivered);
-            this.deliveredpage.HorizontalScrollbarBarColor = true;
-            this.deliveredpage.HorizontalScrollbarHighlightOnWheel = false;
-            this.deliveredpage.HorizontalScrollbarSize = 10;
-            this.deliveredpage.Location = new System.Drawing.Point(4, 38);
-            this.deliveredpage.Name = "deliveredpage";
-            this.deliveredpage.Size = new System.Drawing.Size(1077, 476);
-            this.deliveredpage.TabIndex = 6;
-            this.deliveredpage.Text = "Delivered";
-            this.deliveredpage.VerticalScrollbarBarColor = true;
-            this.deliveredpage.VerticalScrollbarHighlightOnWheel = false;
-            this.deliveredpage.VerticalScrollbarSize = 10;
-            // 
-            // dgdelivered
-            // 
-            this.dgdelivered.AllowUserToAddRows = false;
-            this.dgdelivered.AllowUserToDeleteRows = false;
-            this.dgdelivered.AllowUserToResizeRows = false;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.LightGray;
-            this.dgdelivered.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
-            this.dgdelivered.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgdelivered.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgdelivered.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgdelivered.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgdelivered.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgdelivered.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
-            this.dgdelivered.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgdelivered.DefaultCellStyle = dataGridViewCellStyle18;
-            this.dgdelivered.EnableHeadersVisualStyles = false;
-            this.dgdelivered.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dgdelivered.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgdelivered.Location = new System.Drawing.Point(3, 18);
-            this.dgdelivered.MultiSelect = false;
-            this.dgdelivered.Name = "dgdelivered";
-            this.dgdelivered.ReadOnly = true;
-            this.dgdelivered.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.dgdelivered.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
-            this.dgdelivered.RowHeadersWidth = 45;
-            this.dgdelivered.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dgdelivered.RowsDefaultCellStyle = dataGridViewCellStyle20;
-            this.dgdelivered.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgdelivered.Size = new System.Drawing.Size(1071, 377);
-            this.dgdelivered.TabIndex = 37;
-            // 
-            // bopage
-            // 
-            this.bopage.Controls.Add(this.lnkboreport);
-            this.bopage.Controls.Add(this.dgbackorder);
-            this.bopage.Controls.Add(this.lnkaddbackorder);
-            this.bopage.HorizontalScrollbarBarColor = true;
-            this.bopage.HorizontalScrollbarHighlightOnWheel = false;
-            this.bopage.HorizontalScrollbarSize = 10;
-            this.bopage.Location = new System.Drawing.Point(4, 38);
-            this.bopage.Name = "bopage";
-            this.bopage.Size = new System.Drawing.Size(1077, 476);
-            this.bopage.TabIndex = 7;
-            this.bopage.Text = "Back Order";
-            this.bopage.VerticalScrollbarBarColor = true;
-            this.bopage.VerticalScrollbarHighlightOnWheel = false;
-            this.bopage.VerticalScrollbarSize = 10;
-            // 
-            // dgbackorder
-            // 
-            this.dgbackorder.AllowUserToAddRows = false;
-            this.dgbackorder.AllowUserToDeleteRows = false;
-            this.dgbackorder.AllowUserToResizeRows = false;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.LightGray;
-            this.dgbackorder.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
-            this.dgbackorder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgbackorder.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgbackorder.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgbackorder.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgbackorder.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgbackorder.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
-            this.dgbackorder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgbackorder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column7,
-            this.Column9,
-            this.Column10});
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgbackorder.DefaultCellStyle = dataGridViewCellStyle23;
-            this.dgbackorder.EnableHeadersVisualStyles = false;
-            this.dgbackorder.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dgbackorder.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgbackorder.Location = new System.Drawing.Point(6, 35);
-            this.dgbackorder.MultiSelect = false;
-            this.dgbackorder.Name = "dgbackorder";
-            this.dgbackorder.ReadOnly = true;
-            this.dgbackorder.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.dgbackorder.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
-            this.dgbackorder.RowHeadersWidth = 45;
-            this.dgbackorder.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dgbackorder.RowsDefaultCellStyle = dataGridViewCellStyle25;
-            this.dgbackorder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgbackorder.Size = new System.Drawing.Size(1071, 343);
-            this.dgbackorder.TabIndex = 38;
-            this.dgbackorder.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgbackorder_RowsAdded);
-            this.dgbackorder.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgbackorder_RowsRemoved);
-            // 
-            // productstylemanager
-            // 
-            this.productstylemanager.Owner = this;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "PID";
-            this.Column10.HeaderText = "Column10";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            this.Column10.Visible = false;
-            this.Column10.Width = 110;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "RS ID";
-            this.Column9.HeaderText = "Column9";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Visible = false;
-            this.Column9.Width = 101;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "P/O #";
-            this.Column7.HeaderText = "P/O #";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 76;
-            // 
-            // lnkdispense
-            // 
-            this.lnkdispense.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lnkdispense.FontSize = MetroFramework.MetroLinkSize.Medium;
-            this.lnkdispense.Image = ((System.Drawing.Image)(resources.GetObject("lnkdispense.Image")));
-            this.lnkdispense.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lnkdispense.ImageSize = 50;
-            this.lnkdispense.Location = new System.Drawing.Point(3, 122);
-            this.lnkdispense.Name = "lnkdispense";
-            this.lnkdispense.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkdispense.NoFocusImage")));
-            this.lnkdispense.Size = new System.Drawing.Size(113, 66);
-            this.lnkdispense.TabIndex = 26;
-            this.lnkdispense.Text = "Dispense";
-            this.lnkdispense.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.lnkdispense.UseSelectable = true;
-            this.lnkdispense.Click += new System.EventHandler(this.lnkdispense_Click);
-            // 
-            // lnkaddstock
-            // 
-            this.lnkaddstock.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lnkaddstock.FontSize = MetroFramework.MetroLinkSize.Medium;
-            this.lnkaddstock.Image = ((System.Drawing.Image)(resources.GetObject("lnkaddstock.Image")));
-            this.lnkaddstock.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lnkaddstock.ImageSize = 50;
-            this.lnkaddstock.Location = new System.Drawing.Point(13, 50);
-            this.lnkaddstock.Name = "lnkaddstock";
-            this.lnkaddstock.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkaddstock.NoFocusImage")));
-            this.lnkaddstock.Size = new System.Drawing.Size(94, 66);
-            this.lnkaddstock.TabIndex = 26;
-            this.lnkaddstock.Text = "Add P/O";
-            this.lnkaddstock.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.lnkaddstock.UseSelectable = true;
-            this.lnkaddstock.Click += new System.EventHandler(this.lnkaddstock_Click);
-            // 
-            // txtsp
-            // 
-            // 
-            // 
-            // 
-            this.txtsp.CustomButton.Image = null;
-            this.txtsp.CustomButton.Location = new System.Drawing.Point(183, 1);
-            this.txtsp.CustomButton.Name = "";
-            this.txtsp.CustomButton.Size = new System.Drawing.Size(35, 35);
-            this.txtsp.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtsp.CustomButton.TabIndex = 1;
-            this.txtsp.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtsp.CustomButton.UseSelectable = true;
-            this.txtsp.CustomButton.Visible = false;
-            this.txtsp.DisplayIcon = true;
-            this.txtsp.FontSize = MetroFramework.MetroTextBoxSize.Tall;
-            this.txtsp.Icon = ((System.Drawing.Image)(resources.GetObject("txtsp.Icon")));
-            this.txtsp.Lines = new string[0];
-            this.txtsp.Location = new System.Drawing.Point(398, 8);
-            this.txtsp.MaxLength = 32767;
-            this.txtsp.Name = "txtsp";
-            this.txtsp.PasswordChar = '\0';
-            this.txtsp.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtsp.SelectedText = "";
-            this.txtsp.SelectionLength = 0;
-            this.txtsp.SelectionStart = 0;
-            this.txtsp.ShortcutsEnabled = true;
-            this.txtsp.ShowClearButton = true;
-            this.txtsp.Size = new System.Drawing.Size(219, 37);
-            this.txtsp.TabIndex = 20;
-            this.txtsp.UseSelectable = true;
-            this.txtsp.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtsp.WaterMarkFont = new System.Drawing.Font("Open Sans Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtsp.TextChanged += new System.EventHandler(this.txtsp_TextChanged);
-            // 
-            // lnkreportmissing
-            // 
-            this.lnkreportmissing.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lnkreportmissing.FontSize = MetroFramework.MetroLinkSize.Medium;
-            this.lnkreportmissing.Image = ((System.Drawing.Image)(resources.GetObject("lnkreportmissing.Image")));
-            this.lnkreportmissing.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lnkreportmissing.ImageSize = 50;
-            this.lnkreportmissing.Location = new System.Drawing.Point(13, 50);
-            this.lnkreportmissing.Name = "lnkreportmissing";
-            this.lnkreportmissing.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkreportmissing.NoFocusImage")));
-            this.lnkreportmissing.Size = new System.Drawing.Size(97, 66);
-            this.lnkreportmissing.TabIndex = 26;
-            this.lnkreportmissing.Text = "Load Report";
-            this.lnkreportmissing.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.lnkreportmissing.UseSelectable = true;
-            this.lnkreportmissing.Click += new System.EventHandler(this.lnkreportmissing_Click);
             // 
             // lnkaddpo
             // 
@@ -740,6 +568,23 @@
             this.lnkaddpo.UseSelectable = true;
             this.lnkaddpo.Click += new System.EventHandler(this.lnkaddpo_Click);
             // 
+            // bopage
+            // 
+            this.bopage.Controls.Add(this.lnkboreport);
+            this.bopage.Controls.Add(this.dgbackorder);
+            this.bopage.Controls.Add(this.lnkaddbackorder);
+            this.bopage.HorizontalScrollbarBarColor = true;
+            this.bopage.HorizontalScrollbarHighlightOnWheel = false;
+            this.bopage.HorizontalScrollbarSize = 10;
+            this.bopage.Location = new System.Drawing.Point(4, 38);
+            this.bopage.Name = "bopage";
+            this.bopage.Size = new System.Drawing.Size(1077, 476);
+            this.bopage.TabIndex = 7;
+            this.bopage.Text = "Back Order";
+            this.bopage.VerticalScrollbarBarColor = true;
+            this.bopage.VerticalScrollbarHighlightOnWheel = false;
+            this.bopage.VerticalScrollbarSize = 10;
+            // 
             // lnkboreport
             // 
             this.lnkboreport.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -756,6 +601,90 @@
             this.lnkboreport.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.lnkboreport.UseSelectable = true;
             this.lnkboreport.Click += new System.EventHandler(this.lnkboreport_Click);
+            // 
+            // dgbackorder
+            // 
+            this.dgbackorder.AllowUserToAddRows = false;
+            this.dgbackorder.AllowUserToDeleteRows = false;
+            this.dgbackorder.AllowUserToResizeRows = false;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.LightGray;
+            this.dgbackorder.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            this.dgbackorder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgbackorder.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgbackorder.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgbackorder.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgbackorder.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgbackorder.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            this.dgbackorder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgbackorder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column7,
+            this.Column9,
+            this.Column10});
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgbackorder.DefaultCellStyle = dataGridViewCellStyle18;
+            this.dgbackorder.EnableHeadersVisualStyles = false;
+            this.dgbackorder.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgbackorder.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgbackorder.Location = new System.Drawing.Point(122, 50);
+            this.dgbackorder.MultiSelect = false;
+            this.dgbackorder.Name = "dgbackorder";
+            this.dgbackorder.ReadOnly = true;
+            this.dgbackorder.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.dgbackorder.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.dgbackorder.RowHeadersWidth = 45;
+            this.dgbackorder.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dgbackorder.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            this.dgbackorder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgbackorder.Size = new System.Drawing.Size(907, 343);
+            this.dgbackorder.TabIndex = 38;
+            this.dgbackorder.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgbackorder_RowsAdded);
+            this.dgbackorder.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgbackorder_RowsRemoved);
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "P/O #";
+            this.Column7.HeaderText = "P/O #";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 76;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "RS ID";
+            this.Column9.HeaderText = "Column9";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Visible = false;
+            this.Column9.Width = 101;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "PID";
+            this.Column10.HeaderText = "Column10";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Visible = false;
+            this.Column10.Width = 110;
             // 
             // lnkaddbackorder
             // 
@@ -774,6 +703,19 @@
             this.lnkaddbackorder.UseSelectable = true;
             this.lnkaddbackorder.Click += new System.EventHandler(this.lnkaddbackorder_Click);
             // 
+            // productstylemanager
+            // 
+            this.productstylemanager.Owner = this;
+            // 
+            // pid
+            // 
+            this.pid.DataPropertyName = "ID";
+            this.pid.HeaderText = "Product ID";
+            this.pid.Name = "pid";
+            this.pid.ReadOnly = true;
+            this.pid.Visible = false;
+            this.pid.Width = 115;
+            // 
             // products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -790,8 +732,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgmissingproducts)).EndInit();
             this.popage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgpo)).EndInit();
-            this.deliveredpage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgdelivered)).EndInit();
             this.bopage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgbackorder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productstylemanager)).EndInit();
@@ -816,12 +756,9 @@
         private MetroFramework.Controls.MetroTabPage popage;
         public MetroFramework.Controls.MetroLink lnkaddpo;
         public MetroFramework.Controls.MetroGrid dgpo;
-        private MetroFramework.Controls.MetroTabPage deliveredpage;
         private MetroFramework.Controls.MetroTabPage bopage;
-        public MetroFramework.Controls.MetroGrid dgdelivered;
         public MetroFramework.Controls.MetroGrid dgbackorder;
         public MetroFramework.Controls.MetroLink lnkaddbackorder;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pid;
         private System.Windows.Forms.DataGridViewTextBoxColumn productidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
@@ -836,5 +773,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private MetroFramework.Controls.MetroLink lnkreloadpo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pid;
     }
 }

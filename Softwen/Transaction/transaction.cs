@@ -310,7 +310,6 @@ namespace Softwen.Transaction
             {
                 transactionstylemanager.Clone(pm);
                 decimal _subtotal = Convert.ToDecimal(dgtransaction.Rows.Cast<DataGridViewRow>().Sum(t => Convert.ToDouble(t.Cells[1].Value)));
-                //pm.txtgrandtotal.Text = String.Format("{0:N}", grandtotal.Text);
                 if (discountpercent.Text == "0%")
                 {
                     pm.txtgrandtotal.Text = string.Format("{0:F2}", Convert.ToInt32(_grandtotal));

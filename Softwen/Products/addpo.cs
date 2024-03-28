@@ -209,5 +209,22 @@ namespace Softwen.Products
                 labelquantity.Visible = false;
             }
         }
+
+        private void lnksusall_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow row in dgaddpo.Rows)
+                {
+                    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+                    chk.Value = !(chk.Value == null ? false : (bool)chk.Value); //because chk.Value is initialy null
+                }
+            }
+            catch (Exception)
+            {
+
+                return;
+            }
+        }
     }
 }

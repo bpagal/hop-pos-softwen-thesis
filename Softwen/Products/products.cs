@@ -39,7 +39,6 @@ namespace Softwen.Products
             selectproducts();
             selectdispense();
             selectpurchaseorder();
-            selectdelivered();
             selectbackorders();
         }
         public void displaylowqty()
@@ -79,10 +78,6 @@ namespace Softwen.Products
         public void selectbackorders()
         {
             gs.Select(@"selectbackorders", dgbackorder);
-        }
-        public void selectdelivered()
-        {
-            gs.Select(@"selectdelivered", dgdelivered);
         }
         public void productbuttons()
         {
@@ -158,6 +153,7 @@ namespace Softwen.Products
                     adst.dgrestock.Rows.Add(arrayofrows);
                 }
             }
+            productstylemanager.Clone(adst);
             adst.ShowDialog(this);
         }
         public void openboform()
@@ -173,6 +169,7 @@ namespace Softwen.Products
                     addbo.dgrestockbo.Rows.Add(arrayofrows);
                 }
             }
+            productstylemanager.Clone(addbo);
             addbo.rsid = dgbackorder.CurrentRow.Cells[1].Value.ToString();
             addbo.ShowDialog(this);
         }
@@ -223,6 +220,7 @@ namespace Softwen.Products
         private void lnkdispense_Click(object sender, EventArgs e)
         {
             adddispense adddps = new adddispense { productid = dgproducts.CurrentRow.Cells[0].Value.ToString() };
+            productstylemanager.Clone(adddps);
             adddps.txtproductname.Text = dgproducts.CurrentRow.Cells[1].Value.ToString();
             adddps.txtquantity.Maximum = Convert.ToDecimal(dgproducts.CurrentRow.Cells[4].Value);
             adddps.ShowDialog();
@@ -233,9 +231,14 @@ namespace Softwen.Products
             if (dgpo.Rows.Count == 0)
             {
                 lnkaddpo.Visible = false;
+                lnkreloadpo.Visible = false;
             }
             else
+            {
                 lnkaddpo.Visible = true;
+                lnkreloadpo.Visible = true;
+            }
+                
         }
         private void dgpo_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
@@ -279,8 +282,18 @@ namespace Softwen.Products
         private void lnkboreport_Click(object sender, EventArgs e)
         {
             rptbo _rptbo = new rptbo();
+            productstylemanager.Clone(_rptbo);
             _rptbo.ponumber = Convert.ToInt32(this.dgbackorder.CurrentRow.Cells[0].Value);
             _rptbo.ShowDialog();
+        }
+
+        private void lnkreloadpo_Click(object sender, EventArgs e)
+        {
+            rptpo rptpurchaseoder = new rptpo();
+            productstylemanager.Clone(rptpurchaseoder);
+            rptpurchaseoder.initialreport = false;
+            rptpurchaseoder.selectedponumber = this.dgpo.CurrentRow.Cells[0].Value.ToString();
+            rptpurchaseoder.ShowDialog();
         }
     }
 }

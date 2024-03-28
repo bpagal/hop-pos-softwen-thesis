@@ -26,6 +26,7 @@ namespace Softwen.Products
             dsp.SetDatabaseLogon(ConfigurationManager.AppSettings["Username"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
             dsp.SetParameterValue("storename", Properties.Settings.Default.StoreName);
             dsp.SetParameterValue("storeaddress", Properties.Settings.Default.StoreAddess);
+            dsp.SetParameterValue("branchid", Properties.Settings.Default.StoreID);
             crystaldispense.Refresh();
             crystaldispense.ReportSource = dsp;
         }
