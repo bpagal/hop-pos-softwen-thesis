@@ -8,6 +8,8 @@ using MetroFramework.Components;
 using MetroFramework;
 using MetroFramework.Forms;
 using System.Data;
+using CrystalDecisions.Shared;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace Softwen
 {
@@ -243,14 +245,24 @@ namespace Softwen
             else
                 return false;
         }
-        public void nudvaluechanged(NumericUpDown nud,MetroForm frm, object sender, EventArgs e)
+        public void exportexcel(ReportDocument rpt)
         {
-            if (nud.Value <= 0 || nud.Value > nud.Maximum)
+            ExportOptions exportOption;
+            DiskFileDestinationOptions diskFileDestinationOptions = new DiskFileDestinationOptions();
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Microsoft Excel (97-2003) Data-Only (*.xls) |*.xls";
+            if (sfd.ShowDialog() == DialogResult.OK)
             {
-                MetroMessageBox.Show(frm, "Invalid Quantity", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                nud.Value = nud.Maximum;
-                nud.Focus();
+                diskFileDestinationOptions.DiskFileName = sfd.FileName;
             }
+            ExcelDataOnlyFormatOptions excelDataOnlyFormatOptions = new ExcelDataOnlyFormatOptions();
+            excelDataOnlyFormatOptions.MaintainRelativeObjectPosition = true;
+            exportOption = rpt.ExportOptions;
+            exportOption.ExportDestinationType = ExportDestinationType.DiskFile;
+            exportOption.ExportFormatType = ExportFormatType.ExcelRecord;
+            exportOption.ExportDestinationOptions = diskFileDestinationOptions;
+            exportOption.FormatOptions = excelDataOnlyFormatOptions;
+            rpt.Export();
         }
 
     }

@@ -169,9 +169,10 @@ namespace Softwen.login
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MetroMessageBox.Show(this, "There is no valid Connection! Please configure it in the Settings", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MetroMessageBox.Show(this, "There is no valid Connection! Please configure it in the Settings", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 source_result = mssql.check_connection(constring);
                 if (source_result == false)
                 {
@@ -204,59 +205,59 @@ namespace Softwen.login
 
         private void btntest_Click(object sender, EventArgs e)
         {
+            //try
+            //{
+            //    StringBuilder a = new StringBuilder("Data Source=");
+            //    a.Append(cbserver.Text);
+            //    a.Append(";Initial Catalog=");
+            //    a.Append("HOP;Persist Security Info=True;");
+            //    a.Append("User ID=");
+            //    a.Append(txtserverusername.Text);
+            //    a.Append(";Password=");
+            //    a.Append(txtserverpassword.Text);
+            //    //a.Append(";");
+            //    string strCon = a.ToString();
+            //    source_result = mssql.check_connection(strCon);
+            //    if (source_result == false)
+            //    {
+            //        MetroMessageBox.Show(this, "Connection failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        metroButton1.Enabled = false;
+            //    }
+            //    else
+            //    {
+            //        updateConfigFile(strCon);
+            //        ConfigurationManager.RefreshSection("connectionStrings");
+            //        SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
+            //        MetroMessageBox.Show(this, "Connected Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        metroButton1.Enabled = true;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            string connectionString = string.Format("Data Source={0};Initial Catalog=HOP;User ID={1};Password={2};", cbserver.Text,txtserverusername.Text,txtserverpassword.Text);
             try
             {
-                StringBuilder a = new StringBuilder("Server =");
-                a.Append(cbserver.Text);
-                a.Append("; Database =");
-                a.Append("HOP");
-                a.Append("; Uid =");
-                a.Append(txtserverusername.Text);
-                a.Append("; Password =");
-                a.Append(txtserverpassword.Text);
-                a.Append(";");
-                string strCon = a.ToString();
-                source_result = mssql.check_connection(strCon);
-                if (source_result == false)
+                SqlHelper helper = new SqlHelper(connectionString);
+                if (helper.Isconnected)
                 {
-                    MetroMessageBox.Show(this, "Connection failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    metroButton1.Enabled = false;
-                }
-                else
-                {
-                    updateConfigFile(strCon);
-                    ConfigurationManager.RefreshSection("connectionStrings");
-                    SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
-                    MetroMessageBox.Show(this, "Connected Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    metroButton1.Enabled = true;
+                    MetroMessageBox.Show(this, "Connected Successfully! Please click the Save button", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnsaveconnection.Enabled = true;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MetroMessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        public void updateConfigFile(string con)
-        {
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
-
-            foreach (XmlElement xElement in xmlDoc.DocumentElement)
-            {
-                if (xElement.Name == "connectionStrings")
-                {
-                    xElement.FirstChild.Attributes[2].Value = con;
-
-                }
-            }
-            xmlDoc.Save(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
-        }
+      
 
         private void txtpassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                trytologin();          
+                trytologin();
         }
 
         private void lnklogin_Click(object sender, EventArgs e)
@@ -264,9 +265,23 @@ namespace Softwen.login
             trytologin();
         }
 
-        private void metroButton1_Click(object sender, EventArgs e)
+        private void btnsaveconnection_Click(object sender, EventArgs e)
         {
-            Application.Restart();
+            string connectionString = string.Format("Data Source={0};Initial Catalog=HOP;User ID={1};Password={2};", cbserver.Text, txtserverusername.Text, txtserverpassword.Text);
+            try
+            {
+                SqlHelper helper = new SqlHelper(connectionString);
+                if (helper.Isconnected)
+                {
+                    AppSetting setting = new AppSetting();
+                    setting.SaveConnectionString("ConnectionString", connectionString);
+                    MetroMessageBox.Show(this, "Your connection string has been sucessfully saved.", "Connection string saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 

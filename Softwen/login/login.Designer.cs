@@ -33,8 +33,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.mtcsettings = new MetroFramework.Controls.MetroTabControl();
             this.mtpconnection = new MetroFramework.Controls.MetroTabPage();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.btntest = new MetroFramework.Controls.MetroButton();
+            this.btnsaveconnection = new MetroFramework.Controls.MetroButton();
+            this.btntestconnection = new MetroFramework.Controls.MetroButton();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
@@ -71,15 +71,14 @@
             this.pnlsettings.Controls.Add(this.lnkback);
             this.pnlsettings.HorizontalScrollbarBarColor = true;
             this.pnlsettings.HorizontalScrollbarHighlightOnWheel = false;
-            this.pnlsettings.HorizontalScrollbarSize = 12;
-            this.pnlsettings.Location = new System.Drawing.Point(541, 0);
-            this.pnlsettings.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlsettings.HorizontalScrollbarSize = 10;
+            this.pnlsettings.Location = new System.Drawing.Point(406, 0);
             this.pnlsettings.Name = "pnlsettings";
-            this.pnlsettings.Size = new System.Drawing.Size(336, 572);
+            this.pnlsettings.Size = new System.Drawing.Size(252, 465);
             this.pnlsettings.TabIndex = 2;
             this.pnlsettings.VerticalScrollbarBarColor = true;
             this.pnlsettings.VerticalScrollbarHighlightOnWheel = false;
-            this.pnlsettings.VerticalScrollbarSize = 13;
+            this.pnlsettings.VerticalScrollbarSize = 10;
             this.pnlsettings.Visible = false;
             // 
             // panel1
@@ -88,28 +87,26 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
-            this.panel1.Size = new System.Drawing.Size(1, 572);
+            this.panel1.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.panel1.Size = new System.Drawing.Size(1, 465);
             this.panel1.TabIndex = 4;
             // 
             // mtcsettings
             // 
             this.mtcsettings.Controls.Add(this.mtpconnection);
             this.mtcsettings.Controls.Add(this.mtpctheme);
-            this.mtcsettings.Location = new System.Drawing.Point(4, 52);
-            this.mtcsettings.Margin = new System.Windows.Forms.Padding(4);
+            this.mtcsettings.Location = new System.Drawing.Point(3, 42);
             this.mtcsettings.Name = "mtcsettings";
             this.mtcsettings.SelectedIndex = 0;
-            this.mtcsettings.Size = new System.Drawing.Size(328, 442);
+            this.mtcsettings.Size = new System.Drawing.Size(246, 359);
             this.mtcsettings.TabIndex = 3;
             this.mtcsettings.UseSelectable = true;
             // 
             // mtpconnection
             // 
-            this.mtpconnection.Controls.Add(this.metroButton1);
-            this.mtpconnection.Controls.Add(this.btntest);
+            this.mtpconnection.Controls.Add(this.btnsaveconnection);
+            this.mtpconnection.Controls.Add(this.btntestconnection);
             this.mtpconnection.Controls.Add(this.metroLabel6);
             this.mtpconnection.Controls.Add(this.metroLabel5);
             this.mtpconnection.Controls.Add(this.metroLabel3);
@@ -118,48 +115,44 @@
             this.mtpconnection.Controls.Add(this.txtserverusername);
             this.mtpconnection.HorizontalScrollbarBarColor = true;
             this.mtpconnection.HorizontalScrollbarHighlightOnWheel = false;
-            this.mtpconnection.HorizontalScrollbarSize = 12;
+            this.mtpconnection.HorizontalScrollbarSize = 10;
             this.mtpconnection.Location = new System.Drawing.Point(4, 38);
-            this.mtpconnection.Margin = new System.Windows.Forms.Padding(4);
             this.mtpconnection.Name = "mtpconnection";
-            this.mtpconnection.Size = new System.Drawing.Size(320, 400);
+            this.mtpconnection.Size = new System.Drawing.Size(238, 317);
             this.mtpconnection.TabIndex = 0;
             this.mtpconnection.Text = "Connection";
             this.mtpconnection.VerticalScrollbarBarColor = true;
             this.mtpconnection.VerticalScrollbarHighlightOnWheel = false;
-            this.mtpconnection.VerticalScrollbarSize = 13;
+            this.mtpconnection.VerticalScrollbarSize = 10;
             // 
-            // metroButton1
+            // btnsaveconnection
             // 
-            this.metroButton1.Enabled = false;
-            this.metroButton1.Location = new System.Drawing.Point(152, 240);
-            this.metroButton1.Margin = new System.Windows.Forms.Padding(4);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(137, 31);
-            this.metroButton1.TabIndex = 6;
-            this.metroButton1.Text = "Save";
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            this.btnsaveconnection.Enabled = false;
+            this.btnsaveconnection.Location = new System.Drawing.Point(114, 195);
+            this.btnsaveconnection.Name = "btnsaveconnection";
+            this.btnsaveconnection.Size = new System.Drawing.Size(103, 25);
+            this.btnsaveconnection.TabIndex = 6;
+            this.btnsaveconnection.Text = "Save";
+            this.btnsaveconnection.UseSelectable = true;
+            this.btnsaveconnection.Click += new System.EventHandler(this.btnsaveconnection_Click);
             // 
-            // btntest
+            // btntestconnection
             // 
-            this.btntest.Location = new System.Drawing.Point(8, 240);
-            this.btntest.Margin = new System.Windows.Forms.Padding(4);
-            this.btntest.Name = "btntest";
-            this.btntest.Size = new System.Drawing.Size(137, 31);
-            this.btntest.TabIndex = 4;
-            this.btntest.Text = "Test Connection";
-            this.btntest.UseSelectable = true;
-            this.btntest.Click += new System.EventHandler(this.btntest_Click);
+            this.btntestconnection.Location = new System.Drawing.Point(6, 195);
+            this.btntestconnection.Name = "btntestconnection";
+            this.btntestconnection.Size = new System.Drawing.Size(103, 25);
+            this.btntestconnection.TabIndex = 4;
+            this.btntestconnection.Text = "Test Connection";
+            this.btntestconnection.UseSelectable = true;
+            this.btntestconnection.Click += new System.EventHandler(this.btntest_Click);
             // 
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
             this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel6.Location = new System.Drawing.Point(8, 180);
-            this.metroLabel6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel6.Location = new System.Drawing.Point(6, 146);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(73, 20);
+            this.metroLabel6.Size = new System.Drawing.Size(70, 19);
             this.metroLabel6.TabIndex = 4;
             this.metroLabel6.Text = "Password:";
             // 
@@ -167,10 +160,9 @@
             // 
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel5.Location = new System.Drawing.Point(8, 115);
-            this.metroLabel5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel5.Location = new System.Drawing.Point(6, 93);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(78, 20);
+            this.metroLabel5.Size = new System.Drawing.Size(74, 19);
             this.metroLabel5.TabIndex = 4;
             this.metroLabel5.Text = "Username:";
             // 
@@ -178,21 +170,19 @@
             // 
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel3.Location = new System.Drawing.Point(8, 53);
-            this.metroLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel3.Location = new System.Drawing.Point(6, 43);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(57, 20);
+            this.metroLabel3.Size = new System.Drawing.Size(54, 19);
             this.metroLabel3.TabIndex = 4;
             this.metroLabel3.Text = "Server: ";
             // 
             // cbserver
             // 
             this.cbserver.FormattingEnabled = true;
-            this.cbserver.ItemHeight = 24;
-            this.cbserver.Location = new System.Drawing.Point(108, 53);
-            this.cbserver.Margin = new System.Windows.Forms.Padding(4);
+            this.cbserver.ItemHeight = 23;
+            this.cbserver.Location = new System.Drawing.Point(81, 43);
             this.cbserver.Name = "cbserver";
-            this.cbserver.Size = new System.Drawing.Size(181, 30);
+            this.cbserver.Size = new System.Drawing.Size(137, 29);
             this.cbserver.TabIndex = 0;
             this.cbserver.UseSelectable = true;
             // 
@@ -202,10 +192,9 @@
             // 
             // 
             this.txtserverpassword.CustomButton.Image = null;
-            this.txtserverpassword.CustomButton.Location = new System.Drawing.Point(153, 1);
-            this.txtserverpassword.CustomButton.Margin = new System.Windows.Forms.Padding(5);
+            this.txtserverpassword.CustomButton.Location = new System.Drawing.Point(113, 1);
             this.txtserverpassword.CustomButton.Name = "";
-            this.txtserverpassword.CustomButton.Size = new System.Drawing.Size(29, 29);
+            this.txtserverpassword.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.txtserverpassword.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtserverpassword.CustomButton.TabIndex = 1;
             this.txtserverpassword.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -213,8 +202,7 @@
             this.txtserverpassword.CustomButton.Visible = false;
             this.txtserverpassword.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtserverpassword.Lines = new string[0];
-            this.txtserverpassword.Location = new System.Drawing.Point(108, 180);
-            this.txtserverpassword.Margin = new System.Windows.Forms.Padding(4);
+            this.txtserverpassword.Location = new System.Drawing.Point(81, 146);
             this.txtserverpassword.MaxLength = 32767;
             this.txtserverpassword.Name = "txtserverpassword";
             this.txtserverpassword.PasswordChar = '•';
@@ -223,7 +211,7 @@
             this.txtserverpassword.SelectionLength = 0;
             this.txtserverpassword.SelectionStart = 0;
             this.txtserverpassword.ShortcutsEnabled = true;
-            this.txtserverpassword.Size = new System.Drawing.Size(183, 31);
+            this.txtserverpassword.Size = new System.Drawing.Size(137, 25);
             this.txtserverpassword.TabIndex = 3;
             this.txtserverpassword.UseSelectable = true;
             this.txtserverpassword.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -235,10 +223,9 @@
             // 
             // 
             this.txtserverusername.CustomButton.Image = null;
-            this.txtserverusername.CustomButton.Location = new System.Drawing.Point(153, 1);
-            this.txtserverusername.CustomButton.Margin = new System.Windows.Forms.Padding(5);
+            this.txtserverusername.CustomButton.Location = new System.Drawing.Point(113, 1);
             this.txtserverusername.CustomButton.Name = "";
-            this.txtserverusername.CustomButton.Size = new System.Drawing.Size(29, 29);
+            this.txtserverusername.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.txtserverusername.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtserverusername.CustomButton.TabIndex = 1;
             this.txtserverusername.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -246,8 +233,7 @@
             this.txtserverusername.CustomButton.Visible = false;
             this.txtserverusername.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtserverusername.Lines = new string[0];
-            this.txtserverusername.Location = new System.Drawing.Point(108, 115);
-            this.txtserverusername.Margin = new System.Windows.Forms.Padding(4);
+            this.txtserverusername.Location = new System.Drawing.Point(81, 93);
             this.txtserverusername.MaxLength = 32767;
             this.txtserverusername.Name = "txtserverusername";
             this.txtserverusername.PasswordChar = '\0';
@@ -256,7 +242,7 @@
             this.txtserverusername.SelectionLength = 0;
             this.txtserverusername.SelectionStart = 0;
             this.txtserverusername.ShortcutsEnabled = true;
-            this.txtserverusername.Size = new System.Drawing.Size(183, 31);
+            this.txtserverusername.Size = new System.Drawing.Size(137, 25);
             this.txtserverusername.TabIndex = 2;
             this.txtserverusername.UseSelectable = true;
             this.txtserverusername.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -271,24 +257,22 @@
             this.mtpctheme.Controls.Add(this.metroLabel1);
             this.mtpctheme.HorizontalScrollbarBarColor = true;
             this.mtpctheme.HorizontalScrollbarHighlightOnWheel = false;
-            this.mtpctheme.HorizontalScrollbarSize = 12;
+            this.mtpctheme.HorizontalScrollbarSize = 10;
             this.mtpctheme.Location = new System.Drawing.Point(4, 38);
-            this.mtpctheme.Margin = new System.Windows.Forms.Padding(4);
             this.mtpctheme.Name = "mtpctheme";
-            this.mtpctheme.Size = new System.Drawing.Size(320, 400);
+            this.mtpctheme.Size = new System.Drawing.Size(238, 317);
             this.mtpctheme.TabIndex = 1;
             this.mtpctheme.Text = "Theme";
             this.mtpctheme.VerticalScrollbarBarColor = true;
             this.mtpctheme.VerticalScrollbarHighlightOnWheel = false;
-            this.mtpctheme.VerticalScrollbarSize = 13;
+            this.mtpctheme.VerticalScrollbarSize = 10;
             // 
             // flpcolors
             // 
             this.flpcolors.BackColor = System.Drawing.Color.White;
-            this.flpcolors.Location = new System.Drawing.Point(16, 165);
-            this.flpcolors.Margin = new System.Windows.Forms.Padding(4);
+            this.flpcolors.Location = new System.Drawing.Point(12, 134);
             this.flpcolors.Name = "flpcolors";
-            this.flpcolors.Size = new System.Drawing.Size(213, 171);
+            this.flpcolors.Size = new System.Drawing.Size(160, 139);
             this.flpcolors.TabIndex = 4;
             // 
             // mrblight
@@ -297,10 +281,9 @@
             this.mrblight.Checked = true;
             this.mrblight.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
             this.mrblight.ForeColor = System.Drawing.Color.Black;
-            this.mrblight.Location = new System.Drawing.Point(112, 68);
-            this.mrblight.Margin = new System.Windows.Forms.Padding(4);
+            this.mrblight.Location = new System.Drawing.Point(84, 55);
             this.mrblight.Name = "mrblight";
-            this.mrblight.Size = new System.Drawing.Size(58, 20);
+            this.mrblight.Size = new System.Drawing.Size(56, 19);
             this.mrblight.TabIndex = 3;
             this.mrblight.TabStop = true;
             this.mrblight.Text = "Light";
@@ -312,10 +295,9 @@
             this.mrbdark.AutoSize = true;
             this.mrbdark.BackColor = System.Drawing.Color.White;
             this.mrbdark.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.mrbdark.Location = new System.Drawing.Point(16, 68);
-            this.mrbdark.Margin = new System.Windows.Forms.Padding(4);
+            this.mrbdark.Location = new System.Drawing.Point(12, 55);
             this.mrbdark.Name = "mrbdark";
-            this.mrbdark.Size = new System.Drawing.Size(56, 20);
+            this.mrbdark.Size = new System.Drawing.Size(54, 19);
             this.mrbdark.TabIndex = 3;
             this.mrbdark.Text = "Dark";
             this.mrbdark.UseSelectable = true;
@@ -326,10 +308,9 @@
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.BackColor = System.Drawing.Color.White;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel2.Location = new System.Drawing.Point(4, 117);
-            this.metroLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel2.Location = new System.Drawing.Point(3, 95);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(45, 20);
+            this.metroLabel2.Size = new System.Drawing.Size(42, 19);
             this.metroLabel2.TabIndex = 2;
             this.metroLabel2.Text = "Color";
             // 
@@ -338,10 +319,9 @@
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.BackColor = System.Drawing.Color.White;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel1.Location = new System.Drawing.Point(4, 23);
-            this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel1.Location = new System.Drawing.Point(3, 19);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(54, 20);
+            this.metroLabel1.Size = new System.Drawing.Size(50, 19);
             this.metroLabel1.TabIndex = 2;
             this.metroLabel1.Text = "Theme";
             // 
@@ -354,10 +334,9 @@
             this.lnkback.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lnkback.ImageSize = 32;
             this.lnkback.Location = new System.Drawing.Point(0, 0);
-            this.lnkback.Margin = new System.Windows.Forms.Padding(4);
             this.lnkback.Name = "lnkback";
             this.lnkback.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkback.NoFocusImage")));
-            this.lnkback.Size = new System.Drawing.Size(179, 44);
+            this.lnkback.Size = new System.Drawing.Size(134, 36);
             this.lnkback.TabIndex = 2;
             this.lnkback.Text = " Settings";
             this.lnkback.UseSelectable = true;
@@ -368,11 +347,10 @@
             this.lnkeye.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lnkeye.Image = ((System.Drawing.Image)(resources.GetObject("lnkeye.Image")));
             this.lnkeye.ImageSize = 37;
-            this.lnkeye.Location = new System.Drawing.Point(357, 331);
-            this.lnkeye.Margin = new System.Windows.Forms.Padding(4);
+            this.lnkeye.Location = new System.Drawing.Point(268, 269);
             this.lnkeye.Name = "lnkeye";
             this.lnkeye.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnkeye.NoFocusImage")));
-            this.lnkeye.Size = new System.Drawing.Size(49, 46);
+            this.lnkeye.Size = new System.Drawing.Size(37, 37);
             this.lnkeye.TabIndex = 2;
             this.lnkeye.UseSelectable = true;
             this.lnkeye.Click += new System.EventHandler(this.metroLink1_Click);
@@ -383,10 +361,9 @@
             // 
             // 
             this.txtpassword.CustomButton.Image = null;
-            this.txtpassword.CustomButton.Location = new System.Drawing.Point(248, 2);
-            this.txtpassword.CustomButton.Margin = new System.Windows.Forms.Padding(4);
+            this.txtpassword.CustomButton.Location = new System.Drawing.Point(183, 1);
             this.txtpassword.CustomButton.Name = "";
-            this.txtpassword.CustomButton.Size = new System.Drawing.Size(41, 41);
+            this.txtpassword.CustomButton.Size = new System.Drawing.Size(35, 35);
             this.txtpassword.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtpassword.CustomButton.TabIndex = 1;
             this.txtpassword.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -396,8 +373,7 @@
             this.txtpassword.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.txtpassword.Icon = global::Softwen.Resource.Key_2_30px;
             this.txtpassword.Lines = new string[0];
-            this.txtpassword.Location = new System.Drawing.Point(57, 331);
-            this.txtpassword.Margin = new System.Windows.Forms.Padding(4);
+            this.txtpassword.Location = new System.Drawing.Point(43, 269);
             this.txtpassword.MaxLength = 32767;
             this.txtpassword.Name = "txtpassword";
             this.txtpassword.PasswordChar = '•';
@@ -408,7 +384,7 @@
             this.txtpassword.SelectionStart = 0;
             this.txtpassword.ShortcutsEnabled = true;
             this.txtpassword.ShowClearButton = true;
-            this.txtpassword.Size = new System.Drawing.Size(292, 46);
+            this.txtpassword.Size = new System.Drawing.Size(219, 37);
             this.txtpassword.TabIndex = 0;
             this.txtpassword.UseSelectable = true;
             this.txtpassword.WaterMark = "password";
@@ -422,10 +398,9 @@
             // 
             // 
             this.txtusername.CustomButton.Image = null;
-            this.txtusername.CustomButton.Location = new System.Drawing.Point(248, 2);
-            this.txtusername.CustomButton.Margin = new System.Windows.Forms.Padding(4);
+            this.txtusername.CustomButton.Location = new System.Drawing.Point(183, 1);
             this.txtusername.CustomButton.Name = "";
-            this.txtusername.CustomButton.Size = new System.Drawing.Size(41, 41);
+            this.txtusername.CustomButton.Size = new System.Drawing.Size(35, 35);
             this.txtusername.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtusername.CustomButton.TabIndex = 1;
             this.txtusername.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -435,8 +410,7 @@
             this.txtusername.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.txtusername.Icon = global::Softwen.Resource.User_40px;
             this.txtusername.Lines = new string[0];
-            this.txtusername.Location = new System.Drawing.Point(57, 278);
-            this.txtusername.Margin = new System.Windows.Forms.Padding(4);
+            this.txtusername.Location = new System.Drawing.Point(43, 226);
             this.txtusername.MaxLength = 32767;
             this.txtusername.Name = "txtusername";
             this.txtusername.PasswordChar = '\0';
@@ -447,7 +421,7 @@
             this.txtusername.SelectionStart = 0;
             this.txtusername.ShortcutsEnabled = true;
             this.txtusername.ShowClearButton = true;
-            this.txtusername.Size = new System.Drawing.Size(292, 46);
+            this.txtusername.Size = new System.Drawing.Size(219, 37);
             this.txtusername.TabIndex = 0;
             this.txtusername.UseSelectable = true;
             this.txtusername.WaterMark = "username";
@@ -464,15 +438,14 @@
             this.pnlcenter.Controls.Add(this.lnkeye);
             this.pnlcenter.HorizontalScrollbarBarColor = true;
             this.pnlcenter.HorizontalScrollbarHighlightOnWheel = false;
-            this.pnlcenter.HorizontalScrollbarSize = 12;
-            this.pnlcenter.Location = new System.Drawing.Point(0, 52);
-            this.pnlcenter.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlcenter.HorizontalScrollbarSize = 10;
+            this.pnlcenter.Location = new System.Drawing.Point(0, 42);
             this.pnlcenter.Name = "pnlcenter";
-            this.pnlcenter.Size = new System.Drawing.Size(881, 517);
+            this.pnlcenter.Size = new System.Drawing.Size(661, 420);
             this.pnlcenter.TabIndex = 0;
             this.pnlcenter.VerticalScrollbarBarColor = true;
             this.pnlcenter.VerticalScrollbarHighlightOnWheel = false;
-            this.pnlcenter.VerticalScrollbarSize = 13;
+            this.pnlcenter.VerticalScrollbarSize = 10;
             // 
             // lnklogin
             // 
@@ -481,11 +454,10 @@
             this.lnklogin.Image = ((System.Drawing.Image)(resources.GetObject("lnklogin.Image")));
             this.lnklogin.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lnklogin.ImageSize = 50;
-            this.lnklogin.Location = new System.Drawing.Point(169, 379);
-            this.lnklogin.Margin = new System.Windows.Forms.Padding(4);
+            this.lnklogin.Location = new System.Drawing.Point(127, 308);
             this.lnklogin.Name = "lnklogin";
             this.lnklogin.NoFocusImage = ((System.Drawing.Image)(resources.GetObject("lnklogin.NoFocusImage")));
-            this.lnklogin.Size = new System.Drawing.Size(72, 82);
+            this.lnklogin.Size = new System.Drawing.Size(54, 67);
             this.lnklogin.TabIndex = 6;
             this.lnklogin.Text = "Log in";
             this.lnklogin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -496,23 +468,22 @@
             // 
             this.hoplogo.BackColor = System.Drawing.Color.Transparent;
             this.hoplogo.Image = ((System.Drawing.Image)(resources.GetObject("hoplogo.Image")));
-            this.hoplogo.Location = new System.Drawing.Point(57, 2);
-            this.hoplogo.Margin = new System.Windows.Forms.Padding(4);
+            this.hoplogo.Location = new System.Drawing.Point(43, 2);
             this.hoplogo.Name = "hoplogo";
-            this.hoplogo.Size = new System.Drawing.Size(292, 268);
+            this.hoplogo.Size = new System.Drawing.Size(219, 218);
             this.hoplogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hoplogo.TabIndex = 5;
             this.hoplogo.TabStop = false;
             // 
             // login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlsettings);
             this.Controls.Add(this.pnlcenter);
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "login";
-            this.Size = new System.Drawing.Size(873, 572);
+            this.Size = new System.Drawing.Size(655, 465);
             this.Load += new System.EventHandler(this.login_Load);
             this.pnlsettings.ResumeLayout(false);
             this.mtcsettings.ResumeLayout(false);
@@ -544,13 +515,13 @@
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroComboBox cbserver;
-        private MetroFramework.Controls.MetroButton btntest;
+        private MetroFramework.Controls.MetroButton btntestconnection;
         private MetroFramework.Controls.MetroLink lnkeye;
         private MetroFramework.Controls.MetroTextBox txtpassword;
         private MetroFramework.Controls.MetroTextBox txtusername;
         private MetroFramework.Controls.MetroPanel pnlcenter;
         public MetroFramework.Controls.MetroLink lnklogin;
         private System.Windows.Forms.PictureBox hoplogo;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton btnsaveconnection;
     }
 }

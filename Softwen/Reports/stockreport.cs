@@ -22,7 +22,6 @@ namespace Softwen.Reports
 
         private void stockreport_Load(object sender, EventArgs e)
         {
-
             stocks stocksrpt = new stocks();
             stocksrpt.Load(@"C:\Users\Rhiennier\Downloads\Softwen\Softwen\Softwen\Softwen\Reports\daily.rpt");
             stocksrpt.Refresh();
@@ -32,6 +31,7 @@ namespace Softwen.Reports
             stocksrpt.SetParameterValue("stockdate", reports.ReportsInstance.dtstocks.Value);
             stocksrpt.SetParameterValue("stockstartdate", reports.ReportsInstance.dtstartstocks.Value);
             stocksrpt.SetParameterValue("stockenddate", reports.ReportsInstance.dtendstocks.Value);
+            stocksrpt.SetParameterValue("branchid", Properties.Settings.Default.StoreID);
             stocksrpt.SetParameterValue("daily", dailystocks);
             crystalstocks.Refresh();
             crystalstocks.ReportSource = stocksrpt;

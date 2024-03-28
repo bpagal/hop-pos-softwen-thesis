@@ -127,5 +127,17 @@ namespace Softwen.Properties {
                 this["SupplierAddress"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string StoreID {
+            get {
+                return ((string)(this["StoreID"]));
+            }
+            set {
+                this["StoreID"] = value;
+            }
+        }
     }
 }

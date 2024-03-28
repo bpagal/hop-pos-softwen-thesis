@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.crystaldaily = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.btnexportexcel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // crystaldaily
@@ -39,14 +40,25 @@
             this.crystaldaily.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystaldaily.Location = new System.Drawing.Point(20, 60);
             this.crystaldaily.Name = "crystaldaily";
-            this.crystaldaily.Size = new System.Drawing.Size(260, 220);
+            this.crystaldaily.Size = new System.Drawing.Size(823, 405);
             this.crystaldaily.TabIndex = 0;
+            // 
+            // btnexportexcel
+            // 
+            this.btnexportexcel.Location = new System.Drawing.Point(497, 63);
+            this.btnexportexcel.Name = "btnexportexcel";
+            this.btnexportexcel.Size = new System.Drawing.Size(91, 23);
+            this.btnexportexcel.TabIndex = 1;
+            this.btnexportexcel.Text = "Export to Excel";
+            this.btnexportexcel.UseVisualStyleBackColor = true;
+            this.btnexportexcel.Click += new System.EventHandler(this.btnexportexcel_Click);
             // 
             // dailyreport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 300);
+            this.ClientSize = new System.Drawing.Size(863, 485);
+            this.Controls.Add(this.btnexportexcel);
             this.Controls.Add(this.crystaldaily);
             this.Name = "dailyreport";
             this.Text = "Daily Report";
@@ -60,5 +72,6 @@
         #endregion
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystaldaily;
+        private System.Windows.Forms.Button btnexportexcel;
     }
 }

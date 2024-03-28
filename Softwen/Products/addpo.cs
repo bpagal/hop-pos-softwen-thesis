@@ -151,6 +151,7 @@ namespace Softwen.Products
                     addtopodetails();
                     MetroMessageBox.Show(this, "Order successful. Proceeding to generate P/O form", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
+                    products.ProductsInstance.selectpurchaseorder();
                     rptpo rptpurchaseoder = new rptpo();
                     rptpurchaseoder.ShowDialog();
                 }
@@ -172,6 +173,7 @@ namespace Softwen.Products
         private void checkboxlogic(object sender, DataGridViewCellEventArgs e)
         {
             txtproductname.Text = this.dgrestock.CurrentRow.Cells[3].Value.ToString();
+            txtquantity.Value = txtquantity.Maximum = Convert.ToDecimal(this.dgrestock.CurrentRow.Cells[5].Value) - Convert.ToDecimal(this.dgrestock.CurrentRow.Cells[4].Value);
             bool ischecked = Convert.ToBoolean(dgrestock.Rows[e.RowIndex].Cells[0].EditedFormattedValue);
             if (ischecked == true)
             {

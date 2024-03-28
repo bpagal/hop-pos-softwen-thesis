@@ -1,4 +1,6 @@
-﻿using MetroFramework.Forms;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +19,7 @@ namespace Softwen.Reports
         public string datesold = "";
         public string cashiername = "";
         public string productname = "";
-
+        ReportDocument dailyrpt = new ReportDocument();
         public dailyreport()
         {
             InitializeComponent();
@@ -25,17 +27,25 @@ namespace Softwen.Reports
 
         private void dailyreport_Load(object sender, EventArgs e)
         {
-            daily dailyrpt = new daily();
-            dailyrpt.Load(@"C:\Users\Rhiennier\Downloads\Softwen\Softwen\Softwen\Softwen\Reports\daily.rpt");
+            dailyrpt.Load(@"C:\Users\Brian\Documents\Visual Studio 2015\Projects\HOP POS v7.7 (Hermes Update)\HOP POS v7.7 (Hermes Update)\Softwen\Reports\daily.rpt");
             dailyrpt.Refresh();
             dailyrpt.SetDatabaseLogon(ConfigurationManager.AppSettings["Username"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
             dailyrpt.SetParameterValue("storename", Properties.Settings.Default.StoreName);
             dailyrpt.SetParameterValue("storeaddress", Properties.Settings.Default.StoreAddess);
+            dailyrpt.SetParameterValue("branchid", Properties.Settings.Default.StoreID);
             dailyrpt.SetParameterValue("datesold", reports.ReportsInstance.dtdaily.Value);
             dailyrpt.SetParameterValue("cashiername", cashiername);
             dailyrpt.SetParameterValue("productname", productname);
             crystaldaily.Refresh();
             crystaldaily.ReportSource = dailyrpt;
+
+
+        }
+
+        private void btnexportexcel_Click(object sender, EventArgs e)
+        {
+            Globals gs = new Globals();
+            gs.exportexcel(dailyrpt);
         }
     }
 }

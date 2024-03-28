@@ -56,6 +56,7 @@ namespace Softwen.Maintenance
             txtname.Text = Properties.Settings.Default.StoreName;
             txtaddress.Text = Properties.Settings.Default.StoreAddess;
             txtwebsite.Text = Properties.Settings.Default.StoreWebsite;
+            txtbranchid.Text = Properties.Settings.Default.StoreID;
             txtvname.Text = Properties.Settings.Default.SupplierName;
             txtvaddress.Text = Properties.Settings.Default.SupplierAddress;
             txtkey.Text = Properties.Settings.Default.VoidKey;
@@ -98,7 +99,7 @@ namespace Softwen.Maintenance
                 gs.Delete("DELETE FROM users WHERE userid = @1", dgusers, this);
                 gs.recorduseractivity("Delete User", this.dgusers.CurrentRow.Cells[4].Value.ToString());
                 selectusers();
-            }          
+            }
         }
         private void filterproduct()
         {
@@ -246,6 +247,7 @@ namespace Softwen.Maintenance
                 Properties.Settings.Default.StoreName = txtname.Text;
                 Properties.Settings.Default.StoreAddess = txtaddress.Text;
                 Properties.Settings.Default.StoreWebsite = txtwebsite.Text;
+                Properties.Settings.Default.StoreID = txtbranchid.Text;
                 Properties.Settings.Default.VoidKey = txtkey.Text;
                 Properties.Settings.Default.Save();
                 Transaction.transaction.TransactionInstance._vatpercent = Properties.Settings.Default.Vat / 100;

@@ -39,5 +39,8 @@
     <Setting Name="SupplierAddress" Type="System.String" Scope="User">
       <Value Profile="(Default)">Las Piñas</Value>
     </Setting>
+    <Setting Name="StoreID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
