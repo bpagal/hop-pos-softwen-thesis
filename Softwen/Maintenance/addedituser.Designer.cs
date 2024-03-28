@@ -80,6 +80,7 @@
             this.combobxut.Size = new System.Drawing.Size(219, 29);
             this.combobxut.TabIndex = 2;
             this.combobxut.UseSelectable = true;
+            this.combobxut.SelectedIndexChanged += new System.EventHandler(this.combobxut_SelectedIndexChanged);
             // 
             // lnkclear
             // 

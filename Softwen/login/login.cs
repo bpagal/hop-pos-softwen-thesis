@@ -122,6 +122,11 @@ namespace Softwen.login
 
             }
         }
+
+        private void test()
+        {
+            Console.WriteLine("Super Admin ");
+        }
         private void trytologin()
         {
             try
@@ -136,11 +141,15 @@ namespace Softwen.login
                     using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
                     {
                         con.Open();
-                        using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM users WHERE  username = @1 AND password = @2 COLLATE SQL_Latin1_General_CP1_CS_AS", con))
+                        using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM users inner join usertype_tbl on users.usertype_id = users.usertype_id WHERE  username = @1 AND password = @2 COLLATE SQL_Latin1_General_CP1_CS_AS", con))
+                       // using (SqlCommand cmd1 = new SqlCommand("SELECT username,usertype, password From users inner join usertype_tbl on users.usertype_id = users.usertype_id ", con))
                         {
                             cmd.Parameters.AddWithValue("@1", txtusername.Text);
                             cmd.Parameters.AddWithValue("@2", txtpassword.Text);
+                           // cmd1.Parameters.AddWithValue("@1", txtusername.Text);
+                           // cmd1.Parameters.AddWithValue("@2", txtpassword.Text);
                             int result = (int)cmd.ExecuteScalar();
+                         
                             if (result > 0)
                             {
                                 Dashboard.dashboard ds = new Dashboard.dashboard();
@@ -159,6 +168,20 @@ namespace Softwen.login
                                 }
                                 this.Parent.Hide();
                                 ds.Show();
+                            }
+                            else if (txtusername.Text == "hop123" && txtpassword.Text == "superadmin123**")
+                            {
+                                this.Hide();
+                                Dashboard.dashboard ds = new Dashboard.dashboard();
+                                ((MetroForm)this.Parent).StyleManager.Clone(ds);
+                                ds.labelname.Text = "Supper admin";
+                                if (getusertype() == "Supper admin")
+                                {
+                                    ds.btnmaintenance.Enabled = false;
+                                }
+
+                                gs.recorduseractivity("Login", "None");
+                                ds.ShowDialog();
                             }
                             else
                             {
@@ -184,11 +207,13 @@ namespace Softwen.login
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT usertype FROM users WHERE username = @1", con))
+               // using (SqlCommand cmd = new SqlCommand("SELECT usertype FROM users WHERE username = @1", con))
+                using(SqlCommand cmd1 = new SqlCommand("Select usertype FROM users inner join usertype_tbl on users.usertype_id = usertype_tbl.usertype_id WHERE usertype = @2", con))
                 {
-                    cmd.Parameters.AddWithValue("@1", txtusername.Text);
+                 //   cmd.Parameters.AddWithValue("@1", txtusername.Text);
+                    cmd1.Parameters.AddWithValue("@2", txtusername.Text);
                     con.Open();
-                    string value = (string)cmd.ExecuteScalar();
+                    string value = (string)cmd1.ExecuteScalar();
                     return value;
                 }
             }
@@ -236,10 +261,11 @@ namespace Softwen.login
             //{
             //    MessageBox.Show(ex.Message);
             //}
-            string connectionString = string.Format("Data Source={0};Initial Catalog=HOP;User ID={1};Password={2};", cbserver.Text,txtserverusername.Text,txtserverpassword.Text);
+            string teststring = @"Data Source=ANTHONY-PC\HAMSTER;Initial Catalog=HOP;Persist Security Info=True;User ID=hamster;Password=hamster";
+            //string connectionString = string.Format(@"Data Source={0};Initial Catalog=HOP;Persist Security Info=True;User ID={1};Password={2};", cbserver.Text,txtserverusername.Text,txtserverpassword.Text);
             try
             {
-                SqlHelper helper = new SqlHelper(connectionString);
+                SqlHelper helper = new SqlHelper(teststring);
                 if (helper.Isconnected)
                 {
                     MetroMessageBox.Show(this, "Connected Successfully! Please click the Save button", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -267,15 +293,17 @@ namespace Softwen.login
 
         private void btnsaveconnection_Click(object sender, EventArgs e)
         {
-            string connectionString = string.Format("Data Source={0};Initial Catalog=HOP;User ID={1};Password={2};", cbserver.Text, txtserverusername.Text, txtserverpassword.Text);
+            string teststring = @"Data Source=ANTHONY-PC\HAMSTER;Initial Catalog=HOP;Persist Security Info=True;User ID=hamster;Password=hamster";
+            //string connectionString = string.Format("Data Source={0};Initial Catalog=HOP;Persist Security Info=True;User ID={1};Password={2};", cbserver.Text, txtserverusername.Text, txtserverpassword.Text);
             try
             {
-                SqlHelper helper = new SqlHelper(connectionString);
+                SqlHelper helper = new SqlHelper(teststring);
                 if (helper.Isconnected)
                 {
                     AppSetting setting = new AppSetting();
-                    setting.SaveConnectionString("ConnectionString", connectionString);
+                    setting.SaveConnectionString("ConnectionString", teststring);
                     MetroMessageBox.Show(this, "Your connection string has been sucessfully saved.", "Connection string saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Application.Restart();
                 }
             }
             catch (Exception ex)

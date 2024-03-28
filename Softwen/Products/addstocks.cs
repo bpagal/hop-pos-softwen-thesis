@@ -23,7 +23,7 @@ namespace Softwen.Products
             tb.TextChanged += Tb_TextChanged;
         }
 
-        private void Tb_TextChanged( object sender, EventArgs e)
+        private void Tb_TextChanged(object sender, EventArgs e)
         {
             if (txtquantity.Value <= 0 || txtquantity.Value > txtquantity.Maximum)
             {
@@ -66,13 +66,13 @@ namespace Softwen.Products
                 int qtyordered = Convert.ToInt32(dgrv.Cells[2].Value);
                 int productid = Convert.ToInt32(dgrv.Cells[3].Value);
                 int qtydelivered = Convert.ToInt32(dgrv.Cells[4].Value);
-                int qtyafter = qtycurrent  + qtydelivered;
-                string status = getstatus(qtydelivered,qtyordered);
+                int qtyafter = qtycurrent + qtydelivered;
+                string status = getstatus(qtydelivered, qtyordered);
                 string[] editparameters = { "@1", "@2" };
-                string[] editvalues = { qtydelivered.ToString(),productid.ToString() };
+                string[] editvalues = { qtydelivered.ToString(), productid.ToString() };
                 gs.Insert("UPDATE products SET quantity = quantity + @1 WHERE productid = @2", editparameters, editvalues);
                 string[] restockparameters = { "@1", "@2", "@3", "@4", "@5", "@6", "@7" };
-                string[] restockvalues = { Globals.userid, DateTime.Now.ToString(("MM/dd/yyyy hh:mm tt")),productid.ToString() , qtydelivered.ToString(), qtyafter.ToString(),ponumber, status};
+                string[] restockvalues = { Globals.userid, DateTime.Now.ToString(("MM/dd/yyyy hh:mm tt")), productid.ToString(), qtydelivered.ToString(), qtyafter.ToString(), ponumber, status };
                 gs.Insert("INSERT INTO restocks (userid,restockdate,productid,restockquantity,quantityafter,ponumber,status) VALUES (@1,@2,@3,@4,@5,@6,@7)", restockparameters, restockvalues);
                 string[] poparameters = { "@1", "@2" };
                 string[] povalues = { "processed", ponumber };
@@ -86,11 +86,11 @@ namespace Softwen.Products
         }
         private void lnkcomplete_Click(object sender, EventArgs e)
         {
-            if (checkqty()==false)
+            if (checkqty() == false)
             {
                 increaseqty();
-            }      
-            
+            }
+
 
         }
         private void inputlogic()

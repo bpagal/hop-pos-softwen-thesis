@@ -62,6 +62,7 @@ namespace Softwen
             {
                 using (SqlCommand cmd = new SqlCommand(insertquery, con))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     foreach (var str in parameter)
                     {
                         cmd.Parameters.AddWithValue(str, value[i]);
@@ -73,7 +74,8 @@ namespace Softwen
                 }
             }
 
-        }//insert/update method into tables from database
+        
+    }//insert/update method into tables from database
         public void Delete(string deletequery, MetroGrid dg, Control form)
         {
             if (MetroMessageBox.Show(form, "Are you sure you want to delete this data?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
@@ -113,7 +115,12 @@ namespace Softwen
         {
             string[] actparameters = { "@1", "@2", "@3", "@4" };
             string[] actvalues = { DateTime.Now.ToString(("MM/dd/yyyy hh:mm tt")), userid, activity, manipulateddata };
-            Insert("INSERT INTO useractivity(timestamp,userid,action,affecteddata) VALUES (@1,@2,@3,@4)", actparameters, actvalues);
+            //   Insert("INSERT INTO useractivity(timestamp,userid,action,affecteddata) values (@1, @2,@3,@4)", actparameters, actvalues);
+
+            Insert("useractivitys", actparameters, actvalues);
+           
+           // Globals.ResetFields(paneluser);
+           
         }
         public static bool CheckFields(Control panel, Control form)
         {

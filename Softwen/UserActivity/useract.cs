@@ -30,7 +30,7 @@ namespace Softwen.UserActivity
         {
             Globals gs = new Globals();
             gs.Select(@"SELECT CONVERT(VARCHAR(20), useractivity.timestamp, 100) as 'Date',  CONCAT(users.fname, ' ', users.lname)  AS 'User', usertype AS 'Role', action as 'Action' ,affecteddata as 'Data' FROM  users
-                        INNER JOIN useractivity ON users.userid = useractivity.userid", dguseractivity);
+                        INNER JOIN useractivity ON users.userid = useractivity.userid inner join usertype_tbl on users.usertype_id = usertype_tbl.usertype_id", dguseractivity);
         }
     }
 }

@@ -40,18 +40,17 @@ namespace Softwen.Maintenance
         {
             string[] addparameters = { "@1", "@2", "@3", "@4", "@5" };
             string[] addvalues = { txtfname.Text, txtlname.Text, combobxut.Text, txtuname.Text, txtpass.Text, };
-            if (checkusername()==false)
-            {
+          
                 if (Globals.CheckFields(paneluser, this) == false)
                 {
-                    gs.Insert("INSERT INTO users(fname,lname,usertype,username,password) VALUES (@1,@2,@3,@4,@5)", addparameters, addvalues);
+                    gs.Insert("spCREATEUSERS", addparameters, addvalues);
                     MetroMessageBox.Show(this, "User successfully added", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     gs.recorduseractivity("New User", txtuname.Text);
                     Globals.ResetFields(paneluser);
                     this.Close();
                     mnt.selectusers();
                 }
-            }        
+            
         }
         private void lnkupdate_Click(object sender, EventArgs e)
         {
@@ -90,5 +89,34 @@ namespace Softwen.Maintenance
                 combobxut.SelectedIndex = -1;
             }
         }
+
+        private void combobxut_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        //public void usertypefill()
+        //{
+        //    if (Globals.CheckFields(paneluser, this) == false)
+        //    {
+                
+        //        SqlCommand command = new SqlCommand();
+        //        command.CreateParameter();
+        //        command.CommandType = CommandType.StoredProcedure;
+        //        command.CommandText = "usertypefill";
+        //        SqlDataAdapter da = new SqlDataAdapter(command);
+        //        DataTable dt = new DataTable();
+        //        da.Fill(dt);
+        //        combobxut.DataSource = dt;
+        //        combobxut.ValueMember = "usertype";
+        //        combobxut.DisplayMember = "usertype";
+
+        //        gs.recorduseractivity("New User", txtuname.Text);
+        //        Globals.ResetFields(paneluser);
+        //        this.Close();
+        //        mnt.selectusers();
+        //    }
+        //}
     }
 }
