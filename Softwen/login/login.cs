@@ -163,11 +163,17 @@ namespace Softwen.login
                                 if (getusertype() == "Manager")
                                 {
                                     ds.btnmaintenance.Enabled = false;
+                                    ds.btnmaintenance.UseTileImage = false;
+                                    ds.btnmaintenance.Text = string.Empty;
                                 }
                                 else if (getusertype() == "Cashier" || getusertype() == "Supervisor")
                                 {
                                     ds.btnmaintenance.Enabled = false;
+                                    ds.btnmaintenance.UseTileImage = false;
+                                    ds.btnmaintenance.Text = string.Empty;
                                     ds.btnreports.Enabled = false;
+                                    ds.btnreports.UseTileImage = false;
+                                    ds.btnreports.Text = string.Empty;
                                 }
                                 this.Parent.Hide();
                                 ds.Show();

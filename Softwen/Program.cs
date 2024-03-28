@@ -16,8 +16,8 @@ namespace Softwen
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new login.Main());
-            Application.Run(new Dashboard.dashboard());
+            Application.Run(new login.Main());
+            //Application.Run(new Dashboard.dashboard());
 
         }
     }
