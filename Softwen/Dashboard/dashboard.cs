@@ -273,7 +273,8 @@ namespace Softwen.Dashboard
                 products.ProductsInstance.comboboxsp.SelectedIndex = 0;
                 products.ProductsInstance.populatedatagrids();
                 controlanimator.ShowSync(products.ProductsInstance.productstabcontrol);
-                //products.ProductsInstance.displaylowqty();
+                products.ProductsInstance.dispenselogic();
+                products.ProductsInstance.displaylowqty();
             }     
         }
 

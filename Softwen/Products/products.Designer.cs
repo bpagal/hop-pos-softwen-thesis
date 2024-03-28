@@ -236,6 +236,8 @@
             this.dgproducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgproducts.Size = new System.Drawing.Size(953, 423);
             this.dgproducts.TabIndex = 25;
+            this.dgproducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgproducts_CellContentClick);
+            this.dgproducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgproducts_CellContentClick);
             // 
             // productidDataGridViewTextBoxColumn
             // 

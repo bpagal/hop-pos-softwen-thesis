@@ -211,6 +211,7 @@ namespace Softwen.Products
         {
             adddispense adddps = new adddispense { productid = dgproducts.CurrentRow.Cells[0].Value.ToString() };
             adddps.txtproductname.Text = dgproducts.CurrentRow.Cells[1].Value.ToString();
+            adddps.txtquantity.Maximum = Convert.ToDecimal(dgproducts.CurrentRow.Cells[4].Value);
             adddps.ShowDialog();
 
         }
@@ -246,6 +247,20 @@ namespace Softwen.Products
         private void dgbackorder_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             bobutton();
+        }
+        public void dispenselogic()
+        {
+            if (dgproducts.Rows.Count>0)
+            {
+                if (Convert.ToInt32(dgproducts.CurrentRow.Cells[4].Value) <= 0)
+                    lnkdispense.Visible = false;
+                else
+                    lnkdispense.Visible = true;
+            }
+        }
+        private void dgproducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dispenselogic();
         }
     }
 }
