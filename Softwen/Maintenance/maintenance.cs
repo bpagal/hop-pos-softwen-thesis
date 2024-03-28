@@ -41,8 +41,42 @@ namespace Softwen.Maintenance
         }
         public void selectusers()
         {
-            gs.Select("SELECT * FROM users", dgusers);
+            gs.Select(@"select userid,fname,lname,usertype,username,password from users     
+            inner join usertype_tbl on users.usertype_id = usertype_tbl.usertype_id where not users.userid = 9", dgusers);
         }
+
+        //public void loadusers()
+        //{
+        //    try
+        //    {
+        //        gs.Open();
+        //        MySqlCommand command = connection.CreateCommand();
+        //        command.CommandType = CommandType.StoredProcedure;
+        //        command.CommandText = "loaduser";
+        //        //command.CommandText = "receipt";
+        //        SqlDataAdapter da = new SqlDataAdapter(command);
+        //        DataTable dt = new DataTable();
+        //        da.Fill(dt);
+        //        dgusers.DataSource = dt;
+        //        stretch();
+        //        connection.Close();
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //    }
+        //}
+
+        private void stretch()
+        {
+            for (int i = 0; i < dgusers.Columns.Count; i++)
+                if (dgusers.Columns[i] is DataGridViewImageColumn)
+                {
+                    ((DataGridViewImageColumn)dgusers.Columns[i]).ImageLayout = DataGridViewImageCellLayout.Zoom;
+                    break;
+                }
+        }
+
         public void selectcategory()
         {
             gs.Select("SELECT * FROM category", dgcategories);
@@ -180,7 +214,7 @@ namespace Softwen.Maintenance
             {
                 if (checkcategory() == false)
                 {
-                    gs.Insert("INSERT INTO category(categoryname) VALUES (@1)", addparameters, addvalues);
+                    gs.Insert("savecat", addparameters, addvalues);
                     MetroMessageBox.Show(this, "Category successfully added", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     gs.recorduseractivity("New Category", txtcat.Text);
                     txtcat.Clear();
@@ -197,7 +231,7 @@ namespace Softwen.Maintenance
             {
                 string[] editparameters = { "@1", "@2" };
                 string[] editvalues = { txtcat.Text, categoryid };
-                gs.Insert("UPDATE category set categoryname = @1 WHERE categoryid = @2", editparameters, editvalues);
+                gs.Insert("updatecat", editparameters, editvalues);
                 MetroMessageBox.Show(this, "Category successfully updated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 gs.recorduseractivity("Edit Category", txtcat.Text);
                 txtcat.Clear();
@@ -304,7 +338,7 @@ namespace Softwen.Maintenance
             {
                 string[] archiveparameters = { "@1", "@2" };
                 string[] archivevalues = { "inactive", this.dgproducts.CurrentRow.Cells[0].Value.ToString() };
-                gs.Insert("UPDATE products SET products.status = @1 WHERE productid = @2", archiveparameters, archivevalues);
+                gs.Insert("archieveproducts", archiveparameters, archivevalues); 
                 gs.recorduseractivity("Archive Product", this.dgproducts.CurrentRow.Cells[1].Value.ToString());
                 MetroMessageBox.Show(this, "Product successfully archived", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 selectproducts();
@@ -385,7 +419,7 @@ namespace Softwen.Maintenance
             {
                 string[] archiveparameters = { "@1", "@2" };
                 string[] archivevalues = { "active", this.dgarchivedproducts.CurrentRow.Cells[0].Value.ToString() };
-                gs.Insert("UPDATE products SET products.status = @1 WHERE productid = @2", archiveparameters, archivevalues);
+                gs.Insert("unarchieve", archiveparameters, archivevalues); 
                 gs.recorduseractivity("Unarchive Product", this.dgarchivedproducts.CurrentRow.Cells[1].Value.ToString());
                 MetroMessageBox.Show(this, "Product successfully unarchived", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 selectarchivedproducts();

@@ -42,12 +42,13 @@ namespace Softwen.Transaction
         {
             string[] parameters = { "@1", "@2", "@3", "@4", "@5" };
             string[] values = { DateTime.Now.ToString(("MM/dd/yyyy hh:mm tt")), txtgrandtotal.Text, txtamountpaid.Text, Globals.userid, transaction.TransactionInstance.discountstatus };
-            gs.Insert("INSERT INTO orders (datesold,totalamount,amountpaid,userid,discount) VALUES (@1,@2,@3,@4,@5)", parameters, values);
+            gs.Insert("payment", parameters, values);
             trs.updatestocks();
             trs.orderdetails();
             MetroMessageBox.Show(this, "Transaction completed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             gs.recorduseractivity("Transaction", "None");
             this.Close();
+
         }
 
         private void lnkpayment_Click(object sender, EventArgs e)

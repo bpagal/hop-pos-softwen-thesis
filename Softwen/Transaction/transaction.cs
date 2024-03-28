@@ -137,7 +137,7 @@ namespace Softwen.Transaction
         }//auto updates the quantity if product already exists in the datagridview
         private void getbarcode()
         {
-            using (SqlDataReader readerbarcode = Globals.ExecuteReader(@"SELECT products.productname, products.price, products.quantity, category.categoryname, products.description FROM products INNER JOIN category ON category.categoryid = products.categoryid  WHERE barcode = @1", "@1", txtautobc.Text))
+            using (SqlDataReader readerbarcode = Globals.ExecuteReader(@"getbarcodess", "@1", txtautobc.Text))
             {
                 if (readerbarcode.HasRows)
                 {
@@ -166,7 +166,7 @@ namespace Softwen.Transaction
         }//gets the barcode of a specific product
         private void checkbarcode()
         {
-            using (SqlDataReader readercheckbarcode = Globals.ExecuteReader("SELECT barcode FROM products WHERE barcode = @1", "@1", tempbarcode))
+            using (SqlDataReader readercheckbarcode = Globals.ExecuteReader("selectbars", "@1", tempbarcode))
             {
                 if (readercheckbarcode.Read())//means barcode exists in the database
                 {
@@ -182,7 +182,7 @@ namespace Softwen.Transaction
         }//checks if the barcode exists or not
         private void checkquantity() //checks the quantity in txtquantity.Value if valid
         {
-            using (SqlDataReader readerquantity = Globals.ExecuteReader(@"SELECT products.quantity, products.price, category.categoryname, products.description FROM products INNER JOIN category ON category.categoryid = products.categoryid  WHERE productname = @1", "@1", combobxproduct.Text))
+            using (SqlDataReader readerquantity = Globals.ExecuteReader("SELECT products.quantity, products.price, category.categoryname, products.description FROM products INNER JOIN category ON category.categoryid = products.categoryid  WHERE productname = @1", "@1", combobxproduct.Text))
             {
                 if (readerquantity.HasRows)
                 {
@@ -341,7 +341,7 @@ namespace Softwen.Transaction
             {
                 string[] editparameters = { "@1", "@2", };
                 string[] editvalues = { Convert.ToString(dgrow.Cells[2].Value), Convert.ToString(dgrow.Cells[0].Value) };
-                gs.Insert("UPDATE products SET quantity = quantity - @1 WHERE productname = @2", editparameters, editvalues);
+                gs.Insert("updateproduct", editparameters, editvalues);
             }
         }
         private void button1_Click(object sender, EventArgs e)
@@ -400,7 +400,7 @@ namespace Softwen.Transaction
             {
                 string[] parameters = { "@1", "@2", "@3" };
                 string[] values = { dgrow.Cells[0].Value.ToString(), dgrow.Cells[1].Value.ToString(), dgrow.Cells[2].Value.ToString() };
-                gs.Insert("INSERT INTO tempinvoice (productname,unitprice,quantity) VALUES (@1,@2,@3)", parameters, values);
+                gs.Insert("addtoinvoice", parameters, values);
             }
         }
         public void orderdetails()
@@ -420,7 +420,7 @@ namespace Softwen.Transaction
                             decimal total = _discountedamount + (_discountedamount * _vatpercent);
                             string[] parameters = { "@1", "@2", "@3" };
                             string[] values = { productID.ToString(), total.ToString(), dgrow.Cells[2].Value.ToString() };
-                            gs.Insert("INSERT INTO orderdetails (orderid,productid,price,quantity) VALUES ((SELECT IDENT_CURRENT('orders')),@1,@2,@3)", parameters, values);
+                             gs.Insert("orderss", parameters, values);
                         }
                     }
                 }

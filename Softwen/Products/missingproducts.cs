@@ -50,7 +50,7 @@ namespace Softwen.Products
             string[] addparameters = { "@1", "@2" };
             string[] addvalues = { products.ProductsInstance.dgproducts.CurrentRow.Cells[0].Value.ToString(), txtquantity.Value.ToString()};
             Globals gs = new Globals();
-            gs.Insert("INSERT INTO missingproducts(productid,missingquantity) VALUES (@1,@2)", addparameters, addvalues);
+            gs.Insert("addtomissing", addparameters, addvalues);
             MetroMessageBox.Show(this, "Missing quantity successfully processed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
             products.ProductsInstance.selectmissingproducts();

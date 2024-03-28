@@ -70,13 +70,13 @@ namespace Softwen.Products
                 string status = getstatus(qtydelivered, qtyordered);
                 string[] editparameters = { "@1", "@2" };
                 string[] editvalues = { qtydelivered.ToString(), productid.ToString() };
-                gs.Insert("UPDATE products SET quantity = quantity + @1 WHERE productid = @2", editparameters, editvalues);
+                gs.Insert("updatestocks", editparameters, editvalues);
                 string[] restockparameters = { "@1", "@2", "@3", "@4", "@5", "@6", "@7" };
                 string[] restockvalues = { Globals.userid, DateTime.Now.ToString(("MM/dd/yyyy hh:mm tt")), productid.ToString(), qtydelivered.ToString(), qtyafter.ToString(), ponumber, status };
-                gs.Insert("INSERT INTO restocks (userid,restockdate,productid,restockquantity,quantityafter,ponumber,status) VALUES (@1,@2,@3,@4,@5,@6,@7)", restockparameters, restockvalues);
+                gs.Insert("insertastocks", restockparameters, restockvalues);
                 string[] poparameters = { "@1", "@2" };
                 string[] povalues = { "processed", ponumber };
-                gs.Insert("UPDATE purchaseorder SET status = @1 WHERE ponumber = @2", poparameters, povalues);
+                gs.Insert("restokss", poparameters, povalues);
                 gs.recorduseractivity("Restock", productname);
                 this.Close();
                 products.ProductsInstance.selectdelivered();

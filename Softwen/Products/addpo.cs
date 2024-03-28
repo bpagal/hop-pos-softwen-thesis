@@ -78,7 +78,7 @@ namespace Softwen.Products
             dgrestock.CellContentClick += checkboxlogic;
             dgrestock.CellContentDoubleClick += checkboxlogic;
             dgrestock.CellClick += checkboxlogic;
-            gs.Select("SELECT productid, productname, quantity, maxquantity FROM products WHERE products.status = 'active'", dgrestock);
+            gs.Select("restockload", dgrestock);
             if (dgrestock.Rows.Count > 0)
                 txtproductname.Text = this.dgrestock.CurrentRow.Cells[3].Value.ToString();
         }
@@ -87,7 +87,7 @@ namespace Softwen.Products
         {
             string[] poparameters = { "@1", "@2", "@3", "@4"};
             string[] povalues = { DateTime.Now.ToString(("MM/dd/yyyy hh:mm tt")), Globals.userid, Properties.Settings.Default.SupplierName, Properties.Settings.Default.SupplierAddress};
-            gs.Insert("INSERT INTO purchaseorder (daterequested,userid,vendor,vendoraddress) VALUES (@1,@2,@3,@4)", poparameters, povalues);
+            gs.Insert("addtopo", poparameters, povalues);
         }
 
         private void addtopodetails()
@@ -100,7 +100,7 @@ namespace Softwen.Products
                     int orderedqty = Convert.ToInt32(dgrow.Cells[1].Value) - Convert.ToInt32(dgrow.Cells[4].Value);
                     string[] poparameters = { "@1", "@2" };
                     string[] povalues = { Convert.ToString(dgrow.Cells[2].Value),orderedqty.ToString()};
-                    gs.Insert("INSERT INTO podetails (ponumber,productid,orderedqty) VALUES ((SELECT IDENT_CURRENT('purchaseorder')),@1,@2)", poparameters, povalues);
+                    gs.Insert("addtodetails", poparameters, povalues);
                 }
 
             }

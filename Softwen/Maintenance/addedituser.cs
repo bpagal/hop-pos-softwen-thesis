@@ -54,18 +54,19 @@ namespace Softwen.Maintenance
         }
         private void lnkupdate_Click(object sender, EventArgs e)
         {
-            string[] editparameters = { "@1", "@2", "@3", "@4", "@5", "@6" };
-            string[] editvalues = { txtfname.Text, txtlname.Text, combobxut.Text, txtuname.Text, txtpass.Text, userid };
+            string[] addparameters = { "@1", "@2", "@3", "@4", "@5", "@6" };
+            string[] addvalues = { txtfname.Text, txtlname.Text, combobxut.Text, txtuname.Text, txtpass.Text, userid };
+
             if (Globals.CheckFields(paneluser, this) == false)
             {
-                gs.Insert("UPDATE users set fname = @1, lname = @2, usertype = @3 ,username = @4 ,password = @5 WHERE userid = @6", editparameters, editvalues);
-                MetroMessageBox.Show(this, "User successfully updated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                gs.recorduseractivity("Edit User", txtuname.Text);
+                gs.Insert("spUpdateUsers", addparameters, addvalues);
+                MetroMessageBox.Show(this, "User successfully added", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                gs.recorduseractivity("New User", txtuname.Text);
                 Globals.ResetFields(paneluser);
                 this.Close();
                 mnt.selectusers();
-
             }
+
         }
 
         private void addedituser_Load(object sender, EventArgs e)

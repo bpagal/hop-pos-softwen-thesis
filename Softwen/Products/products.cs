@@ -44,7 +44,7 @@ namespace Softwen.Products
         {
             using (SqlConnection con = new SqlConnection(gs.connstring))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT productname, quantity, maxquantity from products WHERE status = 'active' AND quantity <= maxquantity/2", con))
+                using (SqlCommand cmd = new SqlCommand("displaylowqty", con))
                 {
                     con.Open();
                     SqlDataReader readerlowqty = cmd.ExecuteReader();
@@ -65,45 +65,27 @@ namespace Softwen.Products
 
         public void selectcategory()
         {
-            gs.Select("SELECT * FROM category", dgcategories);
+            gs.Select("selectcat", dgcategories);
         }
         public void selectproducts()
         {
-            gs.Select(@"SELECT products.productid, products.productname, products.productcode, products.barcode, products.quantity, products.price, category.categoryname, products.description, products.maxquantity, products.status FROM products INNER JOIN category ON category.categoryid = products.categoryid WHERE status = 'active'", dgproducts);
+            gs.Select(@"selectproducts", dgproducts);
         }
         public void selectmissingproducts()
         {
-            gs.Select(@"SELECT products.productid, products.productname, products.description, products.productcode, products.quantity, category.categoryname, products.status, missingproducts.missingquantity FROM category 
-                        INNER JOIN products ON category.categoryid = products.categoryid 
-                        INNER JOIN missingproducts ON products.productid = missingproducts.productid", dgmissingproducts);
+            gs.Select(@"missingproducted", dgmissingproducts);
         }
         public void selectpurchaseorder()
         {
-            gs.Select(@"SELECT purchaseorder.ponumber as 'P/O Number', CONVERT(VARCHAR(20), purchaseorder.daterequested, 100) as 'Date',  products.productid as 'ID' , products.productname as 'Product', products.description as 'Desc' ,  products.price * podetails.orderedqty as 'Amount',
-       podetails.orderedqty as 'Qty Ordered', products.quantity as 'Qty', purchaseorder.status as 'Status' FROM podetails
-	   INNER JOIN products ON podetails.productid = products.productid 
-	   INNER JOIN purchaseorder ON podetails.ponumber = purchaseorder.ponumber
-	   INNER JOIN users ON purchaseorder.userid = users.userid WHERE purchaseorder.status = 'unprocessed' ", dgpo);
+            gs.Select(@"selectpo", dgpo);
         }
         public void selectbackorders()
         {
-            gs.Select(@"SELECT  restocks.ponumber AS [[P/O]] #], restocks.restockid AS ID, products.productname AS Product,products.quantity as 'Quantity', restocks.quantityafter - restocks.restockquantity AS 'Previous Qty', podetails.orderedqty AS [Ordered Qty], restocks.restockquantity AS [Last Delivered Qty], 
-                         restocks.quantityafter AS [Qty After Delivery], restocks.restockid, products.productid FROM products 
-                         INNER JOIN podetails ON products.productid = podetails.productid 
-                         INNER JOIN purchaseorder ON podetails.ponumber = purchaseorder.ponumber 
-                         INNER JOIN restocks ON products.productid = restocks.productid AND purchaseorder.ponumber = restocks.ponumber 
-                         INNER JOIN users ON purchaseorder.userid = users.userid AND restocks.userid = users.userid 
-                         WHERE restocks.status = 'Incomplete' ", dgbackorder);
+            gs.Select(@"selectbackorders", dgbackorder);
         }
         public void selectdelivered()
         {
-            gs.Select(@"SELECT restocks.restockid AS ID, CONCAT(users.fname, ' ', users.lname) AS 'Cashier', CONVERT(VARCHAR(20), restocks.restockdate, 100) AS 'Date', products.productname AS Product, 
-                         restocks.quantityafter - restocks.restockquantity AS 'Previous Qty', podetails.orderedqty AS [Ordered Qty], restocks.restockquantity AS [Delivered Qty], restocks.quantityafter AS [Qty After Delivery], 
-                         restocks.ponumber AS [[P/O]] #], restocks.status AS Status FROM products 
-                         INNER JOIN podetails ON products.productid = podetails.productid 
-                         INNER JOIN purchaseorder ON podetails.ponumber = purchaseorder.ponumber 
-                         INNER JOIN restocks ON products.productid = restocks.productid AND purchaseorder.ponumber = restocks.ponumber 
-                         INNER JOIN users ON purchaseorder.userid = users.userid AND restocks.userid = users.userid", dgdelivered);
+            gs.Select(@"selectdelivered", dgdelivered);
         }
         public void productbuttons()
         {
@@ -122,17 +104,17 @@ namespace Softwen.Products
         private void filterproduct()
         {
             if (comboboxsp.SelectedIndex == 0)
-                gs.Filter(@"SELECT products.productid, products.productcode, products.barcode, products.productname, products.quantity, products.price, category.categoryname, products.description,  products.maxquantity, products.status FROM products  INNER JOIN category ON category.categoryid = products.categoryid WHERE productname LIKE @1 AND status = 'active'", txtsp.Text, dgproducts);
+                gs.Filter(@"filterproduct1", txtsp.Text, dgproducts);
             else if (comboboxsp.SelectedIndex == 1)
-                gs.Filter(@"SELECT products.productid, products.productcode, products.barcode, products.productname, products.quantity, products.price, category.categoryname, products.description,  products.maxquantity, products.status FROM products  INNER JOIN category ON category.categoryid = products.categoryid WHERE productcode LIKE @1 AND status = 'active'", txtsp.Text, dgproducts);
+                gs.Filter(@"combofill", txtsp.Text, dgproducts);
             else if (comboboxsp.SelectedIndex == 2)
-                gs.Filter(@"SELECT products.productid, products.productcode, products.barcode, products.productname, products.quantity, products.price, category.categoryname, products.description,  products.maxquantity, products.status FROM products  INNER JOIN category ON category.categoryid = products.categoryid WHERE category.categoryname LIKE @1 AND status = 'active'", txtsp.Text, dgproducts);
+                gs.Filter(@"combofill1", txtsp.Text, dgproducts);
             else if (comboboxsp.SelectedIndex == 3)
-                gs.Filter(@"SELECT products.productid, products.productcode, products.barcode, products.productname, products.quantity, products.price, category.categoryname, products.description,  products.maxquantity, products.status FROM products  INNER JOIN category ON category.categoryid = products.categoryid WHERE price LIKE @1 AND status = 'active'", txtsp.Text, dgproducts);
+                gs.Filter(@"combofill2", txtsp.Text, dgproducts);
             else if (comboboxsp.SelectedIndex == 4)
-                gs.Filter(@"SELECT products.productid, products.productcode, products.barcode, products.productname, products.quantity, products.price, category.categoryname, products.description,  products.maxquantity, products.status FROM products  INNER JOIN category ON category.categoryid = products.categoryid WHERE description LIKE @1 AND status = 'active'", txtsp.Text, dgproducts);
+                gs.Filter(@"combofill3", txtsp.Text, dgproducts);
             else if (comboboxsp.SelectedIndex == 5)
-                gs.Filter(@"SELECT products.productid, products.productcode, products.barcode, products.productname, products.quantity, products.price, category.categoryname, products.description,  products.maxquantity, products.status FROM products  INNER JOIN category ON category.categoryid = products.categoryid WHERE barcode LIKE @1 AND status = 'active'", txtsp.Text, dgproducts);
+                gs.Filter(@"combofill4", txtsp.Text, dgproducts);
 
         }
         private void txtsp_TextChanged(object sender, EventArgs e)

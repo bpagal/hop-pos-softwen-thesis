@@ -62,7 +62,7 @@ namespace Softwen.Maintenance
                 string[] addvalues = { txtproductname.Text, txtbarcode.Text, txtprice.Text, getcategoryid().ToString(), txtdesc.Text, txtmaxquantity.Value.ToString(), txtproductcode.Text };
                 if (checkproductname() == false && checkproductcode() == false && checkbarcode() == false)
                 {
-                    gs.Insert("INSERT INTO products(productname,barcode,price,categoryid,description,maxquantity,productcode) VALUES (@1,@2,@3,@4,@5,@6,@7)", addparameters, addvalues);
+                    gs.Insert("saveproducts", addparameters, addvalues);
                     MetroMessageBox.Show(this, "Product successfully added", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     gs.recorduseractivity("New Product", txtproductname.Text);
                     Globals.ResetFields(panelproduct);
@@ -153,7 +153,7 @@ namespace Softwen.Maintenance
                 {
                     string[] editparameters = { "@1", "@2", "@3", "@4", "@5", "@6", "@7", "@8" };
                     string[] editvalues = { txtproductname.Text, txtbarcode.Text, txtprice.Text, getcategoryid().ToString(), txtdesc.Text, txtmaxquantity.Value.ToString(), txtproductcode.Text, productid };
-                    gs.Insert("UPDATE products SET productname = @1, barcode = @2, price = @3, categoryid = @4, description = @5, maxquantity = @6, productcode = @7 WHERE productid = @8", editparameters, editvalues);
+                    gs.Insert("editproducts", editparameters, editvalues);
                     MetroMessageBox.Show(this, "Product successfully updated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     gs.recorduseractivity("Edit Product", txtproductname.Text);
                     Globals.ResetFields(panelproduct);
