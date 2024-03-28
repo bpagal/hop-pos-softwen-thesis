@@ -48,5 +48,8 @@
     <Setting Name="Password" Type="System.String" Scope="User">
       <Value Profile="(Default)">Password</Value>
     </Setting>
+    <Setting Name="empdiscount" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

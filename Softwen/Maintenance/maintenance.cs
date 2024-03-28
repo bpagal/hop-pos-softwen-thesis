@@ -93,6 +93,8 @@ namespace Softwen.Maintenance
             txtvname.Text = Properties.Settings.Default.SupplierName;
             txtvaddress.Text = Properties.Settings.Default.SupplierAddress;
             txtvat.KeyPress += Globals.NumbersOnly;
+            txtempdisc.KeyPress += Globals.NumbersOnly;
+            txtempdisc.Text = Properties.Settings.Default.empdiscount.ToString();
             txtkey.KeyPress += Globals.NumbersOnly;
             txtnewkey.KeyPress += Globals.NumbersOnly;
             txtbranchid.KeyPress += Globals.NumbersOnly;
@@ -285,6 +287,7 @@ namespace Softwen.Maintenance
             Properties.Settings.Default.StoreWebsite = txtwebsite.Text;
             Properties.Settings.Default.StoreID = txtbranchid.Text;
             Properties.Settings.Default.VoidKey = txtkey.Text;
+            Properties.Settings.Default.empdiscount = Convert.ToDecimal(txtempdisc.Text);
             Properties.Settings.Default.Save();
             Transaction.transaction.TransactionInstance._vatpercent = Properties.Settings.Default.Vat / 100;
             Transaction.transaction.TransactionInstance.labelvat.Text = String.Format("Vat Amount {0}%:", Properties.Settings.Default.Vat);

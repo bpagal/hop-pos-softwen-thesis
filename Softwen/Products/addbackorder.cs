@@ -142,12 +142,10 @@ namespace Softwen.Products
 
         private void lnkcomplete_Click(object sender, EventArgs e)
         {
-            if (MetroMessageBox.Show(this, "Are you sure you want to proceed with these backorders?", "Confirm backorder", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+
+            if (checkqty() == false)
             {
-                if (checkqty() == false)
-                {
-                    increaseqty();
-                }
+                increaseqty();
             }
         }
     }

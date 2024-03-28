@@ -16,6 +16,7 @@ namespace Softwen.Products
     {
         Globals gs = new Globals();
         public string productid = "";
+        public int systemqty = 0;
         public adddispense()
         {
             InitializeComponent();
@@ -34,19 +35,16 @@ namespace Softwen.Products
                 }
             }
         }
-
+    
         private void lnksave_Click(object sender, EventArgs e)
         {
-            if (MetroMessageBox.Show(this, "Are you sure you want to proceed with these quantities?", "Confirm dispense", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
-            {
-                if (gs.validateemptyqty(txtquantity, this) == false && Globals.CheckFields(paneldispense, this) == false)
-                    addtodispense();
-            }
-        }
 
+            if (gs.validateemptyqty(txtquantity, this) == false && Globals.CheckFields(paneldispense,this)==false)
+                addtodispense();
+        }
         private void addtodispense()
         {
-            int reducedqty = -Convert.ToInt32(txtquantity.Value);
+            int reducedqty = Convert.ToInt32(txtquantity.Value) - systemqty;
             string[] editparameters = { "@1", "@2" };
             string[] editvalues = { reducedqty.ToString(), productid.ToString() };
             gs.Insert("updatestocks", editparameters, editvalues);

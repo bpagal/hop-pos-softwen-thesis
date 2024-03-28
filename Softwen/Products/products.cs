@@ -221,6 +221,7 @@ namespace Softwen.Products
         {
             adddispense adddps = new adddispense { productid = dgproducts.CurrentRow.Cells[0].Value.ToString() };
             productstylemanager.Clone(adddps);
+            adddps.systemqty = Convert.ToInt32(this.dgproducts.CurrentRow.Cells[4].Value);
             adddps.txtproductname.Text = dgproducts.CurrentRow.Cells[1].Value.ToString();
             adddps.txtquantity.Maximum = Convert.ToDecimal(dgproducts.CurrentRow.Cells[4].Value);
             adddps.ShowDialog();

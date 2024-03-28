@@ -51,7 +51,7 @@ namespace Softwen.Transaction
             else if (rd3.Checked)
             {
                 trs.discountstatus = "Employee Discount";
-                trs._discountvalue = 10;
+                trs._discountvalue = Properties.Settings.Default.empdiscount;
                 trs._vatpercent = Properties.Settings.Default.Vat / 100;
                 trs.getsummary();
                 this.Close();

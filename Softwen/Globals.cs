@@ -126,7 +126,7 @@ namespace Softwen
 
             }
         }
-
+        
         public void recorduseractivity(string activity, string manipulateddata)
         {
             string[] actparameters = { "@1", "@2", "@3", "@4" };
@@ -278,9 +278,8 @@ namespace Softwen
                 return false;
         }
 
-        public void exportexcel(ReportDocument rpt, MetroForm frm)
+        public void exportexcel(ReportDocument rpt)
         {
-
             ExportOptions exportOption;
             DiskFileDestinationOptions diskFileDestinationOptions = new DiskFileDestinationOptions();
             SaveFileDialog sfd = new SaveFileDialog();
@@ -288,20 +287,16 @@ namespace Softwen
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 diskFileDestinationOptions.DiskFileName = sfd.FileName;
-                ExcelDataOnlyFormatOptions excelDataOnlyFormatOptions = new ExcelDataOnlyFormatOptions();
-                excelDataOnlyFormatOptions.MaintainRelativeObjectPosition = true;
-                exportOption = rpt.ExportOptions;
-                exportOption.ExportDestinationType = ExportDestinationType.DiskFile;
-                exportOption.ExportFormatType = ExportFormatType.ExcelRecord;
-                exportOption.ExportDestinationOptions = diskFileDestinationOptions;
-                exportOption.FormatOptions = excelDataOnlyFormatOptions;
-                rpt.Export();
-                File.SetAttributes(diskFileDestinationOptions.DiskFileName, FileAttributes.ReadOnly);
-                MetroMessageBox.Show(frm, "Export Complete", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-
-
+            ExcelDataOnlyFormatOptions excelDataOnlyFormatOptions = new ExcelDataOnlyFormatOptions();
+            excelDataOnlyFormatOptions.MaintainRelativeObjectPosition = true;
+            exportOption = rpt.ExportOptions;
+            exportOption.ExportDestinationType = ExportDestinationType.DiskFile;
+            exportOption.ExportFormatType = ExportFormatType.ExcelRecord;
+            exportOption.ExportDestinationOptions = diskFileDestinationOptions;
+            exportOption.FormatOptions = excelDataOnlyFormatOptions;
+            rpt.Export();
+            File.SetAttributes(diskFileDestinationOptions.DiskFileName, FileAttributes.ReadOnly);
         }
 
     }

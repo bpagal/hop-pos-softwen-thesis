@@ -163,5 +163,17 @@ namespace Softwen.Properties {
                 this["Password"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public decimal empdiscount {
+            get {
+                return ((decimal)(this["empdiscount"]));
+            }
+            set {
+                this["empdiscount"] = value;
+            }
+        }
     }
 }

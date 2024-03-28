@@ -35,6 +35,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -50,13 +52,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.lnkdeleteproduct = new MetroFramework.Controls.MetroLink();
             this.lnkeditproduct = new MetroFramework.Controls.MetroLink();
             this.lnkaddproduct = new MetroFramework.Controls.MetroLink();
             this.dgproducts = new MetroFramework.Controls.MetroGrid();
+            this.productidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categorynameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboboxsp = new MetroFramework.Controls.MetroComboBox();
             this.txtsp = new MetroFramework.Controls.MetroTextBox();
             this.labelprice = new System.Windows.Forms.Label();
@@ -131,16 +141,8 @@
             this.labelvat = new System.Windows.Forms.Label();
             this.lnksavesettings = new MetroFramework.Controls.MetroLink();
             this.maintenancestylemanager = new MetroFramework.Components.MetroStyleManager(this.components);
-            this.productidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categorynameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtempdisc = new MetroFramework.Controls.MetroTextBox();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgproducts)).BeginInit();
             this.maintenancetabcontrol.SuspendLayout();
@@ -295,6 +297,90 @@
             this.dgproducts.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgproducts_RowsAdded);
             this.dgproducts.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgproducts_RowsRemoved);
             // 
+            // productidDataGridViewTextBoxColumn
+            // 
+            this.productidDataGridViewTextBoxColumn.DataPropertyName = "productid";
+            this.productidDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.productidDataGridViewTextBoxColumn.Name = "productidDataGridViewTextBoxColumn";
+            this.productidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productidDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // productnameDataGridViewTextBoxColumn
+            // 
+            this.productnameDataGridViewTextBoxColumn.DataPropertyName = "productname";
+            dataGridViewCellStyle3.NullValue = null;
+            this.productnameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.productnameDataGridViewTextBoxColumn.HeaderText = "Product";
+            this.productnameDataGridViewTextBoxColumn.Name = "productnameDataGridViewTextBoxColumn";
+            this.productnameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productnameDataGridViewTextBoxColumn.Width = 94;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "productcode";
+            this.Column4.HeaderText = "Product Code";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 137;
+            // 
+            // barcodeDataGridViewTextBoxColumn
+            // 
+            this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "barcode";
+            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
+            this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.barcodeDataGridViewTextBoxColumn.Width = 97;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "price";
+            dataGridViewCellStyle4.Format = "C";
+            dataGridViewCellStyle4.NullValue = null;
+            this.priceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Unit Price ₱";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.priceDataGridViewTextBoxColumn.Width = 123;
+            // 
+            // categorynameDataGridViewTextBoxColumn
+            // 
+            this.categorynameDataGridViewTextBoxColumn.DataPropertyName = "categoryname";
+            this.categorynameDataGridViewTextBoxColumn.HeaderText = "Category";
+            this.categorynameDataGridViewTextBoxColumn.Name = "categorynameDataGridViewTextBoxColumn";
+            this.categorynameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.categorynameDataGridViewTextBoxColumn.Width = 102;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descriptionDataGridViewTextBoxColumn.Width = 121;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "maxquantity";
+            this.Column3.HeaderText = "Max Qty";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 98;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "status";
+            this.Column5.HeaderText = "Status";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 81;
+            // 
             // comboboxsp
             // 
             this.comboboxsp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -370,7 +456,7 @@
             this.maintenancetabcontrol.Dock = System.Windows.Forms.DockStyle.Fill;
             this.maintenancetabcontrol.Location = new System.Drawing.Point(0, 0);
             this.maintenancetabcontrol.Name = "maintenancetabcontrol";
-            this.maintenancetabcontrol.SelectedIndex = 0;
+            this.maintenancetabcontrol.SelectedIndex = 4;
             this.maintenancetabcontrol.Size = new System.Drawing.Size(1085, 518);
             this.maintenancetabcontrol.TabIndex = 0;
             this.maintenancetabcontrol.UseSelectable = true;
@@ -1392,6 +1478,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.txtempdisc);
             this.groupBox1.Controls.Add(this.txtbranchid);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.txtwebsite);
@@ -1427,7 +1515,7 @@
             this.txtbranchid.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.txtbranchid.Icon = ((System.Drawing.Image)(resources.GetObject("txtbranchid.Icon")));
             this.txtbranchid.Lines = new string[0];
-            this.txtbranchid.Location = new System.Drawing.Point(12, 315);
+            this.txtbranchid.Location = new System.Drawing.Point(7, 211);
             this.txtbranchid.MaxLength = 32767;
             this.txtbranchid.Name = "txtbranchid";
             this.txtbranchid.PasswordChar = '\0';
@@ -1447,7 +1535,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(8, 290);
+            this.label10.Location = new System.Drawing.Point(3, 186);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(86, 22);
             this.label10.TabIndex = 25;
@@ -1471,7 +1559,7 @@
             this.txtwebsite.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.txtwebsite.Icon = ((System.Drawing.Image)(resources.GetObject("txtwebsite.Icon")));
             this.txtwebsite.Lines = new string[0];
-            this.txtwebsite.Location = new System.Drawing.Point(12, 387);
+            this.txtwebsite.Location = new System.Drawing.Point(7, 283);
             this.txtwebsite.MaxLength = 32767;
             this.txtwebsite.Name = "txtwebsite";
             this.txtwebsite.PasswordChar = '\0';
@@ -1491,7 +1579,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(8, 362);
+            this.label4.Location = new System.Drawing.Point(3, 258);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 22);
             this.label4.TabIndex = 20;
@@ -1503,9 +1591,9 @@
             // 
             // 
             this.txtaddress.CustomButton.Image = null;
-            this.txtaddress.CustomButton.Location = new System.Drawing.Point(178, 1);
+            this.txtaddress.CustomButton.Location = new System.Drawing.Point(276, 1);
             this.txtaddress.CustomButton.Name = "";
-            this.txtaddress.CustomButton.Size = new System.Drawing.Size(151, 151);
+            this.txtaddress.CustomButton.Size = new System.Drawing.Size(53, 53);
             this.txtaddress.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtaddress.CustomButton.TabIndex = 1;
             this.txtaddress.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -1526,7 +1614,7 @@
             this.txtaddress.SelectionStart = 0;
             this.txtaddress.ShortcutsEnabled = true;
             this.txtaddress.ShowClearButton = true;
-            this.txtaddress.Size = new System.Drawing.Size(330, 153);
+            this.txtaddress.Size = new System.Drawing.Size(330, 55);
             this.txtaddress.TabIndex = 1;
             this.txtaddress.UseSelectable = true;
             this.txtaddress.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -1616,89 +1704,49 @@
             // 
             this.maintenancestylemanager.Owner = this;
             // 
-            // productidDataGridViewTextBoxColumn
+            // label13
             // 
-            this.productidDataGridViewTextBoxColumn.DataPropertyName = "productid";
-            this.productidDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.productidDataGridViewTextBoxColumn.Name = "productidDataGridViewTextBoxColumn";
-            this.productidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productidDataGridViewTextBoxColumn.Width = 50;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(3, 323);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(157, 22);
+            this.label13.TabIndex = 28;
+            this.label13.Text = "Employee Discount";
             // 
-            // productnameDataGridViewTextBoxColumn
+            // txtempdisc
             // 
-            this.productnameDataGridViewTextBoxColumn.DataPropertyName = "productname";
-            dataGridViewCellStyle3.NullValue = null;
-            this.productnameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.productnameDataGridViewTextBoxColumn.HeaderText = "Product";
-            this.productnameDataGridViewTextBoxColumn.Name = "productnameDataGridViewTextBoxColumn";
-            this.productnameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productnameDataGridViewTextBoxColumn.Width = 94;
             // 
-            // Column4
             // 
-            this.Column4.DataPropertyName = "productcode";
-            this.Column4.HeaderText = "Product Code";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 137;
             // 
-            // barcodeDataGridViewTextBoxColumn
-            // 
-            this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "barcode";
-            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
-            this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.barcodeDataGridViewTextBoxColumn.Width = 97;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "price";
-            dataGridViewCellStyle4.Format = "C";
-            dataGridViewCellStyle4.NullValue = null;
-            this.priceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Unit Price ₱";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            this.priceDataGridViewTextBoxColumn.Width = 123;
-            // 
-            // categorynameDataGridViewTextBoxColumn
-            // 
-            this.categorynameDataGridViewTextBoxColumn.DataPropertyName = "categoryname";
-            this.categorynameDataGridViewTextBoxColumn.HeaderText = "Category";
-            this.categorynameDataGridViewTextBoxColumn.Name = "categorynameDataGridViewTextBoxColumn";
-            this.categorynameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.categorynameDataGridViewTextBoxColumn.Width = 102;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descriptionDataGridViewTextBoxColumn.Width = 121;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "maxquantity";
-            this.Column3.HeaderText = "Max Qty";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 98;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "status";
-            this.Column5.HeaderText = "Status";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 81;
+            this.txtempdisc.CustomButton.Image = null;
+            this.txtempdisc.CustomButton.Location = new System.Drawing.Point(183, 1);
+            this.txtempdisc.CustomButton.Name = "";
+            this.txtempdisc.CustomButton.Size = new System.Drawing.Size(35, 35);
+            this.txtempdisc.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtempdisc.CustomButton.TabIndex = 1;
+            this.txtempdisc.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtempdisc.CustomButton.UseSelectable = true;
+            this.txtempdisc.CustomButton.Visible = false;
+            this.txtempdisc.DisplayIcon = true;
+            this.txtempdisc.FontSize = MetroFramework.MetroTextBoxSize.Tall;
+            this.txtempdisc.Icon = ((System.Drawing.Image)(resources.GetObject("txtempdisc.Icon")));
+            this.txtempdisc.Lines = new string[0];
+            this.txtempdisc.Location = new System.Drawing.Point(7, 348);
+            this.txtempdisc.MaxLength = 2;
+            this.txtempdisc.Name = "txtempdisc";
+            this.txtempdisc.PasswordChar = '\0';
+            this.txtempdisc.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtempdisc.SelectedText = "";
+            this.txtempdisc.SelectionLength = 0;
+            this.txtempdisc.SelectionStart = 0;
+            this.txtempdisc.ShortcutsEnabled = true;
+            this.txtempdisc.ShowClearButton = true;
+            this.txtempdisc.Size = new System.Drawing.Size(219, 37);
+            this.txtempdisc.TabIndex = 27;
+            this.txtempdisc.UseSelectable = true;
+            this.txtempdisc.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtempdisc.WaterMarkFont = new System.Drawing.Font("Open Sans Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // maintenance
             // 
@@ -1824,5 +1872,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.Label label13;
+        public MetroFramework.Controls.MetroTextBox txtempdisc;
     }
 }

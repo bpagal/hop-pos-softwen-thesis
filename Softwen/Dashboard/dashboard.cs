@@ -24,8 +24,8 @@ namespace Softwen.Dashboard
         public dashboard()
         {
             InitializeComponent();
-            //login.Main ms = new login.Main(); //burahin to pag sa login na magsstart ang program
-            //this.StyleManager = ms.StyleManager; //burahin to pag sa login na magsstart ang program
+            login.Main ms = new login.Main(); //burahin to pag sa login na magsstart ang program
+            this.StyleManager = ms.StyleManager; //burahin to pag sa login na magsstart ang program
         }
 
         private void lnkmenu_Click(object sender, EventArgs e)

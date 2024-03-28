@@ -85,9 +85,9 @@
             this.label1.Font = new System.Drawing.Font("Open Sans Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(354, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 22);
+            this.label1.Size = new System.Drawing.Size(143, 22);
             this.label1.TabIndex = 24;
-            this.label1.Text = "Lost Quantity";
+            this.label1.Text = "Physical Quantity";
             // 
             // txtproductname
             // 
@@ -249,7 +249,7 @@
             this.MaximizeBox = false;
             this.Name = "adddispense";
             this.Resizable = false;
-            this.Text = "Dispense";
+            this.Text = "Missing";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
             ((System.ComponentModel.ISupportInitialize)(this.txtquantity)).EndInit();
             this.paneldispense.ResumeLayout(false);
